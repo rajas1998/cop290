@@ -1,0 +1,66 @@
+\hypertarget{class_graph}{}\section{Graph Class Reference}
+\label{class_graph}\index{Graph@{Graph}}
+
+
+Class for storing a graph.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_graph}{Graph}} $>$ \mbox{\hyperlink{class_graph_aef4f749f0b65ba4ca9834f0a64150f09}{find\+Chordless\+Cycles}} ()
+\begin{DoxyCompactList}\small\item\em Finds the chorldless cycles in the graph and returns as a list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ pair$<$ int, int $>$ $>$ \mbox{\hyperlink{class_graph_aa2eb1fa662b40441949fc7f0d0d2a3ad}{vertices}}
+\begin{DoxyCompactList}\small\item\em Vector for vertices. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ \mbox{\hyperlink{class_graph_a28d19ea9c7d111f55fee78331abe88bd}{edges}}
+\begin{DoxyCompactList}\small\item\em Vector for edges. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for storing a graph. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_graph_aef4f749f0b65ba4ca9834f0a64150f09}\label{class_graph_aef4f749f0b65ba4ca9834f0a64150f09}} 
+\index{Graph@{Graph}!find\+Chordless\+Cycles@{find\+Chordless\+Cycles}}
+\index{find\+Chordless\+Cycles@{find\+Chordless\+Cycles}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{find\+Chordless\+Cycles()}{findChordlessCycles()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_graph}{Graph}}$>$ Graph\+::find\+Chordless\+Cycles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Finds the chorldless cycles in the graph and returns as a list. 
+
+Looks at the graph and finds all shortest cycles which do not have a chord (line connected any two vertices in the graph). These represent faces and are returned in the form of a vector of all the graphs. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_graph_a28d19ea9c7d111f55fee78331abe88bd}\label{class_graph_a28d19ea9c7d111f55fee78331abe88bd}} 
+\index{Graph@{Graph}!edges@{edges}}
+\index{edges@{edges}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{edges}{edges}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{struct_edge}{Edge}}$>$ Graph\+::edges}
+
+
+
+Vector for edges. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{struct_edge}{Edge}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_graph_aa2eb1fa662b40441949fc7f0d0d2a3ad}\label{class_graph_aa2eb1fa662b40441949fc7f0d0d2a3ad}} 
+\index{Graph@{Graph}!vertices@{vertices}}
+\index{vertices@{vertices}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{vertices}{vertices}}
+{\footnotesize\ttfamily std\+::vector$<$pair $<$int,int$>$ $>$ Graph\+::vertices}
+
+
+
+Vector for vertices. 
+
+The vertices are indexed by their position in the vector and this is used to identify a vertex. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/sanjaybansal/\+Desktop/cop290/project/threeto2d.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,85 @@
+\hypertarget{classtwoto3d}{}\section{twoto3d Class Reference}
+\label{classtwoto3d}\index{twoto3d@{twoto3d}}
+
+
+Defines a class needed to generate the 3D object from the 3 projections.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtwoto3d_a22a5092922477075c8676947551e9476}{twoto3d}} (string proj1, string proj2, string proj3)
+\begin{DoxyCompactList}\small\item\em A constructor for the 2\+D-\/3D application taking the 3 input files as strings. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtwoto3d_afeaec5d8c3af0f3d233d687ab3532d9a}\label{classtwoto3d_afeaec5d8c3af0f3d233d687ab3532d9a}} 
+\mbox{\hyperlink{classtwoto3d_afeaec5d8c3af0f3d233d687ab3532d9a}{$\sim$twoto3d}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtwoto3d_a7b7f3f38be16773db7b155f0be8fce6b}{generate\+P\+Vertices}} ()
+\begin{DoxyCompactList}\small\item\em Generates the probable vertices. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classtwoto3d_a7fdf12ceaffa00e9c0181ae1bcf30614}{check\+Edge}} (\mbox{\hyperlink{struct_edge}{Edge}} edge)
+\begin{DoxyCompactList}\small\item\em Checks if the edge is present in all 3 views. Returns true if so. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtwoto3d_aac049125c78347a681d29306dcb3b86d}\label{classtwoto3d_aac049125c78347a681d29306dcb3b86d}} 
+Vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ \mbox{\hyperlink{classtwoto3d_aac049125c78347a681d29306dcb3b86d}{p\+Edges}}
+\begin{DoxyCompactList}\small\item\em The probable edges. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtwoto3d_acc1927f1fc908a193935b0db3e2af9c9}\label{classtwoto3d_acc1927f1fc908a193935b0db3e2af9c9}} 
+Vector$<$ int, pair$<$ int, int $>$ $>$ {\bfseries proj1}
+\item 
+\mbox{\Hypertarget{classtwoto3d_a505bbfbc57914ea4d1ecbbcd133515a1}\label{classtwoto3d_a505bbfbc57914ea4d1ecbbcd133515a1}} 
+Vector$<$ int, pair$<$ int, int $>$ $>$ {\bfseries proj2}
+\item 
+\mbox{\Hypertarget{classtwoto3d_a3382e23847bbb572a2f1138a21ba116c}\label{classtwoto3d_a3382e23847bbb572a2f1138a21ba116c}} 
+Vector$<$ int, pair$<$ int, int $>$ $>$ {\bfseries proj3}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines a class needed to generate the 3D object from the 3 projections. 
+
+Takes the 3 input graphs as a string and converts it into a single 3D graph. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtwoto3d_a22a5092922477075c8676947551e9476}\label{classtwoto3d_a22a5092922477075c8676947551e9476}} 
+\index{twoto3d@{twoto3d}!twoto3d@{twoto3d}}
+\index{twoto3d@{twoto3d}!twoto3d@{twoto3d}}
+\subsubsection{\texorpdfstring{twoto3d()}{twoto3d()}}
+{\footnotesize\ttfamily twoto3d\+::twoto3d (\begin{DoxyParamCaption}\item[{string}]{proj1,  }\item[{string}]{proj2,  }\item[{string}]{proj3 }\end{DoxyParamCaption})}
+
+
+
+A constructor for the 2\+D-\/3D application taking the 3 input files as strings. 
+
+Takes as input the 3 projections of the object (all in mutually perpendicular directions) Sets the proj1, proj2 and proj3 parameters. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtwoto3d_a7fdf12ceaffa00e9c0181ae1bcf30614}\label{classtwoto3d_a7fdf12ceaffa00e9c0181ae1bcf30614}} 
+\index{twoto3d@{twoto3d}!check\+Edge@{check\+Edge}}
+\index{check\+Edge@{check\+Edge}!twoto3d@{twoto3d}}
+\subsubsection{\texorpdfstring{check\+Edge()}{checkEdge()}}
+{\footnotesize\ttfamily bool twoto3d\+::check\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_edge}{Edge}}}]{edge }\end{DoxyParamCaption})}
+
+
+
+Checks if the edge is present in all 3 views. Returns true if so. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge} & Input edge whose presence in all 3 views is to be checked. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtwoto3d_a7b7f3f38be16773db7b155f0be8fce6b}\label{classtwoto3d_a7b7f3f38be16773db7b155f0be8fce6b}} 
+\index{twoto3d@{twoto3d}!generate\+P\+Vertices@{generate\+P\+Vertices}}
+\index{generate\+P\+Vertices@{generate\+P\+Vertices}!twoto3d@{twoto3d}}
+\subsubsection{\texorpdfstring{generate\+P\+Vertices()}{generatePVertices()}}
+{\footnotesize\ttfamily void twoto3d\+::generate\+P\+Vertices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Generates the probable vertices. 
+
+Generates the list of probable vertices by looking through the projections proj1, proj2 and proj3. Looks for vertices which are labeled by the same index and adds such vertices by combining their coordinates in different planes. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/sanjaybansal/\+Desktop/cop290/project/twoto3d.\+cpp\end{DoxyCompactItemize}
