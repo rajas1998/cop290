@@ -85,25 +85,37 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7b7f3f38be16773db7b155f0be8fce6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtwoto3d.html#a7b7f3f38be16773db7b155f0be8fce6b">generatePVertices</a> ()</td></tr>
 <tr class="memdesc:a7b7f3f38be16773db7b155f0be8fce6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the probable vertices.  <a href="#a7b7f3f38be16773db7b155f0be8fce6b">More...</a><br /></td></tr>
 <tr class="separator:a7b7f3f38be16773db7b155f0be8fce6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a602e716fedf63b73954edb1e084e4b3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtwoto3d.html#a602e716fedf63b73954edb1e084e4b3a">generatePEdges</a> ()</td></tr>
+<tr class="memdesc:a602e716fedf63b73954edb1e084e4b3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the probable edges vector.  <a href="#a602e716fedf63b73954edb1e084e4b3a">More...</a><br /></td></tr>
+<tr class="separator:a602e716fedf63b73954edb1e084e4b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fdf12ceaffa00e9c0181ae1bcf30614"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtwoto3d.html#a7fdf12ceaffa00e9c0181ae1bcf30614">checkEdge</a> (<a class="el" href="struct_edge.html">Edge</a> edge)</td></tr>
 <tr class="memdesc:a7fdf12ceaffa00e9c0181ae1bcf30614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the edge is present in all 3 views. Returns true if so.  <a href="#a7fdf12ceaffa00e9c0181ae1bcf30614">More...</a><br /></td></tr>
 <tr class="separator:a7fdf12ceaffa00e9c0181ae1bcf30614"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fdbf0e85b7c554e5d0cce5624ccf341"><td class="memItemLeft" align="right" valign="top"><a id="a2fdbf0e85b7c554e5d0cce5624ccf341"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtwoto3d.html#a2fdbf0e85b7c554e5d0cce5624ccf341">presentIn2</a> (<a class="el" href="struct_edge.html">Edge</a> edge)</td></tr>
+<tr class="memdesc:a2fdbf0e85b7c554e5d0cce5624ccf341"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the edge is present in atleast 2 faces. <br /></td></tr>
+<tr class="separator:a2fdbf0e85b7c554e5d0cce5624ccf341"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aac049125c78347a681d29306dcb3b86d"><td class="memItemLeft" align="right" valign="top"><a id="aac049125c78347a681d29306dcb3b86d"></a>
-Vector&lt; <a class="el" href="struct_edge.html">Edge</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtwoto3d.html#aac049125c78347a681d29306dcb3b86d">pEdges</a></td></tr>
-<tr class="memdesc:aac049125c78347a681d29306dcb3b86d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The probable edges. <br /></td></tr>
-<tr class="separator:aac049125c78347a681d29306dcb3b86d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc1927f1fc908a193935b0db3e2af9c9"><td class="memItemLeft" align="right" valign="top"><a id="acc1927f1fc908a193935b0db3e2af9c9"></a>
-Vector&lt; int, pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>proj1</b></td></tr>
-<tr class="separator:acc1927f1fc908a193935b0db3e2af9c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a505bbfbc57914ea4d1ecbbcd133515a1"><td class="memItemLeft" align="right" valign="top"><a id="a505bbfbc57914ea4d1ecbbcd133515a1"></a>
-Vector&lt; int, pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>proj2</b></td></tr>
-<tr class="separator:a505bbfbc57914ea4d1ecbbcd133515a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3382e23847bbb572a2f1138a21ba116c"><td class="memItemLeft" align="right" valign="top"><a id="a3382e23847bbb572a2f1138a21ba116c"></a>
-Vector&lt; int, pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>proj3</b></td></tr>
-<tr class="separator:a3382e23847bbb572a2f1138a21ba116c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ccf9fe8716e71f2a7d8e44760616fa1"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_edge.html">Edge</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtwoto3d.html#a8ccf9fe8716e71f2a7d8e44760616fa1">pEdges</a></td></tr>
+<tr class="memdesc:a8ccf9fe8716e71f2a7d8e44760616fa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The probable edges.  <a href="#a8ccf9fe8716e71f2a7d8e44760616fa1">More...</a><br /></td></tr>
+<tr class="separator:a8ccf9fe8716e71f2a7d8e44760616fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03217e7090aa50fa3d6fa1ac09f104e6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int, pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtwoto3d.html#a03217e7090aa50fa3d6fa1ac09f104e6">pVertices</a></td></tr>
+<tr class="memdesc:a03217e7090aa50fa3d6fa1ac09f104e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The probable vertices.  <a href="#a03217e7090aa50fa3d6fa1ac09f104e6">More...</a><br /></td></tr>
+<tr class="separator:a03217e7090aa50fa3d6fa1ac09f104e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37d2112519af172a2d76b71d3e5b17b4"><td class="memItemLeft" align="right" valign="top"><a id="a37d2112519af172a2d76b71d3e5b17b4"></a>
+std::vector&lt; int, pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>proj1</b></td></tr>
+<tr class="separator:a37d2112519af172a2d76b71d3e5b17b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a640d3bcfcc52d7030e2c93124b3f064b"><td class="memItemLeft" align="right" valign="top"><a id="a640d3bcfcc52d7030e2c93124b3f064b"></a>
+std::vector&lt; int, pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>proj2</b></td></tr>
+<tr class="separator:a640d3bcfcc52d7030e2c93124b3f064b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39682f28b1b1b870a721194cce90ef9e"><td class="memItemLeft" align="right" valign="top"><a id="a39682f28b1b1b870a721194cce90ef9e"></a>
+std::vector&lt; int, pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>proj3</b></td></tr>
+<tr class="separator:a39682f28b1b1b870a721194cce90ef9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ccb6e440032c79d7ee780bdb10c845d"><td class="memItemLeft" align="right" valign="top"><a id="a6ccb6e440032c79d7ee780bdb10c845d"></a>
+std::vector&lt; <a class="el" href="class_graph.html">Graph</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>faces</b></td></tr>
+<tr class="separator:a6ccb6e440032c79d7ee780bdb10c845d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines a class needed to generate the 3D object from the 3 projections. </p>
@@ -173,6 +185,26 @@ Vector&lt; int, pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" v
 
 </div>
 </div>
+<a id="a602e716fedf63b73954edb1e084e4b3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a602e716fedf63b73954edb1e084e4b3a">&#9670;&nbsp;</a></span>generatePEdges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void twoto3d::generatePEdges </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generates the probable edges vector. </p>
+<p>Generates the list of probable edges by extending the list of edges from the 2D projections. Checks the edge through all the projections. </p>
+
+</div>
+</div>
 <a id="a7b7f3f38be16773db7b155f0be8fce6b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7b7f3f38be16773db7b155f0be8fce6b">&#9670;&nbsp;</a></span>generatePVertices()</h2>
 
@@ -190,6 +222,41 @@ Vector&lt; int, pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" v
 
 <p>Generates the probable vertices. </p>
 <p>Generates the list of probable vertices by looking through the projections proj1, proj2 and proj3. Looks for vertices which are labeled by the same index and adds such vertices by combining their coordinates in different planes. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a8ccf9fe8716e71f2a7d8e44760616fa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ccf9fe8716e71f2a7d8e44760616fa1">&#9670;&nbsp;</a></span>pEdges</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="struct_edge.html">Edge</a>&gt; twoto3d::pEdges</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The probable edges. </p>
+<p>This contains edges which can be correct edges in the 3D view also. </p>
+
+</div>
+</div>
+<a id="a03217e7090aa50fa3d6fa1ac09f104e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03217e7090aa50fa3d6fa1ac09f104e6">&#9670;&nbsp;</a></span>pVertices</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;int, pair &lt;int,int&gt; &gt; twoto3d::pVertices</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The probable vertices. </p>
+<p>Contains a labeled mapping of all probable vertices. </p>
 
 </div>
 </div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mode_5frb',['mode_rb',['../classmain_window.html#abd7445b8de425018c91f10b721e9e314',1,'mainWindow']]]
+  ['ok_5fbut',['ok_but',['../classmain_window.html#add1c0392d7854b68f033094e1b67b3bd',1,'mainWindow']]]
 ];

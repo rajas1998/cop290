@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['translatedg',['translatedG',['../classthreeto2d.html#a35e3f8899eaa2592ef47a5c8cd45e450',1,'threeto2d']]]
+  ['vertices',['vertices',['../class_graph.html#aa2eb1fa662b40441949fc7f0d0d2a3ad',1,'Graph']]],
+  ['viweingdirection',['viweingDirection',['../classthreeto2d.html#a82de4b8ed23967d57a1905bf9fc1011c',1,'threeto2d']]]
 ];

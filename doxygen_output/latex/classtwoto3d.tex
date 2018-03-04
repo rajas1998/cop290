@@ -15,22 +15,31 @@ Defines a class needed to generate the 3D object from the 3 projections.
 \begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classtwoto3d_a7b7f3f38be16773db7b155f0be8fce6b}{generate\+P\+Vertices}} ()
 \begin{DoxyCompactList}\small\item\em Generates the probable vertices. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtwoto3d_a602e716fedf63b73954edb1e084e4b3a}{generate\+P\+Edges}} ()
+\begin{DoxyCompactList}\small\item\em Generates the probable edges vector. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classtwoto3d_a7fdf12ceaffa00e9c0181ae1bcf30614}{check\+Edge}} (\mbox{\hyperlink{struct_edge}{Edge}} edge)
-\begin{DoxyCompactList}\small\item\em Checks if the edge is present in all 3 views. Returns true if so. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Checks if the edge is present in all 3 views. Returns true if so. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtwoto3d_a2fdbf0e85b7c554e5d0cce5624ccf341}\label{classtwoto3d_a2fdbf0e85b7c554e5d0cce5624ccf341}} 
+bool \mbox{\hyperlink{classtwoto3d_a2fdbf0e85b7c554e5d0cce5624ccf341}{present\+In2}} (\mbox{\hyperlink{struct_edge}{Edge}} edge)
+\begin{DoxyCompactList}\small\item\em Checks if the edge is present in atleast 2 faces. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtwoto3d_aac049125c78347a681d29306dcb3b86d}\label{classtwoto3d_aac049125c78347a681d29306dcb3b86d}} 
-Vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ \mbox{\hyperlink{classtwoto3d_aac049125c78347a681d29306dcb3b86d}{p\+Edges}}
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ \mbox{\hyperlink{classtwoto3d_a8ccf9fe8716e71f2a7d8e44760616fa1}{p\+Edges}}
 \begin{DoxyCompactList}\small\item\em The probable edges. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classtwoto3d_acc1927f1fc908a193935b0db3e2af9c9}\label{classtwoto3d_acc1927f1fc908a193935b0db3e2af9c9}} 
-Vector$<$ int, pair$<$ int, int $>$ $>$ {\bfseries proj1}
+std\+::vector$<$ int, pair$<$ int, int $>$ $>$ \mbox{\hyperlink{classtwoto3d_a03217e7090aa50fa3d6fa1ac09f104e6}{p\+Vertices}}
+\begin{DoxyCompactList}\small\item\em The probable vertices. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtwoto3d_a37d2112519af172a2d76b71d3e5b17b4}\label{classtwoto3d_a37d2112519af172a2d76b71d3e5b17b4}} 
+std\+::vector$<$ int, pair$<$ int, int $>$ $>$ {\bfseries proj1}
 \item 
-\mbox{\Hypertarget{classtwoto3d_a505bbfbc57914ea4d1ecbbcd133515a1}\label{classtwoto3d_a505bbfbc57914ea4d1ecbbcd133515a1}} 
-Vector$<$ int, pair$<$ int, int $>$ $>$ {\bfseries proj2}
+\mbox{\Hypertarget{classtwoto3d_a640d3bcfcc52d7030e2c93124b3f064b}\label{classtwoto3d_a640d3bcfcc52d7030e2c93124b3f064b}} 
+std\+::vector$<$ int, pair$<$ int, int $>$ $>$ {\bfseries proj2}
 \item 
-\mbox{\Hypertarget{classtwoto3d_a3382e23847bbb572a2f1138a21ba116c}\label{classtwoto3d_a3382e23847bbb572a2f1138a21ba116c}} 
-Vector$<$ int, pair$<$ int, int $>$ $>$ {\bfseries proj3}
+\mbox{\Hypertarget{classtwoto3d_a39682f28b1b1b870a721194cce90ef9e}\label{classtwoto3d_a39682f28b1b1b870a721194cce90ef9e}} 
+std\+::vector$<$ int, pair$<$ int, int $>$ $>$ {\bfseries proj3}
+\item 
+\mbox{\Hypertarget{classtwoto3d_a6ccb6e440032c79d7ee780bdb10c845d}\label{classtwoto3d_a6ccb6e440032c79d7ee780bdb10c845d}} 
+std\+::vector$<$ \mbox{\hyperlink{class_graph}{Graph}} $>$ {\bfseries faces}
 \end{DoxyCompactItemize}
 
 
@@ -68,7 +77,17 @@ Checks if the edge is present in all 3 views. Returns true if so.
 {\em edge} & Input edge whose presence in all 3 views is to be checked. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classtwoto3d_a7b7f3f38be16773db7b155f0be8fce6b}\label{classtwoto3d_a7b7f3f38be16773db7b155f0be8fce6b}} 
+\mbox{\Hypertarget{classtwoto3d_a602e716fedf63b73954edb1e084e4b3a}\label{classtwoto3d_a602e716fedf63b73954edb1e084e4b3a}} 
+\index{twoto3d@{twoto3d}!generate\+P\+Edges@{generate\+P\+Edges}}
+\index{generate\+P\+Edges@{generate\+P\+Edges}!twoto3d@{twoto3d}}
+\subsubsection{\texorpdfstring{generate\+P\+Edges()}{generatePEdges()}}
+{\footnotesize\ttfamily void twoto3d\+::generate\+P\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Generates the probable edges vector. 
+
+Generates the list of probable edges by extending the list of edges from the 2D projections. Checks the edge through all the projections. \mbox{\Hypertarget{classtwoto3d_a7b7f3f38be16773db7b155f0be8fce6b}\label{classtwoto3d_a7b7f3f38be16773db7b155f0be8fce6b}} 
 \index{twoto3d@{twoto3d}!generate\+P\+Vertices@{generate\+P\+Vertices}}
 \index{generate\+P\+Vertices@{generate\+P\+Vertices}!twoto3d@{twoto3d}}
 \subsubsection{\texorpdfstring{generate\+P\+Vertices()}{generatePVertices()}}
@@ -79,6 +98,29 @@ Checks if the edge is present in all 3 views. Returns true if so.
 Generates the probable vertices. 
 
 Generates the list of probable vertices by looking through the projections proj1, proj2 and proj3. Looks for vertices which are labeled by the same index and adds such vertices by combining their coordinates in different planes. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classtwoto3d_a8ccf9fe8716e71f2a7d8e44760616fa1}\label{classtwoto3d_a8ccf9fe8716e71f2a7d8e44760616fa1}} 
+\index{twoto3d@{twoto3d}!p\+Edges@{p\+Edges}}
+\index{p\+Edges@{p\+Edges}!twoto3d@{twoto3d}}
+\subsubsection{\texorpdfstring{p\+Edges}{pEdges}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{struct_edge}{Edge}}$>$ twoto3d\+::p\+Edges}
+
+
+
+The probable edges. 
+
+This contains edges which can be correct edges in the 3D view also. \mbox{\Hypertarget{classtwoto3d_a03217e7090aa50fa3d6fa1ac09f104e6}\label{classtwoto3d_a03217e7090aa50fa3d6fa1ac09f104e6}} 
+\index{twoto3d@{twoto3d}!p\+Vertices@{p\+Vertices}}
+\index{p\+Vertices@{p\+Vertices}!twoto3d@{twoto3d}}
+\subsubsection{\texorpdfstring{p\+Vertices}{pVertices}}
+{\footnotesize\ttfamily std\+::vector$<$int, pair $<$int,int$>$ $>$ twoto3d\+::p\+Vertices}
+
+
+
+The probable vertices. 
+
+Contains a labeled mapping of all probable vertices. 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
