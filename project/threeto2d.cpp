@@ -57,7 +57,7 @@ class threeto2d
 		~threeto2d();
 		//! Stores the input 3D file as a graph
 		Graph inputG;
-		//! Stores the viweing direction
+		//! Stores the viewing direction
 		Direction viweingDirection;
 		//! Stores the translated graph
 		Graph translatedG;
