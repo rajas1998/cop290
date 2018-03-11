@@ -1,11 +1,11 @@
 #include <string.h>
 #include <stdio.h>
-#include <armadillo>
+//#include <armadillo>
 #include <iostream>
 #include <fstream>
-#include <NGraph>
+//#include <NGraph>
 
-using namespace NGraph;
+//using namespace NGraph;
 using namespace std;
 
 /*
@@ -35,13 +35,43 @@ struct Triplet
   int  one_, two_, three_;
 };
 
+Triplet frontdir;
+Triplet topdir;
+Triplet cuttingplane;
 vector<Triplet> vertices;
 
 Graph toGraph(char f[])
 {
+	Graph A;
 	fstream afile;
+	char ch[50];
+	int fx,fy,fz,gx,gy,gz,v,e;
 	afile.open(f,ios::in);
-	while(afile){
+	afile>>fx>>fy>>fz;
+	frontdir.one_=fx;
+	frontdir.two_=fy;
+	frontdir.three_=fz;
+	afile>>fx>>fy>>fz;
+	topdir.one_=fx;
+	topdir.two_=fy;
+	topdir.three_=fz;
+	afile>>fx>>fy>>fz;
+	cuttingplane.one_=fx;
+	cuttingplane.two_=fy;
+	cuttingplane.three_=fz;
+	afile>>v;
+	for (int i = 0; i < v; ++i)
+	{
+		afile>>fx>>fy>>fz;
+		vertices.push_back({fx,fy,fz});
+	}
+	afile>>e;
+	for (int i = 0; i < e; ++i)
+	{
+		afile>>fx>>fy>>fz>>gx>>gy>>gz;
+		int v1 = find (vertices.begin(), vertices.end(), {fx,fy,fz}) - vertices.begin();
+		int v2 = find (vertices.begin(), vertices.end(), {gx,gy,gz}) - vertices.begin();
+		A.insert_edge(v1,v2);
 	}
 	afile.close();
 }
