@@ -5,7 +5,7 @@
 #include <fstream>
 #include "ngraph.hpp"
 #include <algorithm>
-
+#include <map>
 //using namespace NGraph;
 using namespace std;
 
@@ -31,9 +31,15 @@ Input File Format:
 
 */
 
+map <int, vector<int> > v;
 struct Triplet
 {
   double  one, two, three;
+};
+class Graph{
+	public:
+		vector<Triplet> vertices;
+		map <int, std::vector<int> > edges;
 };
 struct Doublet
 {
@@ -65,4 +71,6 @@ int main(int argc, char const *argv[])
 	vertices.push_back(temp);
 	vertices.push_back(t);
 	cout<<vertices.at(0).one<<endl;
+	Graph x;
+	
 }

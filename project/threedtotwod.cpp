@@ -4,7 +4,6 @@
 #include <iostream>
 #include <fstream>
 #include "ngraph.hpp"
-
 using namespace NGraph;
 using namespace std;
 
@@ -32,7 +31,10 @@ Input File Format:
 
 struct Triplet
 {
-  int  one_, two_, three_;
+  int  one, two, three;
+  bool operator== (const Triplet&ref) const {
+  	return (ref.one == one)&&(ref.two == two)&&(ref.three==three);
+  }
 };
 
 Triplet frontdir;
@@ -40,7 +42,7 @@ Triplet topdir;
 Triplet cuttingplane;
 vector<Triplet> vertices;
 
-Graph toGraph(char f[])
+Graph toGraph(string f)
 {
 	Graph A;
 	fstream afile;
@@ -48,17 +50,17 @@ Graph toGraph(char f[])
 	int fx,fy,fz,gx,gy,gz,v,e;
 	afile.open(f,ios::in);
 	afile>>fx>>fy>>fz;
-	frontdir.one_=fx;
-	frontdir.two_=fy;
-	frontdir.three_=fz;
+	frontdir.one=fx;
+	frontdir.two=fy;
+	frontdir.three=fz;
 	afile>>fx>>fy>>fz;
-	topdir.one_=fx;
-	topdir.two_=fy;
-	topdir.three_=fz;
+	topdir.one=fx;
+	topdir.two=fy;
+	topdir.three=fz;
 	afile>>fx>>fy>>fz;
-	cuttingplane.one_=fx;
-	cuttingplane.two_=fy;
-	cuttingplane.three_=fz;
+	cuttingplane.one=fx;
+	cuttingplane.two=fy;
+	cuttingplane.three=fz;
 	afile>>v;
 	for (int i = 0; i < v; ++i)
 	{
@@ -77,10 +79,13 @@ Graph toGraph(char f[])
 		A.insert_edge(v1,v2);
 	}
 	afile.close();
+	return A;
 }
 
 int main(int argc, char const *argv[])
 {
 	Graph G;
-	G = toGraph(argv[0]); //argv[0] is a char array "inputfilename.txt"
+	G = toGraph("input.txt"); //argv[0] is a char array "inputfilename.txt"
+	cout<<vertices.at(0).three<<endl;
+	return 0;
 }
