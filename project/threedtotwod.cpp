@@ -3,9 +3,9 @@
 //#include <armadillo>
 #include <iostream>
 #include <fstream>
-//#include <NGraph>
+#include "ngraph.hpp"
 
-//using namespace NGraph;
+using namespace NGraph;
 using namespace std;
 
 /*
@@ -63,14 +63,17 @@ Graph toGraph(char f[])
 	for (int i = 0; i < v; ++i)
 	{
 		afile>>fx>>fy>>fz;
-		vertices.push_back({fx,fy,fz});
+		Triplet temp = {fx,fy,fz};
+		vertices.push_back(temp);
 	}
 	afile>>e;
 	for (int i = 0; i < e; ++i)
 	{
 		afile>>fx>>fy>>fz>>gx>>gy>>gz;
-		int v1 = find (vertices.begin(), vertices.end(), {fx,fy,fz}) - vertices.begin();
-		int v2 = find (vertices.begin(), vertices.end(), {gx,gy,gz}) - vertices.begin();
+		Triplet temp1 = {fx,fy,fz};
+		Triplet temp2 = {gx,gy,gz};
+		int v1 = find (vertices.begin(), vertices.end(), temp1) - vertices.begin();
+		int v2 = find (vertices.begin(), vertices.end(), temp2) - vertices.begin();
 		A.insert_edge(v1,v2);
 	}
 	afile.close();
