@@ -86,6 +86,18 @@ int main(int argc, char const *argv[])
 {
 	Graph G;
 	G = toGraph("input.txt"); //argv[0] is a char array "inputfilename.txt"
-	cout<<vertices.at(0).three<<endl;
+	for (int i = 0; i < vertices.size(); ++i)
+	{
+		cout<<vertices.at(i).one<<","<<vertices.at(i).two<<","<<vertices.at(i).three<<endl;
+	}
+	for (Graph::const_iterator i = G.begin(); i != G.end(); ++i)
+	{
+		Graph::vertex_set Si = Graph::out_neighbors(i);
+		for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
+		{
+			cout<<*p<<" ";
+		}
+		cout<<endl;
+	}
 	return 0;
 }
