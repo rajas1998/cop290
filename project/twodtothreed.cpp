@@ -136,16 +136,6 @@ std::vector< pair<int,int> > makeEdges(Graph_Imp &x){
 		for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
 		{
 			v = sameCoordinates(x.vertices, x.vertices.at(*p));
-			cout<<i<<" "<<*p<<endl;
-			for (int i = 0; i < u.size(); ++i)
-			{
-				cout<<u[i]<<" ";
-			}
-			for (int i = 0; i < v.size(); ++i)
-			{
-				cout<<v[i]<<" ";
-			}
-			cout<<endl;
 			for (int i = 0; i < u.size(); ++i)
 			{
 				for (int j = 0; j < v.size(); ++j)
@@ -174,11 +164,16 @@ std::vector< pair<int,int> > makeEdges(Graph_Imp &x){
 	}
 	return pEdges;
 }
+// std::vector<pair<int, int> > intersection(std::vector<pair<int, int> > a, std::vector<pair<int, int> > b, std::vector<pair<int, int> > c){
+
+// }
 int main(int argc, char const *argv[])
 {
 	Graph_Imp G_on_xy,G_on_yz,G_on_xz;
 	toGraphAllThree("inp_for_2.txt",G_on_xy,G_on_yz,G_on_xz);
 	Graph_Imp G3D;
 	G3D.vertices = make3DVertices(G_on_xy, G_on_yz, G_on_xz);
-	std::vector< pair<int,int> > probEdges = makeEdges(G_on_xy);
+	std::vector< pair<int,int> > probEdges_xy = makeEdges(G_on_xy);
+	std::vector< pair<int,int> > probEdges_yz = makeEdges(G_on_yz);
+	std::vector< pair<int,int> > probEdges_zx = makeEdges(G_on_xz);
 }
