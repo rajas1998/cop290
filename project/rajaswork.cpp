@@ -100,7 +100,7 @@ int main(int argc, char const *argv[])
 	Triplet temp = {1/sqrt(3),1/sqrt(3),1/sqrt(3)};
 	vertices.push_back(temp);
 	Triplet temp2 = {1,1,1};
-	rotate_vector(temp2, vertices).at(0);
+	cout<<rotate_vector(temp2, vertices).at(0).three;
 	// vertices.push_back(temp2);
 	// cout<<rotate_vector(vertices).at(1).three;
 }
