@@ -59,10 +59,10 @@ Graph_Imp toGraph(string f)
 	Graph A;
 	vector<Triplet> vert;
 
-	fstream afile;
+	ifstream afile;
 	char ch[50];
 	int x,y,z,v,e;
-	afile.open(f,ios::in);
+	afile.open(f);
 	afile>>x>>y>>z;
 	frontdir.one=x;
 	frontdir.two=y;
