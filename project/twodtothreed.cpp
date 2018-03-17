@@ -33,7 +33,7 @@ v+2.
 
 struct Triplet
 {
-  int  one, two, three;
+  double  one, two, three;
   bool operator== (const Triplet&ref) const {
   	return (ref.one == one)&&(ref.two == two)&&(ref.three==three);
   }
@@ -136,6 +136,16 @@ std::vector< pair<int,int> > makeEdges(Graph_Imp &x){
 		for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
 		{
 			v = sameCoordinates(x.vertices, x.vertices.at(*p));
+			// cout<<i<<" "<<*p<<endl;
+			// for (int i = 0; i < u.size(); ++i)
+			// {
+			// 	cout<<u[i]<<" ";
+			// }
+			// for (int i = 0; i < v.size(); ++i)
+			// {
+			// 	cout<<v[i]<<" ";
+			// }
+			// cout<<endl;
 			for (int i = 0; i < u.size(); ++i)
 			{
 				for (int j = 0; j < v.size(); ++j)
@@ -160,13 +170,42 @@ std::vector< pair<int,int> > makeEdges(Graph_Imp &x){
 					pEdges.push_back(make_pair(v.at(j), v.at(i)));
 				}
 			}
+			// for (int i = 0; i < pEdges.size(); ++i)
+			// {
+			// 	cout<<pEdges[i].first<<" "<<pEdges[i].second<<" ";
+			// }
+			// cout<<endl;
 		}
 	}
 	return pEdges;
 }
-// std::vector<pair<int, int> > intersection(std::vector<pair<int, int> > a, std::vector<pair<int, int> > b, std::vector<pair<int, int> > c){
-
-// }
+std::vector<pair<int, int> > intersection(std::vector<pair<int, int> > a, std::vector<pair<int, int> > b, std::vector<pair<int, int> > c){
+	std::vector<pair<int, int> > ret;
+	bool inb, inc = false;
+	for (int i = 0; i < a.size(); ++i)
+	{
+		inb = false;
+		inc = false;
+		for (int j = 0; j < b.size(); ++j)
+		{
+			if (a[i] == b[j]){
+				inb = true;
+				break;
+			}
+		}
+		for (int j = 0; j < c.size(); ++j)
+		{
+			if (a[i] == c[j]){
+				inc = true;
+				break;
+			}
+		}
+		if (inb && inc){
+			ret.push_back(a[i]);
+		}
+	}
+	return ret;
+}
 int main(int argc, char const *argv[])
 {
 	Graph_Imp G_on_xy,G_on_yz,G_on_xz;
@@ -174,6 +213,23 @@ int main(int argc, char const *argv[])
 	Graph_Imp G3D;
 	G3D.vertices = make3DVertices(G_on_xy, G_on_yz, G_on_xz);
 	std::vector< pair<int,int> > probEdges_xy = makeEdges(G_on_xy);
+	// cout<<"---------"<<endl;
 	std::vector< pair<int,int> > probEdges_yz = makeEdges(G_on_yz);
-	std::vector< pair<int,int> > probEdges_zx = makeEdges(G_on_xz);
+	// cout<<"---------"<<endl;
+	std::vector< pair<int,int> > probEdges_xz = makeEdges(G_on_xz);
+	// cout<<"---------"<<endl;
+	std::vector<pair<int, int> > inter = intersection(probEdges_xy, probEdges_yz, probEdges_xz);
+	// cout<<"---------"<<endl;
+	for (int i = 0; i < inter.size(); ++i)
+	{
+		G3D.edges.insert_edge(inter[i].first, inter[i].second);
+		G3D.edges.insert_edge(inter[i].second, inter[i].first);
+	}
+	// cout<<inter.size()/2;
+	for (int i = 0; i < G3D.vertices.size(); ++i)
+	{	
+		cout<<G3D.vertices[i].one<<" "<<G3D.vertices[i].two<<" "<<G3D.vertices[i].three<<endl;	
+	}
+	cout<<"------------"<<endl;
+	cout<<G3D.edges;
 }

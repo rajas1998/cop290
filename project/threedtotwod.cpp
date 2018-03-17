@@ -34,7 +34,7 @@ Input File Format:
 
 struct Triplet
 {
-  int  one, two, three;
+  double one, two, three;
   bool operator== (const Triplet&ref) const {
   	return (ref.one == one)&&(ref.two == two)&&(ref.three==three);
   }
