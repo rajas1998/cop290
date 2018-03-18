@@ -59,10 +59,11 @@ Graph_Imp toGraph(string f)
 	Graph A;
 	vector<Triplet> vert;
 
-	fstream afile;
+	ifstream afile;
 	char ch[50];
-	int x,y,z,v,e;
-	afile.open(f,ios::in);
+	double x,y,z;
+	int v,e;
+	afile.open(f);
 	afile>>x>>y>>z;
 	frontdir.one=x;
 	frontdir.two=y;
@@ -330,26 +331,34 @@ Graph_Imp Projectionzx(Graph_Imp g)
 	return g1;
 }
 
-vector<Triplet> rotate_vector(vector<Triplet> vertices){
+vector<Triplet> rotate_vector(vector<Triplet> vertices, Triplet normal_plane){
 	vector<Triplet> rotated_vertices;
+	double x = normal_plane.one;
+	double y = normal_plane.two;
+	double z = normal_plane.three;
+	double normalizing_factor = sqrt(x*x + y*y + z*z);
+	x = x/normalizing_factor;
+	y = y/normalizing_factor;
+	z = z/normalizing_factor;
+	double d = sqrt(y*y + z*z);
+	double cos_alpha = z/d;
+	double sin_alpha = y/d;
+	mat r_x_alpha;
+	r_x_alpha<<1<<0<<0<<endr<<0<<cos_alpha<<(-sin_alpha)<<endr<<0<<sin_alpha<<cos_alpha<<endr;
+	double cos_beta = d;
+	double sin_beta = x;
+	mat r_y_beta;
+	r_y_beta<<cos_beta<<0<<(-sin_beta)<<endr<<0<<1<<0<<endr<<(sin_beta)<<0<<cos_beta<<endr;
+	mat rotation_matrix = r_y_beta * r_x_alpha;
+	if (d==0)
+	{
+		rotation_matrix<<0<<0<<0<<endr<<0<<1<<0<<endr<<0<<0<<1<<endr;
+	}
 	for (int i = 0; i < vertices.size(); ++i)
 	{
 		mat coordinates;
-		double x = vertices.at(i).one;
-		double y = vertices.at(i).two;
-		double z = vertices.at(i).three;
-		coordinates<<x<<endr<<y<<endr<<z<<endr;
-		double d = sqrt(y*y + z*z);
-		double cos_alpha = z/d;
-		double sin_alpha = y/d;
-		mat r_x_alpha;
-		r_x_alpha<<1<<0<<0<<endr<<0<<cos_alpha<<(-sin_alpha)<<endr<<0<<sin_alpha<<cos_alpha<<endr;
-		mat rotated_x = r_x_alpha * coordinates;
-		double cos_beta = d;
-		double sin_beta = x;
-		mat r_y_beta;
-		r_y_beta<<cos_beta<<0<<(-sin_beta)<<endr<<0<<1<<0<<endr<<(sin_beta)<<0<<cos_beta<<endr;
-		mat rotated_y_x = r_y_beta * rotated_x;
+		coordinates<<vertices[i].one<<endr<<vertices[i].two<<endr<<vertices[i].three<<endr;
+		mat rotated_y_x = rotation_matrix * coordinates;
 		Triplet temp = {rotated_y_x(0,0), rotated_y_x(1,0), rotated_y_x(2,0)};
 		rotated_vertices.push_back(temp);
 	}
@@ -358,67 +367,67 @@ vector<Triplet> rotate_vector(vector<Triplet> vertices){
 
 int main(int argc, char const *argv[])
 {
-	Graph_Imp G,G1,G2,G3;
+	Graph_Imp G,G1,G2,G3,G_rotated;
 	G = toGraph("input.txt"); //argv[0] is a char array "inputfilename.txt"
-	for (int i = 0; i < G.vertices.size(); ++i)
-	{
-		cout<<G.vertices.at(i).one<<","<<G.vertices.at(i).two<<","<<G.vertices.at(i).three<<endl;
-	}
-	for (Graph::const_iterator i = G.edges.begin(); i != G.edges.end(); ++i)
-	{
-		Graph::vertex_set Si = Graph::out_neighbors(i);
-		for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
-		{
-			cout<<*p<<" ";
-		}
-		cout<<endl;
-	}
-	G1 = Projectionxy(G);
-	G2 = Projectionyz(G);
-	G3 = Projectionzx(G);
+	// for (int i = 0; i < G.vertices.size(); ++i)
+	// {
+	// 	cout<<G.vertices.at(i).one<<","<<G.vertices.at(i).two<<","<<G.vertices.at(i).three<<endl;
+	// }
+	// for (Graph::const_iterator i = G.edges.begin(); i != G.edges.end(); ++i)
+	// {
+	// 	Graph::vertex_set Si = Graph::out_neighbors(i);
+	// 	for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
+	// 	{
+	// 		cout<<*p<<" ";
+	// 	}
+	// 	cout<<endl;
+	// }
+	// G1 = Projectionxy(G);
+	// G2 = Projectionyz(G);
+	// G3 = Projectionzx(G);
 	
-	for (int i = 0; i < G1.vertices.size(); ++i)
-	{
-		cout<<G1.vertices.at(i).one<<","<<G1.vertices.at(i).two<<","<<G1.vertices.at(i).three<<endl;
-	}
-	for (Graph::const_iterator i = G1.edges.begin(); i != G1.edges.end(); ++i)
-	{
-		Graph::vertex_set Si = Graph::out_neighbors(i);
-		for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
-		{
-			cout<<*p<<" ";
-		}
-		cout<<endl;
-	}
+	// for (int i = 0; i < G1.vertices.size(); ++i)
+	// {
+	// 	cout<<G1.vertices.at(i).one<<","<<G1.vertices.at(i).two<<","<<G1.vertices.at(i).three<<endl;
+	// }
+	// for (Graph::const_iterator i = G1.edges.begin(); i != G1.edges.end(); ++i)
+	// {
+	// 	Graph::vertex_set Si = Graph::out_neighbors(i);
+	// 	for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
+	// 	{
+	// 		cout<<*p<<" ";
+	// 	}
+	// 	cout<<endl;
+	// }
 
-	for (int i = 0; i < G2.vertices.size(); ++i)
-	{
-		cout<<G2.vertices.at(i).one<<","<<G2.vertices.at(i).two<<","<<G2.vertices.at(i).three<<endl;
-	}
-	for (Graph::const_iterator i = G2.edges.begin(); i != G2.edges.end(); ++i)
-	{
-		Graph::vertex_set Si = Graph::out_neighbors(i);
-		for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
-		{
-			cout<<*p<<" ";
-		}
-		cout<<endl;
-	}
+	// for (int i = 0; i < G2.vertices.size(); ++i)
+	// {
+	// 	cout<<G2.vertices.at(i).one<<","<<G2.vertices.at(i).two<<","<<G2.vertices.at(i).three<<endl;
+	// }
+	// for (Graph::const_iterator i = G2.edges.begin(); i != G2.edges.end(); ++i)
+	// {
+	// 	Graph::vertex_set Si = Graph::out_neighbors(i);
+	// 	for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
+	// 	{
+	// 		cout<<*p<<" ";
+	// 	}
+	// 	cout<<endl;
+	// }
 
-	for (int i = 0; i < G3.vertices.size(); ++i)
-	{
-		cout<<G3.vertices.at(i).one<<","<<G3.vertices.at(i).two<<","<<G3.vertices.at(i).three<<endl;
-	}
-	for (Graph::const_iterator i = G3.edges.begin(); i != G3.edges.end(); ++i)
-	{
-		Graph::vertex_set Si = Graph::out_neighbors(i);
-		for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
-		{
-			cout<<*p<<" ";
-		}
-		cout<<endl;
-	}
-	cout<<"--------------";
+	// for (int i = 0; i < G3.vertices.size(); ++i)
+	// {
+	// 	cout<<G3.vertices.at(i).one<<","<<G3.vertices.at(i).two<<","<<G3.vertices.at(i).three<<endl;
+	// }
+	// for (Graph::const_iterator i = G3.edges.begin(); i != G3.edges.end(); ++i)
+	// {
+	// 	Graph::vertex_set Si = Graph::out_neighbors(i);
+	// 	for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
+	// 	{
+	// 		cout<<*p<<" ";
+	// 	}
+	// 	cout<<endl;
+	// }
+	// cout<<"--------------";
 	Graph_Imp new_G = Projection_isometric(G);
 	for (int i = 0; i < new_G.vertices().size(); ++i)
 	{

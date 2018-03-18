@@ -52,9 +52,10 @@ public:
 void toGraphAllThree(string f, Graph_Imp &x_g, Graph_Imp &y_g, Graph_Imp &z_g)
 {
 	Graph A,B,C;
-	fstream afile;
-	afile.open(f,ios::in);
-	int x,y,z,e,n;
+	ifstream afile;
+	afile.open(f);
+	double x,y,z;
+	int e,n;
 	afile>>n;
 	std::vector<Triplet> vert;
 	for (int i = 0; i < n; ++i)
