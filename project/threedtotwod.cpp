@@ -368,74 +368,74 @@ vector<Triplet> rotate_vector(vector<Triplet> vertices, Triplet normal_plane){
 	return rotated_vertices;
 }
 
-int main(int argc, char const *argv[])
-{
-	Graph_Imp G,G1,G2,G3,G_rotated;
-	G = toGraph("input.txt"); //argv[0] is a char array "inputfilename.txt"
-	// for (int i = 0; i < G.vertices.size(); ++i)
-	// {
-	// 	cout<<G.vertices.at(i).one<<","<<G.vertices.at(i).two<<","<<G.vertices.at(i).three<<endl;
-	// }
-	// for (Graph::const_iterator i = G.edges.begin(); i != G.edges.end(); ++i)
-	// {
-	// 	Graph::vertex_set Si = Graph::out_neighbors(i);
-	// 	for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
-	// 	{
-	// 		cout<<*p<<" ";
-	// 	}
-	// 	cout<<endl;
-	// }
-	// G1 = Projectionxy(G);
-	// G2 = Projectionyz(G);
-	// G3 = Projectionzx(G);
+// int main(int argc, char const *argv[])
+// {
+// 	Graph_Imp G,G1,G2,G3,G_rotated;
+// 	G = toGraph("input.txt"); //argv[0] is a char array "inputfilename.txt"
+// 	// for (int i = 0; i < G.vertices.size(); ++i)
+// 	// {
+// 	// 	cout<<G.vertices.at(i).one<<","<<G.vertices.at(i).two<<","<<G.vertices.at(i).three<<endl;
+// 	// }
+// 	// for (Graph::const_iterator i = G.edges.begin(); i != G.edges.end(); ++i)
+// 	// {
+// 	// 	Graph::vertex_set Si = Graph::out_neighbors(i);
+// 	// 	for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
+// 	// 	{
+// 	// 		cout<<*p<<" ";
+// 	// 	}
+// 	// 	cout<<endl;
+// 	// }
+// 	// G1 = Projectionxy(G);
+// 	// G2 = Projectionyz(G);
+// 	// G3 = Projectionzx(G);
 	
-	// for (int i = 0; i < G1.vertices.size(); ++i)
-	// {
-	// 	cout<<G1.vertices.at(i).one<<","<<G1.vertices.at(i).two<<","<<G1.vertices.at(i).three<<endl;
-	// }
-	// for (Graph::const_iterator i = G1.edges.begin(); i != G1.edges.end(); ++i)
-	// {
-	// 	Graph::vertex_set Si = Graph::out_neighbors(i);
-	// 	for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
-	// 	{
-	// 		cout<<*p<<" ";
-	// 	}
-	// 	cout<<endl;
-	// }
+// 	// for (int i = 0; i < G1.vertices.size(); ++i)
+// 	// {
+// 	// 	cout<<G1.vertices.at(i).one<<","<<G1.vertices.at(i).two<<","<<G1.vertices.at(i).three<<endl;
+// 	// }
+// 	// for (Graph::const_iterator i = G1.edges.begin(); i != G1.edges.end(); ++i)
+// 	// {
+// 	// 	Graph::vertex_set Si = Graph::out_neighbors(i);
+// 	// 	for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
+// 	// 	{
+// 	// 		cout<<*p<<" ";
+// 	// 	}
+// 	// 	cout<<endl;
+// 	// }
 
-	// for (int i = 0; i < G2.vertices.size(); ++i)
-	// {
-	// 	cout<<G2.vertices.at(i).one<<","<<G2.vertices.at(i).two<<","<<G2.vertices.at(i).three<<endl;
-	// }
-	// for (Graph::const_iterator i = G2.edges.begin(); i != G2.edges.end(); ++i)
-	// {
-	// 	Graph::vertex_set Si = Graph::out_neighbors(i);
-	// 	for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
-	// 	{
-	// 		cout<<*p<<" ";
-	// 	}
-	// 	cout<<endl;
-	// }
+// 	// for (int i = 0; i < G2.vertices.size(); ++i)
+// 	// {
+// 	// 	cout<<G2.vertices.at(i).one<<","<<G2.vertices.at(i).two<<","<<G2.vertices.at(i).three<<endl;
+// 	// }
+// 	// for (Graph::const_iterator i = G2.edges.begin(); i != G2.edges.end(); ++i)
+// 	// {
+// 	// 	Graph::vertex_set Si = Graph::out_neighbors(i);
+// 	// 	for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
+// 	// 	{
+// 	// 		cout<<*p<<" ";
+// 	// 	}
+// 	// 	cout<<endl;
+// 	// }
 
-	// for (int i = 0; i < G3.vertices.size(); ++i)
-	// {
-	// 	cout<<G3.vertices.at(i).one<<","<<G3.vertices.at(i).two<<","<<G3.vertices.at(i).three<<endl;
-	// }
-	// for (Graph::const_iterator i = G3.edges.begin(); i != G3.edges.end(); ++i)
-	// {
-	// 	Graph::vertex_set Si = Graph::out_neighbors(i);
-	// 	for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
-	// 	{
-	// 		cout<<*p<<" ";
-	// 	}
-	// 	cout<<endl;
-	// }
-	// cout<<"--------------";
-	Graph_Imp new_G = Projection_isometric(G);
-	for (int i = 0; i < new_G.vertices.size(); ++i)
-	{
-		cout<<new_G.vertices[i].one<<" "<<new_G.vertices[i].two<<endl;
-	}
-	cout<<new_G.edges;
-	return 0;
-}
+// 	// for (int i = 0; i < G3.vertices.size(); ++i)
+// 	// {
+// 	// 	cout<<G3.vertices.at(i).one<<","<<G3.vertices.at(i).two<<","<<G3.vertices.at(i).three<<endl;
+// 	// }
+// 	// for (Graph::const_iterator i = G3.edges.begin(); i != G3.edges.end(); ++i)
+// 	// {
+// 	// 	Graph::vertex_set Si = Graph::out_neighbors(i);
+// 	// 	for (Graph::vertex_set::const_iterator p = Si.begin(); p != Si.end(); ++p)
+// 	// 	{
+// 	// 		cout<<*p<<" ";
+// 	// 	}
+// 	// 	cout<<endl;
+// 	// }
+// 	// cout<<"--------------";
+// 	Graph_Imp new_G = Projection_isometric(G);
+// 	for (int i = 0; i < new_G.vertices.size(); ++i)
+// 	{
+// 		cout<<new_G.vertices[i].one<<" "<<new_G.vertices[i].two<<endl;
+// 	}
+// 	cout<<new_G.edges;
+// 	return 0;
+// }

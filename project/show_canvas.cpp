@@ -19,10 +19,11 @@ int main(int argc, char *argv[])
    G_rotated.vertices = rotate_vector(G.vertices, topdir);
    G_rotated.edges = G.edges;
    G1 = Projectionxy(G_rotated);
-   // for (int i = 0; i < G1.vertices.size(); ++i)
-   // {
-   //    cout<<G1.vertices[i].one<<" "<<G1.vertices[i].two<<" "<<G1.vertices[i].three<<endl;  
-   // }
+   G2 = Projection_isometric(G);
+   for (int i = 0; i < G1.vertices.size(); ++i)
+   {
+      cout<<G1.vertices[i].one<<" "<<G1.vertices[i].two<<" "<<G1.vertices[i].three<<endl;  
+   }
    QApplication a(argc, argv);
    QLabel l;
    QPicture pi;
@@ -34,6 +35,14 @@ int main(int argc, char *argv[])
    // p.drawLine(0, 0, 200, 200);
    
    float x, y, prev_x=0, prev_y=0 ;
+   for (int i = 0; i < G2.vertices.size(); ++i)
+   {
+      Graph::vertex_set Si = G2.edges.out_neighbors(i);
+      for (Graph::vertex_set::const_iterator out_vertex = Si.begin(); out_vertex != Si.end(); ++out_vertex)
+      {
+         p.drawLine(FACTOR*(G2.vertices[i].one),FACTOR*(G2.vertices[i].two),FACTOR*(G2.vertices[*out_vertex].one),FACTOR*(G2.vertices[*out_vertex].two));
+      }
+   }
 
  //   for (int i = 1; i < SIZE; ++i){
 	// 	x = i*STEP;
@@ -43,7 +52,7 @@ int main(int argc, char *argv[])
 	// 	prev_x = x;
 	// 	prev_y = y;
 	// }
-   p.drawLine(0,0,1000,1000);
+   
    p.end(); // Don't forget this line!
 
    l.setPicture(pi);
