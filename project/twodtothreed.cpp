@@ -207,30 +207,45 @@ std::vector<pair<int, int> > intersection(std::vector<pair<int, int> > a, std::v
 	}
 	return ret;
 }
-int main(int argc, char const *argv[])
-{
-	Graph_Imp G_on_xy,G_on_yz,G_on_xz;
-	toGraphAllThree("inp_for_2.txt",G_on_xy,G_on_yz,G_on_xz);
+
+Graph_Imp makethreed(Graph_Imp G_on_xy, Graph_Imp G_on_yz, Graph_Imp G_on_xz){
 	Graph_Imp G3D;
 	G3D.vertices = make3DVertices(G_on_xy, G_on_yz, G_on_xz);
 	std::vector< pair<int,int> > probEdges_xy = makeEdges(G_on_xy);
-	// cout<<"---------"<<endl;
 	std::vector< pair<int,int> > probEdges_yz = makeEdges(G_on_yz);
-	// cout<<"---------"<<endl;
 	std::vector< pair<int,int> > probEdges_xz = makeEdges(G_on_xz);
-	// cout<<"---------"<<endl;
 	std::vector<pair<int, int> > inter = intersection(probEdges_xy, probEdges_yz, probEdges_xz);
-	// cout<<"---------"<<endl;
 	for (int i = 0; i < inter.size(); ++i)
 	{
 		G3D.edges.insert_edge(inter[i].first, inter[i].second);
 		G3D.edges.insert_edge(inter[i].second, inter[i].first);
 	}
+	return G3D;
+}
+int main(int argc, char const *argv[])
+{
+	Graph_Imp G_on_xy,G_on_yz,G_on_xz;
+	toGraphAllThree("inp_for_2.txt",G_on_xy,G_on_yz,G_on_xz);
+	Graph_Imp G3D = makethreed(G_on_xy, G_on_yz, G_on_xz);
+	// G3D.vertices = make3DVertices(G_on_xy, G_on_yz, G_on_xz);
+	// std::vector< pair<int,int> > probEdges_xy = makeEdges(G_on_xy);
+	// // cout<<"---------"<<endl;
+	// std::vector< pair<int,int> > probEdges_yz = makeEdges(G_on_yz);
+	// // cout<<"---------"<<endl;
+	// std::vector< pair<int,int> > probEdges_xz = makeEdges(G_on_xz);
+	// // cout<<"---------"<<endl;
+	// std::vector<pair<int, int> > inter = intersection(probEdges_xy, probEdges_yz, probEdges_xz);
+	// // cout<<"---------"<<endl;
+	// for (int i = 0; i < inter.size(); ++i)
+	// {
+	// 	G3D.edges.insert_edge(inter[i].first, inter[i].second);
+	// 	G3D.edges.insert_edge(inter[i].second, inter[i].first);
+	// }
 	// cout<<inter.size()/2;
-	for (int i = 0; i < G3D.vertices.size(); ++i)
-	{	
-		cout<<G3D.vertices[i].one<<" "<<G3D.vertices[i].two<<" "<<G3D.vertices[i].three<<endl;	
-	}
-	cout<<"------------"<<endl;
-	cout<<G3D.edges;
+	// for (int i = 0; i < G3D.vertices.size(); ++i)
+	// {	
+	// 	cout<<G3D.vertices[i].one<<" "<<G3D.vertices[i].two<<" "<<G3D.vertices[i].three<<endl;	
+	// }
+	// cout<<"------------"<<endl;
+	// cout<<G3D.edges;
 }
