@@ -109,11 +109,14 @@ Graph_Imp Projection_isometric(Graph_Imp g){
 	map <int, int> m;
 
 	for (int i = 0; i < g.vertices.size(); ++i)
-	{
-		mat coordinates<<g.vertices.at(i).one<<endr<<g.vertices.at(i).two<<endr<<g.vertices.at(i).three<<endr;
-		mat iso<<(sqrt(3)/2)<<(-(sqrt(3)/2))<<0<<endr<<(0.5)<<(0.5)<<(-1)<<endr;
+	{	
+		mat coordinates;
+		coordinates<<g.vertices.at(i).one<<endr<<g.vertices.at(i).two<<endr<<g.vertices.at(i).three<<endr;
+		mat iso;
+		iso<<(sqrt(3)/2)<<(-(sqrt(3)/2))<<0<<endr<<(0.5)<<(0.5)<<(-1)<<endr;
 		mat final_coordinates = iso * coordinates;
-		Triplet temp = {final_coordinates(0,0),final_coordinates(0,0),0};
+		// cout<<final_coordinates<<endl;
+		Triplet temp = {final_coordinates(0,0),final_coordinates(1,0),0};
 
 		//This step makes the new vertices and maps old vertices to new ones
 
@@ -429,9 +432,10 @@ int main(int argc, char const *argv[])
 	// }
 	// cout<<"--------------";
 	Graph_Imp new_G = Projection_isometric(G);
-	for (int i = 0; i < new_G.vertices().size(); ++i)
+	for (int i = 0; i < new_G.vertices.size(); ++i)
 	{
 		cout<<new_G.vertices[i].one<<" "<<new_G.vertices[i].two<<endl;
 	}
+	cout<<new_G.edges;
 	return 0;
 }
