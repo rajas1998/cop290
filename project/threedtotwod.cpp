@@ -101,7 +101,64 @@ Graph_Imp toGraph(string f)
 	g.edges=A;
 	return g;
 }
+Graph_Imp Projection_isometric(Graph_Imp g){
+	Graph_Imp g1;
+	Graph A;
+	vector<Triplet> vert;
+	map <int, int> m;
 
+	for (int i = 0; i < g.vertices.size(); ++i)
+	{
+		mat coordinates<<g.vertices.at(i).one<<endr<<g.vertices.at(i).two<<endr<<g.vertices.at(i).three<<endr;
+		mat iso<<(sqrt(3)/2)<<(-(sqrt(3)/2))<<0<<endr<<(0.5)<<(0.5)<<(-1)<<endr;
+		mat final_coordinates = iso * coordinates;
+		Triplet temp = {final_coordinates(0,0),final_coordinates(0,0),0};
+
+		//This step makes the new vertices and maps old vertices to new ones
+
+		vector<Triplet>::iterator iter;
+		iter = find(vert.begin(), vert.end(), temp);
+	    if(iter != vert.end())
+	    {
+	    	m[i]=(iter - vert.begin());
+	        //m.insert(pair <int, int> (i,(iter - vert.begin())) );
+	    }
+	    else
+	    {
+	        m[i]=(vert.size());
+	        vert.push_back(temp);
+			//m.insert(pair <int, int> (i,vert.size()) );
+	    }
+	}
+	
+ //    map <int, int> :: iterator itr;
+ //    cout << "\nThe map m is : \n";
+ //    cout << "\tKEY\tELEMENT\n";
+ //    for (itr = m.begin(); itr != m.end(); ++itr)
+ //    {
+ //        cout  <<  '\t' << itr->first 
+ //              <<  '\t' << itr->second << '\n';
+ //    }
+
+	//Modifying old graph into new
+	int k=0;
+	for (Graph::const_iterator i = g.edges.begin(); i != g.edges.end(); ++i,++k)
+	{
+		Graph::vertex_set S = Graph::out_neighbors(i);
+		for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
+		{
+			int d=m[*p];
+			int w=m[k];
+			if(d!=w){
+			A.insert_edge(w,d);
+			A.insert_edge(d,w);
+			}
+		}
+	}
+	g1.vertices=vert;
+	g1.edges=A;
+	return g1;
+}
 Graph_Imp Projectionxy(Graph_Imp g)
 {
 	Graph_Imp g1;
@@ -361,6 +418,11 @@ int main(int argc, char const *argv[])
 		}
 		cout<<endl;
 	}
-
+	cout<<"--------------";
+	Graph_Imp new_G = Projection_isometric(G);
+	for (int i = 0; i < new_G.vertices().size(); ++i)
+	{
+		cout<<new_G.vertices[i].one<<" "<<new_G.vertices[i].two<<endl;
+	}
 	return 0;
 }
