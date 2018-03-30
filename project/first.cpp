@@ -85,7 +85,37 @@ int main(int argc, char* argv[])
         gtk_box_pack_start(GTK_BOX(hbox_for_z), entry_for_z, 0, 0, 10);
         gtk_box_pack_start(GTK_BOX(vbox), hbox_for_z,0,0,10);
 
-        
+        //sliders declared
+        GtkWidget *slider_label_x, *slider_label_y, *slider_label_z;
+        GtkWidget *scale_x, *scale_y, *scale_z, *hbox_slider_for_x, *hbox_slider_for_y, *hbox_slider_for_z;
+
+        // x slider
+        slider_label_x = gtk_label_new("Enter angle to be rotated by with x-axis");
+        scale_x = gtk_hscale_new_with_range(0,180,5);
+        gtk_scale_set_value_pos(GTK_SCALE(scale_x),GTK_POS_BOTTOM);
+        hbox_slider_for_x = gtk_hbox_new(1,10);
+        gtk_box_pack_start(GTK_BOX(hbox_slider_for_x), slider_label_x, 1, 1, 10);
+        gtk_box_pack_start(GTK_BOX(hbox_slider_for_x), scale_x, 1, 1, 10);
+        gtk_box_pack_start(GTK_BOX(vbox), hbox_slider_for_x,1,1,10);
+
+        // y slider
+        slider_label_y = gtk_label_new("Enter angle to be rotated by with y-axis");
+        scale_y = gtk_hscale_new_with_range(0,180,5);
+        gtk_scale_set_value_pos(GTK_SCALE(scale_y),GTK_POS_BOTTOM);
+        hbox_slider_for_y = gtk_hbox_new(1,10);
+        gtk_box_pack_start(GTK_BOX(hbox_slider_for_y), slider_label_y, 1, 1, 10);
+        gtk_box_pack_start(GTK_BOX(hbox_slider_for_y), scale_y, 1, 1, 10);
+        gtk_box_pack_start(GTK_BOX(vbox), hbox_slider_for_y,1,1,10);
+
+        //z slider
+        slider_label_z = gtk_label_new("Enter angle to be rotated by with x-axis");
+        scale_z = gtk_hscale_new_with_range(0,180,5);
+        gtk_scale_set_value_pos(GTK_SCALE(scale_z),GTK_POS_BOTTOM);
+        hbox_slider_for_z = gtk_hbox_new(1,10);
+        gtk_box_pack_start(GTK_BOX(hbox_slider_for_z), slider_label_z, 1, 1, 10);
+        gtk_box_pack_start(GTK_BOX(hbox_slider_for_z), scale_z, 1, 1, 10);
+        gtk_box_pack_start(GTK_BOX(vbox), hbox_slider_for_z,1,1,10);
+
         //button = gtk_button_new_with_label("This is a Button dh28ec c8uehd2ujhdxionc juu");
         //gtk_box_pack_start(GTK_BOX(vbox), button,0,0,0);
         gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, label);

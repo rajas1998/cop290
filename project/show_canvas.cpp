@@ -101,7 +101,7 @@ int try_it(int argc, char *argv[])
 {
    Graph_Imp G, G_xy, G_yz, G_zx,G_rotated, G_iso, G_xy_scaled, G_yz_scaled, G_zx_scaled, G_iso_scaled;
    G = toGraph("/home/rajas/Desktop/cop290/project/input.txt");
-   Triplet topdir = {1.0, 0, 0};
+   Triplet topdir = {0, 0, 1.0};
    G_rotated.vertices = rotate_vector(G.vertices, topdir);
    G_rotated.edges = G.edges;
    G_xy = Projectionxy(G_rotated);
