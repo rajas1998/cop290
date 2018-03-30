@@ -50,9 +50,9 @@ public:
 	}
 };
 
-Triplet frontdir;
-Triplet topdir;
-Triplet cuttingplane;
+// Triplet frontdir;
+// Triplet topdir;
+// Triplet cuttingplane;
 
 Graph_Imp toGraph(string f)
 {
@@ -64,18 +64,18 @@ Graph_Imp toGraph(string f)
 	double x,y,z;
 	int v,e;
 	afile.open(f);
-	afile>>x>>y>>z;
-	frontdir.one=x;
-	frontdir.two=y;
-	frontdir.three=z;
-	afile>>x>>y>>z;
-	topdir.one=x;
-	topdir.two=y;
-	topdir.three=z;
-	afile>>x>>y>>z;
-	cuttingplane.one=x;
-	cuttingplane.two=y;
-	cuttingplane.three=z;
+	// afile>>x>>y>>z;
+	// frontdir.one=x;
+	// frontdir.two=y;
+	// frontdir.three=z;
+	// afile>>x>>y>>z;
+	// topdir.one=x;
+	// topdir.two=y;
+	// topdir.three=z;
+	// afile>>x>>y>>z;
+	// cuttingplane.one=x;
+	// cuttingplane.two=y;
+	// cuttingplane.three=z;
 	afile>>v;
 	for (int i = 0; i < v; ++i)
 	{
@@ -347,7 +347,7 @@ vector<Triplet> rotate_vector(vector<Triplet> vertices, Triplet normal_plane){
 	mat rotation_matrix;
 	if (d==0)
 	{
-		rotation_matrix<<0<<0<<0<<endr<<0<<1<<0<<endr<<0<<0<<1<<endr;
+		rotation_matrix<<1<<0<<0<<endr<<0<<1<<0<<endr<<0<<0<<1<<endr;
 	}
 	else {
 		double cos_alpha = z/d;
