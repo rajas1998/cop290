@@ -344,18 +344,21 @@ vector<Triplet> rotate_vector(vector<Triplet> vertices, Triplet normal_plane){
 	y = y/normalizing_factor;
 	z = z/normalizing_factor;
 	double d = sqrt(y*y + z*z);
-	double cos_alpha = z/d;
-	double sin_alpha = y/d;
-	mat r_x_alpha;
-	r_x_alpha<<1<<0<<0<<endr<<0<<cos_alpha<<(-sin_alpha)<<endr<<0<<sin_alpha<<cos_alpha<<endr;
-	double cos_beta = d;
-	double sin_beta = x;
-	mat r_y_beta;
-	r_y_beta<<cos_beta<<0<<(-sin_beta)<<endr<<0<<1<<0<<endr<<(sin_beta)<<0<<cos_beta<<endr;
-	mat rotation_matrix = r_y_beta * r_x_alpha;
+	mat rotation_matrix;
 	if (d==0)
 	{
 		rotation_matrix<<0<<0<<0<<endr<<0<<1<<0<<endr<<0<<0<<1<<endr;
+	}
+	else {
+		double cos_alpha = z/d;
+		double sin_alpha = y/d;
+		mat r_x_alpha;
+		r_x_alpha<<1<<0<<0<<endr<<0<<cos_alpha<<(-sin_alpha)<<endr<<0<<sin_alpha<<cos_alpha<<endr;
+		double cos_beta = d;
+		double sin_beta = x;
+		mat r_y_beta;
+		r_y_beta<<cos_beta<<0<<(-sin_beta)<<endr<<0<<1<<0<<endr<<(sin_beta)<<0<<cos_beta<<endr;
+		rotation_matrix = r_y_beta * r_x_alpha;
 	}
 	for (int i = 0; i < vertices.size(); ++i)
 	{

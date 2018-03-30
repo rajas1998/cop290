@@ -3,27 +3,120 @@
 #include <QtGui>
 #include <threedtotwod.cpp>
 
-#define PI 3.1415926536
-#define SIZE 200
-#define FACTOR 100
-
-const float STEP = 2*PI/SIZE;
+#define WIDTH 700
+#define HEIGHT 700
 
 using namespace Qt;
 
+Graph_Imp set_acc_to_ranges(Graph_Imp g, int mode){
+   double pos_x, pos_y;
+   if (mode == 0)
+   {
+      pos_x = 350;
+      pos_y = 350;
+   }
+   else if (mode == 1){
+      for (int i = 0; i < g.vertices.size(); ++i)
+      {
+         Triplet temp = {g.vertices[i].one, g.vertices[i].three, 0};
+         g.vertices[i] = temp;
+      }
+      pos_x = 350;
+      pos_y = 0;
+   }
+   else if (mode == 2)
+   {
+      for (int i = 0; i < g.vertices.size(); ++i)
+      {
+         Triplet temp = {g.vertices[i].three, g.vertices[i].two, 0};
+         g.vertices[i] = temp;
+      }
+      pos_x = 0;
+      pos_y = 350;
+   }
+   else if (mode == 3){
+      pos_x = 0;
+      pos_y = 0;
+   }
+   Graph_Imp ret;
+   double min_x = g.vertices[0].one;
+   double max_x = g.vertices[0].one;
+   double range_x;
+   for (int i = 0; i < g.vertices.size(); ++i)
+   {
+      if (g.vertices[i].one > max_x){
+         max_x = g.vertices[i].one;
+      }
+      if (g.vertices[i].one < min_x){
+         min_x = g.vertices[i].one;
+      }
+   }
+   range_x = max_x - min_x;
+   double factor_x;
+   if (range_x == 0) factor_x = 0;
+   else factor_x = 250 / range_x;
+   double shift_x = pos_x + 50 - min_x * factor_x;
+   for (int i = 0; i < g.vertices.size(); ++i)
+   {
+      Triplet temp ={0,0,0};
+      temp.one = shift_x + g.vertices[i].one * factor_x;
+      ret.vertices.push_back(temp);         
+   }
+   double min_y = g.vertices[0].two;
+   double max_y = g.vertices[0].two;
+   double range_y;
+   for (int i = 0; i < g.vertices.size(); ++i)
+   {
+      if (g.vertices[i].two > max_y){
+         max_y = g.vertices[i].two;
+      }
+      if (g.vertices[i].two < min_y){
+         min_y = g.vertices[i].two;
+      }
+   }
+   range_y = max_y - min_y;
+   if (range_y != 0){
+      double factor_y = 250 / range_y;
+      double shift_y = pos_y + 50 - min_y * factor_y;
+      for (int i = 0; i < g.vertices.size(); ++i)
+      {
+         ret.vertices[i].two = shift_y + g.vertices[i].two * factor_y;
+      }
+   } 
+   ret.edges = g.edges;
+   return ret; 
+}
 
-int main(int argc, char *argv[])
+void drawGraph(Graph_Imp g, QPainter &p){
+   for (int i = 0; i < g.vertices.size(); ++i)
+   {
+      Graph::vertex_set Si = g.edges.out_neighbors(i);
+      for (Graph::vertex_set::const_iterator out_vertex = Si.begin(); out_vertex != Si.end(); ++out_vertex)
+      {
+         p.drawLine((g.vertices[i].one),(g.vertices[i].two),(g.vertices[*out_vertex].one),(g.vertices[*out_vertex].two));
+      }
+   }
+}
+int try_it(int argc, char *argv[])
 {
-   Graph_Imp G,G1,G2,G3,G_rotated;
+   Graph_Imp G, G_xy, G_yz, G_zx,G_rotated, G_iso, G_xy_scaled, G_yz_scaled, G_zx_scaled, G_iso_scaled;
    G = toGraph("input.txt");
    G_rotated.vertices = rotate_vector(G.vertices, topdir);
    G_rotated.edges = G.edges;
-   G1 = Projectionxy(G_rotated);
-   G2 = Projection_isometric(G);
-   for (int i = 0; i < G1.vertices.size(); ++i)
-   {
-      cout<<G1.vertices[i].one<<" "<<G1.vertices[i].two<<" "<<G1.vertices[i].three<<endl;  
-   }
+   G_xy = Projectionxy(G_rotated);
+   G_yz = Projectionyz(G_rotated);
+   G_zx = Projectionzx(G_rotated);
+   G_iso = Projection_isometric(G_rotated);
+
+   G_iso_scaled = set_acc_to_ranges(G_iso, 3);
+   G_xy_scaled = set_acc_to_ranges(G_xy, 0);
+   G_yz_scaled = set_acc_to_ranges(G_yz, 2);
+   G_zx_scaled = set_acc_to_ranges(G_zx, 1);
+   // cout<<G3.edges;
+   // for (int i = 0; i < G3.vertices.size(); ++i)
+   // {
+   //    cout<<G3.vertices[i].one<<" "<<G3.vertices[i].two<<" "<<G3.vertices[i].three<<endl;  
+   // }
    QApplication a(argc, argv);
    QLabel l;
    QPicture pi;
@@ -31,31 +124,47 @@ int main(int argc, char *argv[])
 
    p.setRenderHint(QPainter::Antialiasing);
    // p.setPen(QPen(Qt::black, 5, Qt::DashDotLine, Qt::RoundCap));
-   p.setPen(QPen(Qt::black, 5));
-   // p.drawLine(0, 0, 200, 200);
+
    
-   float x, y, prev_x=0, prev_y=0 ;
-   for (int i = 0; i < G2.vertices.size(); ++i)
-   {
-      Graph::vertex_set Si = G2.edges.out_neighbors(i);
-      for (Graph::vertex_set::const_iterator out_vertex = Si.begin(); out_vertex != Si.end(); ++out_vertex)
-      {
-         p.drawLine(FACTOR*(G2.vertices[i].one),FACTOR*(G2.vertices[i].two),FACTOR*(G2.vertices[*out_vertex].one),FACTOR*(G2.vertices[*out_vertex].two));
-      }
-   }
+   p.eraseRect(0,0,700,700);
+   p.setPen(QPen(Qt::black, 2));
+   p.drawLine(0,0,WIDTH, 0);
+   p.drawLine(WIDTH, 0, WIDTH, HEIGHT);
+   p.drawLine(WIDTH, HEIGHT, 0, HEIGHT);
+   p.drawLine(0, HEIGHT, 0, 0);
+   p.drawLine(WIDTH/2,0,WIDTH/2,HEIGHT);
+   p.drawLine(0,HEIGHT/2,WIDTH,HEIGHT/2);
+   // for (int i = 0; i < G3.vertices.size(); ++i)
+   // {
+   //    Graph::vertex_set Si = G3.edges.out_neighbors(i);
+   //    for (Graph::vertex_set::const_iterator out_vertex = Si.begin(); out_vertex != Si.end(); ++out_vertex)
+   //    {
+   //       p.drawLine((G3.vertices[i].one),(G3.vertices[i].two),(G3.vertices[*out_vertex].one),(G3.vertices[*out_vertex].two));
+   //    }
+   // }
 
  //   for (int i = 1; i < SIZE; ++i){
-	// 	x = i*STEP;
-	// 	y = sin(x);
-	// 	p.drawLine(FACTOR*prev_x, FACTOR*prev_y, FACTOR*x, FACTOR*y);
+   //    x = i*STEP;
+   //    y = sin(x);
+   //    p.drawLine(FACTOR*prev_x, FACTOR*prev_y, FACTOR*x, FACTOR*y);
 
-	// 	prev_x = x;
-	// 	prev_y = y;
-	// }
-   
+   //    prev_x = x;
+   //    prev_y = y;
+   // }
+   drawGraph(G_xy_scaled, p);
+   drawGraph(G_yz_scaled, p);
+   drawGraph(G_zx_scaled, p);
+   drawGraph(G_iso_scaled, p);
    p.end(); // Don't forget this line!
 
    l.setPicture(pi);
+   l.setFixedWidth(700);
+   l.setFixedHeight(700);
    l.show();
    return a.exec();
+}
+int main(int argc, char *argv[])
+{
+   try_it(argc, argv);
+   return 0;
 }
