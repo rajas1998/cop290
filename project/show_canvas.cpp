@@ -1,7 +1,7 @@
 #include <math.h>
 #include <QtCore>
 #include <QtGui>
-#include <threedtotwod.cpp>
+// #include <threedtotwod.cpp>
 #include <string>
 
 #define WIDTH 700
@@ -108,7 +108,7 @@ int show_qt_projections(string file, Triplet topdir)
    T.projected_xy = T.Projectionxy(T.rotatedG);
    T.projected_yz = T.Projectionyz(T.rotatedG);
    T.projected_zx = T.Projectionzx(T.rotatedG);
-   T.projected_isometric = T.Projection_isometric(T.rotatedG);
+   T.projected_isometric = T.Projection_isometric(T.G);
 
    G_iso_scaled = set_acc_to_ranges(T.projected_isometric, 3);
    G_xy_scaled = set_acc_to_ranges(T.projected_xy, 0);
