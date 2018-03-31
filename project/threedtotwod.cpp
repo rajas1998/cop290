@@ -175,171 +175,45 @@ public:
 	Graph_Imp Projectionxy(Graph_Imp g)
 	{
 		Graph_Imp g1;
-		Graph A;
 		vector<Triplet> vert;
-		map <int, int> m;
 
 		for (int i = 0; i < g.vertices.size(); ++i)
 		{
 			Triplet temp = {g.vertices.at(i).one,g.vertices.at(i).two,0};
-
-			//This step makes the new vertices and maps old vertices to new ones
-
-			vector<Triplet>::iterator iter;
-			iter = find(vert.begin(), vert.end(), temp);
-		    if(iter != vert.end())
-		    {
-		    	m[i]=(iter - vert.begin());
-		        //m.insert(pair <int, int> (i,(iter - vert.begin())) );
-		    }
-		    else
-		    {
-		        m[i]=(vert.size());
-		        vert.push_back(temp);
-				//m.insert(pair <int, int> (i,vert.size()) );
-		    }
+			vert.push_back(temp);
 		}
-		
-	 //    map <int, int> :: iterator itr;
-	 //    cout << "\nThe map m is : \n";
-	 //    cout << "\tKEY\tELEMENT\n";
-	 //    for (itr = m.begin(); itr != m.end(); ++itr)
-	 //    {
-	 //        cout  <<  '\t' << itr->first 
-	 //              <<  '\t' << itr->second << '\n';
-	 //    }
-
-		//Modifying old graph into new
-		int k=0;
-		for (Graph::const_iterator i = g.edges.begin(); i != g.edges.end(); ++i,++k)
-		{
-			Graph::vertex_set S = Graph::out_neighbors(i);
-			for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
-			{
-				int d=m[*p];
-				int w=m[k];
-				if(d!=w){
-				A.insert_edge(w,d);
-				A.insert_edge(d,w);
-				}
-			}
-		}
-		g1.vertices=vert;
-		g1.edges=A;
+		g1.vertices = vert;
+		g1.edges = g.edges;
 		return g1;
 	}
 
 	Graph_Imp Projectionyz(Graph_Imp g)
 	{
 		Graph_Imp g1;
-		Graph A;
 		vector<Triplet> vert;
-		map <int, int> m;
 
 		for (int i = 0; i < g.vertices.size(); ++i)
 		{
 			Triplet temp = {0,g.vertices.at(i).two,g.vertices.at(i).three};
-
-			//This step makes the new vertices and maps old vertices to new ones
-
-			vector<Triplet>::iterator iter;
-			iter = find(vert.begin(), vert.end(), temp);
-		    if(iter != vert.end())
-		    {
-		    	m[i]=(iter - vert.begin());
-		        //m.insert(pair <int, int> (i,(iter - vert.begin())) );
-		    }
-		    else
-		    {
-		        m[i]=(vert.size());
-		        vert.push_back(temp);
-				//m.insert(pair <int, int> (i,vert.size()) );
-		    }
+		    vert.push_back(temp);
 		}
-		
-	 //    map <int, int> :: iterator itr;
-	 //    cout << "\nThe map m is : \n";
-	 //    cout << "\tKEY\tELEMENT\n";
-	 //    for (itr = m.begin(); itr != m.end(); ++itr)
-	 //    {
-	 //        cout  <<  '\t' << itr->first 
-	 //              <<  '\t' << itr->second << '\n';
-	 //    }
-
-		//Modifying old graph into new
-		int k=0;
-		for (Graph::const_iterator i = g.edges.begin(); i != g.edges.end(); ++i,++k)
-		{
-			Graph::vertex_set S = Graph::out_neighbors(i);
-			for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
-			{
-				int d=m[*p];
-				int w=m[k];
-				if(d!=w){
-				A.insert_edge(w,d);
-				A.insert_edge(d,w);
-				}
-			}
-		}
-		g1.vertices=vert;
-		g1.edges=A;
+		g1.vertices = vert;
+		g1.edges = g.edges;
 		return g1;
 	}
 
 	Graph_Imp Projectionzx(Graph_Imp g)
 	{
 		Graph_Imp g1;
-		Graph A;
 		vector<Triplet> vert;
-		map <int, int> m;
 
 		for (int i = 0; i < g.vertices.size(); ++i)
 		{
 			Triplet temp = {g.vertices.at(i).one,0,g.vertices.at(i).three};
-
-			//This step makes the new vertices and maps old vertices to new ones
-
-			vector<Triplet>::iterator iter;
-			iter = find(vert.begin(), vert.end(), temp);
-		    if(iter != vert.end())
-		    {
-		    	m[i]=(iter - vert.begin());
-		        //m.insert(pair <int, int> (i,(iter - vert.begin())) );
-		    }
-		    else
-		    {
-		        m[i]=(vert.size());
-		        vert.push_back(temp);
-				//m.insert(pair <int, int> (i,vert.size()) );
-		    }
+		    vert.push_back(temp);
 		}
-		
-	 //    map <int, int> :: iterator itr;
-	 //    cout << "\nThe map m is : \n";
-	 //    cout << "\tKEY\tELEMENT\n";
-	 //    for (itr = m.begin(); itr != m.end(); ++itr)
-	 //    {
-	 //        cout  <<  '\t' << itr->first 
-	 //              <<  '\t' << itr->second << '\n';
-	 //    }
-
-		//Modifying old graph into new
-		int k=0;
-		for (Graph::const_iterator i = g.edges.begin(); i != g.edges.end(); ++i,++k)
-		{
-			Graph::vertex_set S = Graph::out_neighbors(i);
-			for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
-			{
-				int d=m[*p];
-				int w=m[k];
-				if(d!=w){
-				A.insert_edge(w,d);
-				A.insert_edge(d,w);
-				}
-			}
-		}
-		g1.vertices=vert;
-		g1.edges=A;
+		g1.vertices = vert;
+		g1.edges = g.edges;
 		return g1;
 	}
 
