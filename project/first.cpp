@@ -2,8 +2,12 @@
 #include <cstring>
 #include <string>
 #include <iostream>
+#include <stdlib.h>
+#include "threedtotwod.cpp"
+#include "show_canvas.cpp"
 using namespace std;
-string filename;
+string filename = "";
+GtkWidget *entry_for_x, *entry_for_y, *entry_for_z;
 static void menu_response(GtkWidget* menu_item, gpointer window)
 {
         if(strcmp(gtk_menu_item_get_label(GTK_MENU_ITEM(menu_item)), "New") == 0)       // equal
@@ -16,14 +20,26 @@ static void menu_response(GtkWidget* menu_item, gpointer window)
                 gint resp = gtk_dialog_run(GTK_DIALOG(dialog));
                 if(resp == GTK_RESPONSE_OK){
                         filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog));
-                        cout<<filename<<endl;
+                        cout<<"Input file selected is "<<filename<<endl;
                 }
                 else
                         g_print("You pressed Cancel\n");
                 gtk_widget_destroy(dialog);
         }
 }
- 
+
+static void button_clicked(GtkWidget *widget, gpointer data){
+        double xdir = atof(gtk_entry_get_text(GTK_ENTRY(entry_for_x)));
+        double ydir = atof(gtk_entry_get_text(GTK_ENTRY(entry_for_y)));
+        double zdir = atof(gtk_entry_get_text(GTK_ENTRY(entry_for_z)));
+        Triplet dir = {xdir, ydir, zdir};
+        if (filename.compare("")!=0){
+                show_qt_projections(filename, dir);
+        }
+        else {
+                cout<<"Please select a file"<<endl;
+        }
+}
 int main(int argc, char* argv[])
 {
         gtk_init(&argc, &argv);
@@ -52,7 +68,7 @@ int main(int argc, char* argv[])
 
         // 3D to 2D tab
         GtkWidget *direction_label, *x_label, *y_label, *z_label, *hbox_for_x, *hbox_for_y, *hbox_for_z;
-        GtkWidget *entry_for_x, *entry_for_y, *entry_for_z;
+        
         label = gtk_label_new("3D to 2D");
         vbox = gtk_vbox_new(0,10);
         gtk_box_pack_start(GTK_BOX(vbox), menu_bar,0,0,0);
@@ -116,9 +132,16 @@ int main(int argc, char* argv[])
         gtk_box_pack_start(GTK_BOX(hbox_slider_for_z), scale_z, 1, 1, 10);
         gtk_box_pack_start(GTK_BOX(vbox), hbox_slider_for_z,1,1,10);
 
-        //button = gtk_button_new_with_label("This is a Button dh28ec c8uehd2ujhdxionc juu");
-        //gtk_box_pack_start(GTK_BOX(vbox), button,0,0,0);
+        //button to submit these changes
+        button = gtk_button_new_with_label("Make Projections");
+        gtk_box_pack_start(GTK_BOX(vbox), button,1,1,10);
         gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, label);
+        
+        //signal for button select
+        g_signal_connect(button, "clicked", G_CALLBACK(button_clicked), NULL);
+        g_signal_connect(entry_for_z, "activate", G_CALLBACK(button_clicked), NULL);
+
+        // 2d to 3d
         button = gtk_button_new_with_label("This is a Button");
         label = gtk_label_new("Hi 2");
         gtk_notebook_append_page(GTK_NOTEBOOK(notebook), button, label);

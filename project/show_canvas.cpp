@@ -2,6 +2,7 @@
 #include <QtCore>
 #include <QtGui>
 #include <threedtotwod.cpp>
+#include <string>
 
 #define WIDTH 700
 #define HEIGHT 700
@@ -97,28 +98,28 @@ void drawGraph(Graph_Imp g, QPainter &p){
       }
    }
 }
-int try_it(int argc, char *argv[])
+int show_qt_projections(string file, Triplet topdir)
 {
-   Graph_Imp G, G_xy, G_yz, G_zx,G_rotated, G_iso, G_xy_scaled, G_yz_scaled, G_zx_scaled, G_iso_scaled;
-   G = toGraph("/home/rajas/Desktop/cop290/project/input.txt");
-   Triplet topdir = {0, 0, 1.0};
-   G_rotated.vertices = rotate_vector(G.vertices, topdir);
-   G_rotated.edges = G.edges;
-   G_xy = Projectionxy(G_rotated);
-   G_yz = Projectionyz(G_rotated);
-   G_zx = Projectionzx(G_rotated);
-   G_iso = Projection_isometric(G_rotated);
+   Threedtotwod T;
+   Graph_Imp G_xy_scaled, G_yz_scaled, G_zx_scaled, G_iso_scaled;
+   T.G = T.toGraph(file);
+   T.rotatedG.vertices = T.rotate_vector(T.G.vertices, topdir);
+   T.rotatedG.edges = T.G.edges;
+   T.projected_xy = T.Projectionxy(T.rotatedG);
+   T.projected_yz = T.Projectionyz(T.rotatedG);
+   T.projected_zx = T.Projectionzx(T.rotatedG);
+   T.projected_isometric = T.Projection_isometric(T.rotatedG);
 
-   G_iso_scaled = set_acc_to_ranges(G_iso, 3);
-   G_xy_scaled = set_acc_to_ranges(G_xy, 0);
-   G_yz_scaled = set_acc_to_ranges(G_yz, 2);
-   G_zx_scaled = set_acc_to_ranges(G_zx, 1);
+   G_iso_scaled = set_acc_to_ranges(T.projected_isometric, 3);
+   G_xy_scaled = set_acc_to_ranges(T.projected_xy, 0);
+   G_yz_scaled = set_acc_to_ranges(T.projected_yz, 2);
+   G_zx_scaled = set_acc_to_ranges(T.projected_zx, 1);
    // cout<<G3.edges;
    // for (int i = 0; i < G3.vertices.size(); ++i)
    // {
    //    cout<<G3.vertices[i].one<<" "<<G3.vertices[i].two<<" "<<G3.vertices[i].three<<endl;  
    // }
-   QApplication a(argc, argv);
+   QApplication a(NULL, NULL);
    QLabel l;
    QPicture pi;
    QPainter p(&pi);
@@ -164,8 +165,9 @@ int try_it(int argc, char *argv[])
    l.show();
    return a.exec();
 }
-int main(int argc, char *argv[])
-{
-   try_it(argc, argv);
-   return 0;
-}
+// int main(int argc, char *argv[])
+// {
+//    Triplet topdir = {0, 0, 1.0};
+//    try_it("/home/rajas/Desktop/cop290/project/input.txt", topdir);
+//    return 0;
+// }
