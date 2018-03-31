@@ -11,6 +11,7 @@ TARGET        = draw
 
 all:  threedtotwod.cpp input.txt twodtothreed.cpp
 	$(CXX) -o threedtotwod threedtotwod.cpp $(LFLAGS) $(LIBS) -std=c++11
+two:
 	$(CXX) -o twodtothreed twodtothreed.cpp $(LFLAGS) $(LIBS) -std=c++11
 show:
 	$(CXX) -o show_canvas show_canvas.cpp $(INCPATH) $(LFLAGS) $(LIBS) -std=c++11

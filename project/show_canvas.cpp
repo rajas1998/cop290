@@ -98,7 +98,7 @@ void drawGraph(Graph_Imp g, QPainter &p){
       }
    }
 }
-int show_qt_projections(Threedtotwod T, Triplet topdir)
+int show_qt_projections(Threedtotwod &T, Triplet topdir)
 {
    // Threedtotwod T;
    Graph_Imp G_xy_scaled, G_yz_scaled, G_zx_scaled, G_iso_scaled;

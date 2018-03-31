@@ -4,7 +4,8 @@
 #include <fstream>
 #include <map>
 #include <iterator>
-#include "ngraph.hpp"
+// #include "ngraph.hpp"
+#include "gnuplot_i.hpp"
 using namespace NGraph;
 using namespace std;
 
@@ -30,24 +31,39 @@ v+2.
 ...
 3v. int, int, int
 */
-
-struct Triplet
+void wait_for_key ()
 {
-  double  one, two, three;
-  bool operator== (const Triplet&ref) const {
-  	return (ref.one == one)&&(ref.two == two)&&(ref.three==three);
-  }
-};
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__TOS_WIN__)  // every keypress registered, also arrow keys
+    cout << endl << "Press any key to continue..." << endl;
 
-class Graph_Imp
-{
-public:
-	vector<Triplet> vertices;
-	Graph edges;
-	Graph_Imp(){
+    FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+    _getch();
+#elif defined(unix) || defined(__unix) || defined(__unix__) || defined(__APPLE__)
+    cout << endl << "Press ENTER to continue..." << endl;
 
-	}
-};
+    std::cin.clear();
+    std::cin.ignore(std::cin.rdbuf()->in_avail());
+    std::cin.get();
+#endif
+    return;
+}
+// struct Triplet
+// {
+//   double  one, two, three;
+//   bool operator== (const Triplet&ref) const {
+//   	return (ref.one == one)&&(ref.two == two)&&(ref.three==three);
+//   }
+// };
+
+// class Graph_Imp
+// {
+// public:
+// 	vector<Triplet> vertices;
+// 	Graph edges;
+// 	Graph_Imp(){
+
+// 	}
+// };
 
 void toGraphAllThree(string f, Graph_Imp &x_g, Graph_Imp &y_g, Graph_Imp &z_g)
 {
@@ -222,30 +238,52 @@ Graph_Imp makethreed(Graph_Imp G_on_xy, Graph_Imp G_on_yz, Graph_Imp G_on_xz){
 	}
 	return G3D;
 }
-int main(int argc, char const *argv[])
-{
-	Graph_Imp G_on_xy,G_on_yz,G_on_xz;
-	toGraphAllThree("inp2.txt",G_on_xy,G_on_yz,G_on_xz);
-	Graph_Imp G3D = makethreed(G_on_xy, G_on_yz, G_on_xz);
-	G3D.vertices = make3DVertices(G_on_xy, G_on_yz, G_on_xz);
-	std::vector< pair<int,int> > probEdges_xy = makeEdges(G_on_xy);
-	// cout<<"---------"<<endl;
-	std::vector< pair<int,int> > probEdges_yz = makeEdges(G_on_yz);
-	// cout<<"---------"<<endl;
-	std::vector< pair<int,int> > probEdges_xz = makeEdges(G_on_xz);
-	// cout<<"---------"<<endl;
-	std::vector<pair<int, int> > inter = intersection(probEdges_xy, probEdges_yz, probEdges_xz);
-	// cout<<"---------"<<endl;
-	for (int i = 0; i < inter.size(); ++i)
-	{
-		G3D.edges.insert_edge(inter[i].first, inter[i].second);
-		G3D.edges.insert_edge(inter[i].second, inter[i].first);
-	}
-	cout<<inter.size()/2;
+void show_gnu_plot(Graph_Imp G3D){
+	ofstream ofile;
+	ofile.open("out.txt");
 	for (int i = 0; i < G3D.vertices.size(); ++i)
-	{	
-		cout<<G3D.vertices[i].one<<" "<<G3D.vertices[i].two<<" "<<G3D.vertices[i].three<<endl;	
+	{
+		Graph::vertex_set S = G3D.edges.out_neighbors(i);
+		for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p) {
+			ofile<<G3D.vertices[i].one<<" "<<G3D.vertices[i].two<<" "<<G3D.vertices[i].three<<endl;
+			ofile<<G3D.vertices[*p].one<<" "<<G3D.vertices[*p].two<<" "<<G3D.vertices[*p].three<<"\n\n\n";
+		}
 	}
-	cout<<"------------"<<endl;
-	cout<<G3D.edges;
+	ofile.close();
+	Gnuplot g;
+	g<<"unset xtics";
+	g<<"unset ytics";
+	g<<"unset ztics";
+	g<<"unset border";
+	g<<"set terminal x11 title '3D object formed'";
+	g<<"splot 'out.txt' with lines notitle";
+	wait_for_key();
 }
+// int main(int argc, char const *argv[])
+// {
+// 	Graph_Imp G_on_xy,G_on_yz,G_on_xz;
+// 	toGraphAllThree("inp2.txt",G_on_xy,G_on_yz,G_on_xz);
+// 	Graph_Imp G3D = makethreed(G_on_xy, G_on_yz, G_on_xz);
+// 	// G3D.vertices = make3DVertices(G_on_xy, G_on_yz, G_on_xz);
+// 	// std::vector< pair<int,int> > probEdges_xy = makeEdges(G_on_xy);
+// 	// // cout<<"---------"<<endl;
+// 	// std::vector< pair<int,int> > probEdges_yz = makeEdges(G_on_yz);
+// 	// // cout<<"---------"<<endl;
+// 	// std::vector< pair<int,int> > probEdges_xz = makeEdges(G_on_xz);
+// 	// // cout<<"---------"<<endl;
+// 	// std::vector<pair<int, int> > inter = intersection(probEdges_xy, probEdges_yz, probEdges_xz);
+// 	// // cout<<"---------"<<endl;
+// 	// for (int i = 0; i < inter.size(); ++i)
+// 	// {
+// 	// 	G3D.edges.insert_edge(inter[i].first, inter[i].second);
+// 	// 	G3D.edges.insert_edge(inter[i].second, inter[i].first);
+// 	// }
+// 	// cout<<inter.size()/2;
+// 	// for (int i = 0; i < G3D.vertices.size(); ++i)
+// 	// {	
+// 	// 	cout<<G3D.vertices[i].one<<" "<<G3D.vertices[i].two<<" "<<G3D.vertices[i].three<<endl;	
+// 	// }
+// 	// cout<<"------------"<<endl;
+// 	// cout<<G3D.edges;
+// 	show_gnu_plot(G3D);
+// }
