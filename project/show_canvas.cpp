@@ -98,11 +98,11 @@ void drawGraph(Graph_Imp g, QPainter &p){
       }
    }
 }
-int show_qt_projections(string file, Triplet topdir)
+int show_qt_projections(Threedtotwod T, Triplet topdir)
 {
-   Threedtotwod T;
+   // Threedtotwod T;
    Graph_Imp G_xy_scaled, G_yz_scaled, G_zx_scaled, G_iso_scaled;
-   T.G = T.toGraph(file);
+   // T.G = T.toGraph(file);
    T.rotatedG.vertices = T.rotate_vector(T.G.vertices, topdir);
    T.rotatedG.edges = T.G.edges;
    T.projected_xy = T.Projectionxy(T.rotatedG);

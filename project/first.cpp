@@ -3,11 +3,14 @@
 #include <string>
 #include <iostream>
 #include <stdlib.h>
+#include <armadillo>
 #include "threedtotwod.cpp"
 #include "show_canvas.cpp"
+#include <math.h>
+#define PI 3.14159265
 using namespace std;
 string filename = "";
-GtkWidget *entry_for_x, *entry_for_y, *entry_for_z;
+GtkWidget *entry_for_x, *entry_for_y, *entry_for_z, *scale_x, *scale_y, *scale_z;
 static void menu_response(GtkWidget* menu_item, gpointer window)
 {
         if(strcmp(gtk_menu_item_get_label(GTK_MENU_ITEM(menu_item)), "New") == 0)       // equal
@@ -34,7 +37,33 @@ static void button_clicked(GtkWidget *widget, gpointer data){
         double zdir = atof(gtk_entry_get_text(GTK_ENTRY(entry_for_z)));
         Triplet dir = {xdir, ydir, zdir};
         if (filename.compare("")!=0){
-                show_qt_projections(filename, dir);
+                Threedtotwod T;
+                T.G = T.toGraph(filename);
+                float x_angle = gtk_range_get_value(GTK_RANGE(scale_x));
+                float y_angle = gtk_range_get_value(GTK_RANGE(scale_y));
+                float z_angle = gtk_range_get_value(GTK_RANGE(scale_z));
+                float sin_x = sin((x_angle*PI)/180);
+                float cos_x = cos((x_angle*PI)/180);
+                float sin_y = sin((y_angle*PI)/180);
+                float cos_y = cos((y_angle*PI)/180);
+                float sin_z = sin((z_angle*PI)/180);
+                float cos_z = cos((z_angle*PI)/180);
+                mat rot_x<<1<<0<<0<<endr<<0<<cos_x<<(-sin_x)<<endr<<0<<sin_x<<cos_x<<endr;
+                mat rot_y<<cos_y<<0<<sin_y<<endr<<0<<1<<0<<endr<<(-sin_y)<<0<<cos_y<<endr;
+                mat rot_z<<cos_z<<(-sin_z)<<0<<endr<<sin_z<<cos_z<<0<<endr<<0<<0<<1<<endr;
+                mat final_rot = rot_z * rot_y * rot_x;
+                std::vector<Triplet> rotated_vertices;
+                for (int i = 0; i < T.G.vertices.size(); ++i)
+                {
+                        mat coordinates;
+                        coordinates<<vertices[i].one<<endr<<vertices[i].two<<endr<<vertices[i].three<<endr;
+                        mat rotated_y_x = final_rot * coordinates;
+                        Triplet temp = {rotated_y_x(0,0), rotated_y_x(1,0), rotated_y_x(2,0)};
+                        rotated_vertices.push_back(temp);
+                }
+                T.G.vertices = rotated_vertices;
+                show_qt_projections(T, dir);
+
         }
         else {
                 cout<<"Please select a file"<<endl;
@@ -103,7 +132,7 @@ int main(int argc, char* argv[])
 
         //sliders declared
         GtkWidget *slider_label_x, *slider_label_y, *slider_label_z;
-        GtkWidget *scale_x, *scale_y, *scale_z, *hbox_slider_for_x, *hbox_slider_for_y, *hbox_slider_for_z;
+        GtkWidget *hbox_slider_for_x, *hbox_slider_for_y, *hbox_slider_for_z;
 
         // x slider
         slider_label_x = gtk_label_new("Enter angle to be rotated by with x-axis");
