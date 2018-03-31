@@ -157,6 +157,13 @@ int show_qt_projections(Threedtotwod &T, Triplet topdir)
    drawGraph(G_yz_scaled, p);
    drawGraph(G_zx_scaled, p);
    drawGraph(G_iso_scaled, p);
+
+   p.setPen(QPen(Qt::black, 0.5, Qt::DotLine, Qt::RoundCap));
+   for (int i = 0; i < G_xy_scaled.vertices.size(); ++i)
+   {
+         p.drawLine(G_xy_scaled.vertices[i].one, G_xy_scaled.vertices[i].two, G_yz_scaled.vertices[i].one, G_yz_scaled.vertices[i].two);
+         p.drawLine(G_xy_scaled.vertices[i].one, G_xy_scaled.vertices[i].two, G_zx_scaled.vertices[i].one, G_zx_scaled.vertices[i].two);
+   }
    p.end(); // Don't forget this line!
 
    l.setPicture(pi);
