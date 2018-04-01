@@ -14,7 +14,7 @@ all:  threedtotwod.cpp input.txt twodtothreed.cpp
 two:
 	$(CXX) -o twodtothreed twodtothreed.cpp $(LFLAGS) $(LIBS) -std=c++11
 show:
-	$(CXX) -o show_canvas show_canvas.cpp $(INCPATH) $(LFLAGS) $(LIBS) -std=c++11
+	$(CXX) -o show_canvas show_canvas.cpp $(INCPATH) $(LFLAGS) $(LIBS) -std=c++11 
 gui:
 	$(CXX) -o first first.cpp $(INCPATH) $(LFLAGS) $(LIBS) -std=c++11
 .PHONY: clean doxygen

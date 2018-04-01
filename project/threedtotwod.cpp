@@ -213,7 +213,7 @@ public:
 			double x2 = vert[face[p].dest].one;
 			double y2 = vert[face[p].dest].two;
 			if ((xp==x1 && yp==y1) || (xp==x2 && yp==y2)){
-				cout<<"coincide";
+				cout<<"coincide "<<x1<<","<<y1<<endl;
 				return false;
 			}
 			double x = x1 + ((yp - y1) * (x2 - x1))/(y2 - y1);
@@ -283,8 +283,13 @@ public:
 			Graph::vertex_set S = g.edges.out_neighbors(sorted[i]);
 			for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
 			{
-				Edge temp = {sorted[i],*p};
-				madeTillNow.push_back(temp);
+				for (int ptr = 0; ptr < i; ++ptr)
+				{
+					if (*p == sorted[ptr]){	
+						Edge temp = {sorted[i],*p};
+						madeTillNow.push_back(temp);
+					}
+				}
 			}
 			cout<<"Round "<<i<<endl;
 			for (int rajas = 0; rajas < madeTillNow.size(); ++rajas)
