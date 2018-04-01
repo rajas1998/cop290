@@ -87,14 +87,30 @@ Graph_Imp set_acc_to_ranges(Graph_Imp g, int mode){
    ret.edges = g.edges;
    return ret; 
 }
-
-void drawGraph(Graph_Imp g, QPainter &p){
+bool findEdgeInVector(Edge a, std::vector<Edge> hidden){
+   for (int i = 0; i < hidden.size(); ++i)
+   {
+      if ((a.src == hidden[i].src && a.dest == hidden[i].dest) || (a.dest == hidden[i].src && a.src == hidden[i].dest)){
+         return true;
+      }
+   }
+   return false;
+}
+void drawGraph(Graph_Imp g, QPainter &p, std::vector<Edge> hidden, bool hide){
    for (int i = 0; i < g.vertices.size(); ++i)
    {
       Graph::vertex_set Si = g.edges.out_neighbors(i);
       for (Graph::vertex_set::const_iterator out_vertex = Si.begin(); out_vertex != Si.end(); ++out_vertex)
       {
-         p.drawLine((g.vertices[i].one),(g.vertices[i].two),(g.vertices[*out_vertex].one),(g.vertices[*out_vertex].two));
+         Edge temp = {i,*out_vertex};
+         if (findEdgeInVector(temp, hidden) && hide){
+            p.setPen(QPen(Qt::black, 1, Qt::DotLine, Qt::RoundCap));
+            p.drawLine((g.vertices[i].one),(g.vertices[i].two),(g.vertices[*out_vertex].one),(g.vertices[*out_vertex].two));
+            p.setPen(QPen(Qt::black, 2));
+         }
+         else{
+            p.drawLine((g.vertices[i].one),(g.vertices[i].two),(g.vertices[*out_vertex].one),(g.vertices[*out_vertex].two));
+         }  
       }
    }
 }
@@ -153,10 +169,10 @@ int show_qt_projections(Threedtotwod &T, Triplet topdir)
    //    prev_x = x;
    //    prev_y = y;
    // }
-   drawGraph(G_xy_scaled, p);
-   drawGraph(G_yz_scaled, p);
-   drawGraph(G_zx_scaled, p);
-   drawGraph(G_iso_scaled, p);
+   drawGraph(G_xy_scaled, p, T.hidden_xy, true);
+   drawGraph(G_yz_scaled, p, T.hidden_xy, false);
+   drawGraph(G_zx_scaled, p, T.hidden_xy, false);
+   drawGraph(G_iso_scaled, p, T.hidden_xy, false);
 
    p.setPen(QPen(Qt::black, 0.5, Qt::DotLine, Qt::RoundCap));
    for (int i = 0; i < G_xy_scaled.vertices.size(); ++i)

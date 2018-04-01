@@ -39,6 +39,10 @@ struct Triplet
   	return (ref.one == one)&&(ref.two == two)&&(ref.three==three);
   }
 };
+struct Edge
+{
+	int src,dest;
+};
 
 class Graph_Imp
 {
@@ -63,6 +67,8 @@ public:
 	Graph_Imp projected_zx;
 	Graph_Imp rotatedG; 
 	Graph_Imp projected_isometric;
+	vector<vector<Edge>> faces;
+	vector<Edge> hidden_xy;
 	Graph_Imp toGraph(string f)
 	{
 		Graph A;
@@ -104,6 +110,22 @@ public:
 			// int v1 = find (vertices.begin(), vertices.end(), temp1) - vertices.begin();
 			// int v2 = find (vertices.begin(), vertices.end(), temp2) - vertices.begin();
 			// A.insert_edge(v1,v2);
+		}
+		int num;
+		afile>>num;
+		for (int i = 0; i < num; ++i)
+		{
+			int sz;
+			afile>>sz;
+			vector<Edge> temp_face;
+			for (int j = 0; j < sz; ++j)
+			{
+				int src, dest;
+				afile>>src>>dest;
+				Edge temp = {src, dest};
+				temp_face.push_back(temp);
+			}
+			faces.push_back(temp_face);
 		}
 		afile.close();
 		Graph_Imp g;
@@ -172,6 +194,48 @@ public:
 		g1.edges=A;
 		return g1;
 	}
+	bool vertOnFace(int vert, std::vector<Edge> face){
+		for (int p = 0; p < face.size(); ++p)
+		{
+			if (vert == face[p].src || vert == face[p].dest)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	bool vertOutsideFace(double xp, double yp, std::vector<Edge> face, std::vector<Triplet> vert){
+		int countInt = 0;
+		for (int p = 0; p < face.size(); ++p)
+		{
+			double x1 = vert[face[p].src].one;
+			double y1 = vert[face[p].src].two;
+			double x2 = vert[face[p].dest].one;
+			double y2 = vert[face[p].dest].two;
+			if ((xp==x1 && yp==y1) || (xp==x2 && yp==y2)){
+				cout<<"coincide";
+				return false;
+			}
+			double x = x1 + ((yp - y1) * (x2 - x1))/(y2 - y1);
+			if (x > xp && ((yp>y1 && yp<y2) || (yp<y1 && yp>y2)) ){
+				countInt++;
+			}
+		}
+		cout<<"Num of inter "<<countInt<<endl;
+		if (countInt%2 == 1){
+			return false;
+		}
+		else return true;
+	}
+	bool findEdge(Edge a, std::vector<Edge> hidden){
+	   for (int i = 0; i < hidden.size(); ++i)
+	   {
+	      if ((a.src == hidden[i].src && a.dest == hidden[i].dest) || (a.dest == hidden[i].src && a.src == hidden[i].dest)){
+	         return true;
+	      }
+	   }
+	   return false;
+	}
 	Graph_Imp Projectionxy(Graph_Imp g)
 	{
 		Graph_Imp g1;
@@ -184,6 +248,121 @@ public:
 		}
 		g1.vertices = vert;
 		g1.edges = g.edges;
+		std::vector<int> sorted;
+		for (int i = 0; i < vert.size(); ++i)
+		{
+			sorted.push_back(i);
+		}
+		for (int i = 0; i < g.vertices.size(); ++i)
+		{
+			for (int j = 0; j < g.vertices.size()-1-i; ++j)
+			{
+				if (g.vertices[sorted[j]].three > g.vertices[sorted[j+1]].three)
+				{
+					int temp = sorted[j];
+					sorted[j] = sorted[j+1];
+					sorted[j+1] = temp;
+				}
+			}
+		}
+		cout<<"Sorted vexrtex set"<<endl;
+		for (int i = 0; i < sorted.size(); ++i)
+		{
+			cout<<sorted[i]<<" ";
+		}
+		cout<<endl;
+		std::vector<Edge> madeTillNow;
+		std::vector<Edge> hiddenEdges;
+		std::vector<bool> doneFaces;
+		for (int i = 0; i < faces.size(); ++i)
+		{
+			doneFaces.push_back(false);
+		}
+		for (int i = 0; i < sorted.size(); ++i)
+		{
+			Graph::vertex_set S = g.edges.out_neighbors(sorted[i]);
+			for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
+			{
+				Edge temp = {sorted[i],*p};
+				madeTillNow.push_back(temp);
+			}
+			cout<<"Round "<<i<<endl;
+			for (int rajas = 0; rajas < madeTillNow.size(); ++rajas)
+			{
+				cout<<madeTillNow[rajas].src<<","<<madeTillNow[rajas].dest<<" ";
+			}
+			cout<<endl;
+			for (int j = 0; j < faces.size(); ++j)
+			{
+				if (!doneFaces[j]){
+					bool completed = true;
+					for (int k = 0; k < faces[j].size(); ++k)
+					{
+						bool foundEdge = false;
+						for (int p = 0; p < madeTillNow.size(); ++p)
+						{
+							if ((faces[j][k].src==madeTillNow[p].src && faces[j][k].dest==madeTillNow[p].dest) || (faces[j][k].src==madeTillNow[p].dest && faces[j][k].dest==madeTillNow[p].src)){
+								foundEdge = true;
+								break;
+							}
+						}
+						if (!foundEdge){
+							completed = false;
+							break;
+						}
+					}
+					if (completed){
+						cout<<"Round "<<i<<" face number "<<j<<endl;
+						doneFaces[j] = true;
+						for (int k = 0; k < madeTillNow.size(); ++k)
+						{
+							if (vertOnFace(madeTillNow[k].src, faces[j]))
+							{
+								if (!vertOnFace(madeTillNow[k].dest, faces[j])){
+									if (!vertOutsideFace(vert[madeTillNow[k].dest].one, vert[madeTillNow[k].dest].two, faces[j], vert)){
+										hiddenEdges.push_back(madeTillNow[k]);
+										cout<<"h1 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
+									}
+								}
+								else {
+									if (!findEdge(madeTillNow[k], faces[j])){
+										hiddenEdges.push_back(madeTillNow[k]);
+										cout<<"h2 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
+									}
+
+								}
+							}
+							else 
+							{
+								if (vertOnFace(madeTillNow[k].dest, faces[j])){
+									if (!vertOutsideFace(vert[madeTillNow[k].src].one, vert[madeTillNow[k].src].two, faces[j], vert)){
+										hiddenEdges.push_back(madeTillNow[k]);
+										cout<<"h3 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
+									}
+								}
+								else {
+									if ((!vertOutsideFace(vert[madeTillNow[k].src].one, vert[madeTillNow[k].src].two, faces[j], vert)) && (!vertOutsideFace(vert[madeTillNow[k].dest].one, vert[madeTillNow[k].dest].two, faces[j], vert))){
+										hiddenEdges.push_back(madeTillNow[k]);
+										cout<<"h4 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		cout<<"Hidden Printing"<<endl;
+		for (int i = 0; i < g.vertices.size(); ++i)
+		{
+			cout<<g.vertices[i].one<<","<<g.vertices[i].two<<","<<g.vertices[i].three<<endl;
+		}
+		cout<<"----"<<endl;
+		for (int i = 0; i < hiddenEdges.size(); ++i)
+		{
+			cout<<hiddenEdges[i].src<<","<<hiddenEdges[i].dest<<endl;
+		}
+		hidden_xy = hiddenEdges;
 		return g1;
 	}
 
