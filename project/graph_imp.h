@@ -1,12 +1,17 @@
-struct Triplet
-{
-  double  one, two, three;
-  bool operator== (const Triplet&ref) const;
-};
+//Graph_Imp.h
+
+
+
+
+#ifndef GRAPH_IMP_H_   // if Graph_Imp.h hasn't been included yet
+#define GRAPH_IMP_H_   // including 
+
 class Graph_Imp
 {
 public:
-	vector<Triplet> vertices;
-	Graph edges;
-	Graph_Imp();
+	std::vector<Triplet> vertices;
+	NGraph::Graph edges;
+	Graph_Imp(){}
 };
+
+#endif 

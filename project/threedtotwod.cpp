@@ -6,6 +6,11 @@
 #include <map>
 #include <iterator>
 #include "ngraph.hpp"
+#include "Triplet.h"
+#include "Edges.h"
+#include "Graph_Imp.h"
+#include "ThreeDtoTwoD.h"
+
 using namespace NGraph;
 using namespace arma;
 using namespace std;
@@ -32,44 +37,13 @@ Input File Format:
 
 */
 
-struct Triplet
-{
-  double one, two, three;
-  bool operator== (const Triplet&ref) const {
-  	return (ref.one == one)&&(ref.two == two)&&(ref.three==three);
-  }
-};
-struct Edge
-{
-	int src,dest;
-};
-
-class Graph_Imp
-{
-public:
-	vector<Triplet> vertices;
-	Graph edges;
-	Graph_Imp(){
-
-	}
-};
 
 // Triplet frontdir;
 // Triplet topdir;
 // Triplet cuttingplane;
-class Threedtotwod
-{
-public:
-	Threedtotwod(){}
-	Graph_Imp G;
-	Graph_Imp projected_xy;
-	Graph_Imp projected_yz;
-	Graph_Imp projected_zx;
-	Graph_Imp rotatedG; 
-	Graph_Imp projected_isometric;
-	vector<vector<Edge>> faces;
-	vector<Edge> hidden_xy;
-	Graph_Imp toGraph(string f)
+
+
+ 	Graph_Imp Threedtotwod::toGraph(string f)
 	{
 		Graph A;
 		vector<Triplet> vert;
@@ -133,7 +107,9 @@ public:
 		g.edges=A;
 		return g;
 	}
-	Graph_Imp Projection_isometric(Graph_Imp g){
+
+	Graph_Imp Threedtotwod::Projection_isometric(Graph_Imp g)
+	{
 		Graph_Imp g1;
 		Graph A;
 		vector<Triplet> vert;
@@ -194,7 +170,9 @@ public:
 		g1.edges=A;
 		return g1;
 	}
-	bool vertOnFace(int vert, std::vector<Edge> face){
+
+	bool Threedtotwod::vertOnFace(int vert, std::vector<Edge> face)
+	{
 		for (int p = 0; p < face.size(); ++p)
 		{
 			if (vert == face[p].src || vert == face[p].dest)
@@ -204,7 +182,9 @@ public:
 		}
 		return false;
 	}
-	bool vertOutsideFace(double xp, double yp, std::vector<Edge> face, std::vector<Triplet> vert){
+
+	bool Threedtotwod::vertOutsideFace(double xp, double yp, std::vector<Edge> face, std::vector<Triplet> vert)
+	{
 		int countInt = 0;
 		for (int p = 0; p < face.size(); ++p)
 		{
@@ -227,7 +207,9 @@ public:
 		}
 		else return true;
 	}
-	bool findEdge(Edge a, std::vector<Edge> hidden){
+
+	bool Threedtotwod::findEdge(Edge a, std::vector<Edge> hidden)
+	{
 	   for (int i = 0; i < hidden.size(); ++i)
 	   {
 	      if ((a.src == hidden[i].src && a.dest == hidden[i].dest) || (a.dest == hidden[i].src && a.src == hidden[i].dest)){
@@ -236,7 +218,8 @@ public:
 	   }
 	   return false;
 	}
-	Graph_Imp Projectionxy(Graph_Imp g)
+
+	Graph_Imp Threedtotwod::Projectionxy(Graph_Imp g)
 	{
 		Graph_Imp g1;
 		vector<Triplet> vert;
@@ -371,7 +354,7 @@ public:
 		return g1;
 	}
 
-	Graph_Imp Projectionyz(Graph_Imp g)
+	Graph_Imp Threedtotwod::Projectionyz(Graph_Imp g)
 	{
 		Graph_Imp g1;
 		vector<Triplet> vert;
@@ -386,7 +369,7 @@ public:
 		return g1;
 	}
 
-	Graph_Imp Projectionzx(Graph_Imp g)
+	Graph_Imp Threedtotwod::Projectionzx(Graph_Imp g)
 	{
 		Graph_Imp g1;
 		vector<Triplet> vert;
@@ -401,7 +384,8 @@ public:
 		return g1;
 	}
 
-	vector<Triplet> rotate_vector(vector<Triplet> vertices, Triplet normal_plane){
+	vector<Triplet> Threedtotwod::rotate_vector(vector<Triplet> vertices, Triplet normal_plane)
+	{
 		vector<Triplet> rotated_vertices;
 		double x = normal_plane.one;
 		double y = normal_plane.two;
@@ -438,7 +422,6 @@ public:
 		return rotated_vertices;
 	}
 	
-};
 
 // int main(int argc, char const *argv[])
 // {
