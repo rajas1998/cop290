@@ -41,26 +41,8 @@ Input File Format:
 // Triplet frontdir;
 // Triplet topdir;
 // Triplet cuttingplane;
-<<<<<<< HEAD
-
 
  	Graph_Imp Threedtotwod::toGraph(string f)
-=======
-class Threedtotwod
-{
-public:
-	Threedtotwod(){}
-	Graph_Imp G;
-	Graph_Imp projected_xy;
-	Graph_Imp projected_yz;
-	Graph_Imp projected_zx;
-	Graph_Imp rotatedG; 
-	Graph_Imp projected_isometric;
-	vector<vector<Edge>> faces;
-	vector<Edge> hidden_xy;
-	vector<Edge> hidden_isometric;
-	Graph_Imp toGraph(string f)
->>>>>>> 09698def103538f3b87a9292198808bae1604553
 	{
 		Graph A;
 		vector<Triplet> vert;
