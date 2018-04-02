@@ -41,9 +41,26 @@ Input File Format:
 // Triplet frontdir;
 // Triplet topdir;
 // Triplet cuttingplane;
+<<<<<<< HEAD
 
 
  	Graph_Imp Threedtotwod::toGraph(string f)
+=======
+class Threedtotwod
+{
+public:
+	Threedtotwod(){}
+	Graph_Imp G;
+	Graph_Imp projected_xy;
+	Graph_Imp projected_yz;
+	Graph_Imp projected_zx;
+	Graph_Imp rotatedG; 
+	Graph_Imp projected_isometric;
+	vector<vector<Edge>> faces;
+	vector<Edge> hidden_xy;
+	vector<Edge> hidden_isometric;
+	Graph_Imp toGraph(string f)
+>>>>>>> 09698def103538f3b87a9292198808bae1604553
 	{
 		Graph A;
 		vector<Triplet> vert;
@@ -111,9 +128,7 @@ Input File Format:
 	Graph_Imp Threedtotwod::Projection_isometric(Graph_Imp g)
 	{
 		Graph_Imp g1;
-		Graph A;
 		vector<Triplet> vert;
-		map <int, int> m;
 
 		for (int i = 0; i < g.vertices.size(); ++i)
 		{	
@@ -122,52 +137,104 @@ Input File Format:
 			mat iso;
 			iso<<(sqrt(3)/2)<<(-(sqrt(3)/2))<<0<<endr<<(0.5)<<(0.5)<<(-1)<<endr;
 			mat final_coordinates = iso * coordinates;
-			// cout<<final_coordinates<<endl;
 			Triplet temp = {final_coordinates(0,0),final_coordinates(1,0),0};
-
-			//This step makes the new vertices and maps old vertices to new ones
-
-			vector<Triplet>::iterator iter;
-			iter = find(vert.begin(), vert.end(), temp);
-		    if(iter != vert.end())
-		    {
-		    	m[i]=(iter - vert.begin());
-		        //m.insert(pair <int, int> (i,(iter - vert.begin())) );
-		    }
-		    else
-		    {
-		        m[i]=(vert.size());
-		        vert.push_back(temp);
-				//m.insert(pair <int, int> (i,vert.size()) );
-		    }
+			vert.push_back(temp);    
 		}
-		
-	 //    map <int, int> :: iterator itr;
-	 //    cout << "\nThe map m is : \n";
-	 //    cout << "\tKEY\tELEMENT\n";
-	 //    for (itr = m.begin(); itr != m.end(); ++itr)
-	 //    {
-	 //        cout  <<  '\t' << itr->first 
-	 //              <<  '\t' << itr->second << '\n';
-	 //    }
-
-		//Modifying old graph into new
-		int k=0;
-		for (Graph::const_iterator i = g.edges.begin(); i != g.edges.end(); ++i,++k)
+		g1.vertices=vert;
+		g1.edges=g.edges;
+		std::vector<int> sorted;
+		for (int i = 0; i < vert.size(); ++i)
 		{
-			Graph::vertex_set S = Graph::out_neighbors(i);
-			for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
+			sorted.push_back(i);
+		}
+		for (int i = 0; i < g.vertices.size(); ++i)
+		{
+			for (int j = 0; j < g.vertices.size()-1-i; ++j)
 			{
-				int d=m[*p];
-				int w=m[k];
-				if(d!=w){
-				A.insert_edge(w,d);
-				A.insert_edge(d,w);
+				if (g.vertices[sorted[j]].three > g.vertices[sorted[j+1]].three)
+				{
+					int temp = sorted[j];
+					sorted[j] = sorted[j+1];
+					sorted[j+1] = temp;
 				}
 			}
 		}
-		g1.vertices=vert;
-		g1.edges=A;
+		std::vector<Edge> madeTillNow;
+		std::vector<Edge> hiddenEdges;
+		std::vector<bool> doneFaces;
+		for (int i = 0; i < faces.size(); ++i)
+		{
+			doneFaces.push_back(false);
+		}
+		for (int i = 0; i < sorted.size(); ++i)
+		{
+			Graph::vertex_set S = g.edges.out_neighbors(sorted[i]);
+			for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
+			{
+				for (int ptr = 0; ptr < i; ++ptr)
+				{
+					if (*p == sorted[ptr]){	
+						Edge temp = {sorted[i],*p};
+						madeTillNow.push_back(temp);
+					}
+				}
+			}
+			for (int j = 0; j < faces.size(); ++j)
+			{
+				if (!doneFaces[j]){
+					bool completed = true;
+					for (int k = 0; k < faces[j].size(); ++k)
+					{
+						bool foundEdge = false;
+						for (int p = 0; p < madeTillNow.size(); ++p)
+						{
+							if ((faces[j][k].src==madeTillNow[p].src && faces[j][k].dest==madeTillNow[p].dest) || (faces[j][k].src==madeTillNow[p].dest && faces[j][k].dest==madeTillNow[p].src)){
+								foundEdge = true;
+								break;
+							}
+						}
+						if (!foundEdge){
+							completed = false;
+							break;
+						}
+					}
+					if (completed){
+						doneFaces[j] = true;
+						for (int k = 0; k < madeTillNow.size(); ++k)
+						{
+							if (vertOnFace(madeTillNow[k].src, faces[j]))
+							{
+								if (!vertOnFace(madeTillNow[k].dest, faces[j])){
+									if (!vertOutsideFace(vert[madeTillNow[k].dest].one, vert[madeTillNow[k].dest].two, faces[j], vert)){
+										hiddenEdges.push_back(madeTillNow[k]);
+									}
+								}
+								else {
+									if (!findEdge(madeTillNow[k], faces[j])){
+										hiddenEdges.push_back(madeTillNow[k]);
+									}
+
+								}
+							}
+							else 
+							{
+								if (vertOnFace(madeTillNow[k].dest, faces[j])){
+									if (!vertOutsideFace(vert[madeTillNow[k].src].one, vert[madeTillNow[k].src].two, faces[j], vert)){
+										hiddenEdges.push_back(madeTillNow[k]);
+									}
+								}
+								else {
+									if ((!vertOutsideFace(vert[madeTillNow[k].src].one, vert[madeTillNow[k].src].two, faces[j], vert)) && (!vertOutsideFace(vert[madeTillNow[k].dest].one, vert[madeTillNow[k].dest].two, faces[j], vert))){
+										hiddenEdges.push_back(madeTillNow[k]);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		hidden_isometric = hiddenEdges;
 		return g1;
 	}
 
@@ -193,7 +260,7 @@ Input File Format:
 			double x2 = vert[face[p].dest].one;
 			double y2 = vert[face[p].dest].two;
 			if ((xp==x1 && yp==y1) || (xp==x2 && yp==y2)){
-				cout<<"coincide "<<x1<<","<<y1<<endl;
+				// cout<<"coincide "<<x1<<","<<y1<<endl;
 				return false;
 			}
 			double x = x1 + ((yp - y1) * (x2 - x1))/(y2 - y1);
@@ -201,7 +268,7 @@ Input File Format:
 				countInt++;
 			}
 		}
-		cout<<"Num of inter "<<countInt<<endl;
+		// cout<<"Num of inter "<<countInt<<endl;
 		if (countInt%2 == 1){
 			return false;
 		}
@@ -248,12 +315,12 @@ Input File Format:
 				}
 			}
 		}
-		cout<<"Sorted vexrtex set"<<endl;
-		for (int i = 0; i < sorted.size(); ++i)
-		{
-			cout<<sorted[i]<<" ";
-		}
-		cout<<endl;
+		// cout<<"Sorted vexrtex set"<<endl;
+		// for (int i = 0; i < sorted.size(); ++i)
+		// {
+		// 	cout<<sorted[i]<<" ";
+		// }
+		// cout<<endl;
 		std::vector<Edge> madeTillNow;
 		std::vector<Edge> hiddenEdges;
 		std::vector<bool> doneFaces;
@@ -274,12 +341,12 @@ Input File Format:
 					}
 				}
 			}
-			cout<<"Round "<<i<<endl;
-			for (int rajas = 0; rajas < madeTillNow.size(); ++rajas)
-			{
-				cout<<madeTillNow[rajas].src<<","<<madeTillNow[rajas].dest<<" ";
-			}
-			cout<<endl;
+			// cout<<"Round "<<i<<endl;
+			// for (int rajas = 0; rajas < madeTillNow.size(); ++rajas)
+			// {
+			// 	cout<<madeTillNow[rajas].src<<","<<madeTillNow[rajas].dest<<" ";
+			// }
+			// cout<<endl;
 			for (int j = 0; j < faces.size(); ++j)
 			{
 				if (!doneFaces[j]){
@@ -300,7 +367,7 @@ Input File Format:
 						}
 					}
 					if (completed){
-						cout<<"Round "<<i<<" face number "<<j<<endl;
+						// cout<<"Round "<<i<<" face number "<<j<<endl;
 						doneFaces[j] = true;
 						for (int k = 0; k < madeTillNow.size(); ++k)
 						{
@@ -309,13 +376,13 @@ Input File Format:
 								if (!vertOnFace(madeTillNow[k].dest, faces[j])){
 									if (!vertOutsideFace(vert[madeTillNow[k].dest].one, vert[madeTillNow[k].dest].two, faces[j], vert)){
 										hiddenEdges.push_back(madeTillNow[k]);
-										cout<<"h1 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
+										// cout<<"h1 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
 									}
 								}
 								else {
 									if (!findEdge(madeTillNow[k], faces[j])){
 										hiddenEdges.push_back(madeTillNow[k]);
-										cout<<"h2 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
+										// cout<<"h2 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
 									}
 
 								}
@@ -325,13 +392,13 @@ Input File Format:
 								if (vertOnFace(madeTillNow[k].dest, faces[j])){
 									if (!vertOutsideFace(vert[madeTillNow[k].src].one, vert[madeTillNow[k].src].two, faces[j], vert)){
 										hiddenEdges.push_back(madeTillNow[k]);
-										cout<<"h3 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
+										// cout<<"h3 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
 									}
 								}
 								else {
 									if ((!vertOutsideFace(vert[madeTillNow[k].src].one, vert[madeTillNow[k].src].two, faces[j], vert)) && (!vertOutsideFace(vert[madeTillNow[k].dest].one, vert[madeTillNow[k].dest].two, faces[j], vert))){
 										hiddenEdges.push_back(madeTillNow[k]);
-										cout<<"h4 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
+										// cout<<"h4 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
 									}
 								}
 							}
@@ -340,16 +407,16 @@ Input File Format:
 				}
 			}
 		}
-		cout<<"Hidden Printing"<<endl;
-		for (int i = 0; i < g.vertices.size(); ++i)
-		{
-			cout<<g.vertices[i].one<<","<<g.vertices[i].two<<","<<g.vertices[i].three<<endl;
-		}
-		cout<<"----"<<endl;
-		for (int i = 0; i < hiddenEdges.size(); ++i)
-		{
-			cout<<hiddenEdges[i].src<<","<<hiddenEdges[i].dest<<endl;
-		}
+		// cout<<"Hidden Printing"<<endl;
+		// for (int i = 0; i < g.vertices.size(); ++i)
+		// {
+		// 	cout<<g.vertices[i].one<<","<<g.vertices[i].two<<","<<g.vertices[i].three<<endl;
+		// }
+		// cout<<"----"<<endl;
+		// for (int i = 0; i < hiddenEdges.size(); ++i)
+		// {
+		// 	cout<<hiddenEdges[i].src<<","<<hiddenEdges[i].dest<<endl;
+		// }
 		hidden_xy = hiddenEdges;
 		return g1;
 	}

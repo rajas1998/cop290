@@ -16,7 +16,7 @@ two:
 show:
 	$(CXX) -o show_canvas show_canvas.cpp $(INCPATH) $(LFLAGS) $(LIBS) -std=c++11 
 gui:
-	$(CXX) -o first first.cpp $(INCPATH) $(LFLAGS) $(LIBS) -std=c++11
+	$(CXX) -o first first.cpp $(INCPATH) $(LFLAGS) $(LIBS) -std=c++11 -w
 .PHONY: clean doxygen
 
 clean: 
