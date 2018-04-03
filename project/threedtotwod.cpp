@@ -8,7 +8,7 @@
 #include "ngraph.hpp"
 #include "Triplet.h"
 #include "Edges.h"
-#include "Graph_Imp.h"
+#include "graph_imp.h"
 #include "ThreeDtoTwoD.h"
 
 using namespace NGraph;

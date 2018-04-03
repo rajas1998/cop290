@@ -27,7 +27,7 @@ Input File Format:
 #define THREEDTOTWOD_H_   // including 
 
 #include <vector>
-#include "Graph_Imp.h"
+#include "graph_imp.h"
 
 
 class Threedtotwod
