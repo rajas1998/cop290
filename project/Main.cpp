@@ -9,8 +9,14 @@
 #include "show_canvas.cpp"
 #include <math.h>
 #include <twodtothreed.cpp>
+
+
 #define PI 3.14159265
+
+
 using namespace std;
+
+
 string filename = "";
 string save_filename = "";
 GtkWidget *entry_for_x, *entry_for_y, *entry_for_z, *scale_x, *scale_y, *scale_z;
