@@ -4,34 +4,14 @@
 #include <fstream>
 #include <map>
 #include <iterator>
-// #include "ngraph.hpp"
+#include "ngraph.hpp"
 #include "gnuplot_i.hpp"
+
 using namespace NGraph;
 using namespace std;
 
-/*
 
-Input File Format:
-
-int v
-1.  int, int, int
-2.
-3.
-...
-...
-...
-v. int, int, int
-v+1. int, int, int
-v+2.
-...
-...
-2v.
-2v+1.
-...
-...
-3v. int, int, int
-*/
-void wait_for_key ()
+void Two_D_to_Three_D::wait_for_key ()
 {
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__TOS_WIN__)  // every keypress registered, also arrow keys
     cout << endl << "Press any key to continue..." << endl;
@@ -47,6 +27,8 @@ void wait_for_key ()
 #endif
     return;
 }
+
+
 // struct Triplet
 // {
 //   double  one, two, three;
@@ -65,7 +47,9 @@ void wait_for_key ()
 // 	}
 // };
 
-void toGraphAllThree(string f, Graph_Imp &x_g, Graph_Imp &y_g, Graph_Imp &z_g)
+
+
+void Two_D_to_Three_D::toGraphAllThree(string f, Graph_Imp &x_g, Graph_Imp &y_g, Graph_Imp &z_g)
 {
 	Graph A,B,C;
 	ifstream afile;
@@ -124,7 +108,10 @@ void toGraphAllThree(string f, Graph_Imp &x_g, Graph_Imp &y_g, Graph_Imp &z_g)
 	afile.close();
 	
 }
-std::vector<Triplet> make3DVertices(Graph_Imp &x, Graph_Imp &y, Graph_Imp &z){
+
+
+
+std::vector<Triplet> Two_D_to_Three_D::make3DVertices(Graph_Imp &x, Graph_Imp &y, Graph_Imp &z){
 	std::vector<Triplet> vert;
 	for (int i = 0; i < x.vertices.size(); ++i)
 	{
@@ -134,7 +121,11 @@ std::vector<Triplet> make3DVertices(Graph_Imp &x, Graph_Imp &y, Graph_Imp &z){
 	}
 	return vert;
 }
-std::vector<int> sameCoordinates(std::vector<Triplet> vert, Triplet toBeFound){
+
+
+
+
+std::vector<int> Two_D_to_Three_D::sameCoordinates(std::vector<Triplet> vert, Triplet toBeFound){
 	std::vector<int> ret;
 	for (int i = 0; i < vert.size(); ++i)
 	{
@@ -143,7 +134,11 @@ std::vector<int> sameCoordinates(std::vector<Triplet> vert, Triplet toBeFound){
 	}
 	return ret;
 }
-std::vector< pair<int,int> > makeEdges(Graph_Imp &x){
+
+
+
+
+std::vector< pair<int,int> > Two_D_to_Three_D::makeEdges(Graph_Imp &x){
 	std::vector< pair<int,int> > pEdges;
 	std::vector<int> u,v;
 	for (int i = 0; i < x.vertices.size(); ++i)
@@ -196,7 +191,11 @@ std::vector< pair<int,int> > makeEdges(Graph_Imp &x){
 	}
 	return pEdges;
 }
-std::vector<pair<int, int> > intersection(std::vector<pair<int, int> > a, std::vector<pair<int, int> > b, std::vector<pair<int, int> > c){
+
+
+
+
+std::vector<pair<int, int> > Two_D_to_Three_D::intersection(std::vector<pair<int, int> > a, std::vector<pair<int, int> > b, std::vector<pair<int, int> > c){
 	std::vector<pair<int, int> > ret;
 	bool inb, inc = false;
 	for (int i = 0; i < a.size(); ++i)
@@ -224,7 +223,11 @@ std::vector<pair<int, int> > intersection(std::vector<pair<int, int> > a, std::v
 	return ret;
 }
 
-Graph_Imp makethreed(Graph_Imp G_on_xy, Graph_Imp G_on_yz, Graph_Imp G_on_xz){
+
+
+
+
+Graph_Imp Two_D_to_Three_D::makethreed(Graph_Imp G_on_xy, Graph_Imp G_on_yz, Graph_Imp G_on_xz){
 	Graph_Imp G3D;
 	G3D.vertices = make3DVertices(G_on_xy, G_on_yz, G_on_xz);
 	std::vector< pair<int,int> > probEdges_xy = makeEdges(G_on_xy);
@@ -238,7 +241,10 @@ Graph_Imp makethreed(Graph_Imp G_on_xy, Graph_Imp G_on_yz, Graph_Imp G_on_xz){
 	}
 	return G3D;
 }
-void show_gnu_plot(Graph_Imp G3D){
+
+
+
+void Two_D_to_Three_D::show_gnu_plot(Graph_Imp G3D){
 	ofstream ofile;
 	ofile.open("out.txt");
 	for (int i = 0; i < G3D.vertices.size(); ++i)
@@ -259,6 +265,12 @@ void show_gnu_plot(Graph_Imp G3D){
 	g<<"splot 'out.txt' with lines notitle";
 	wait_for_key();
 }
+
+
+
+
+
+
 // int main(int argc, char const *argv[])
 // {
 // 	Graph_Imp G_on_xy,G_on_yz,G_on_xz;
