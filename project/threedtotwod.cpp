@@ -110,19 +110,20 @@ Input File Format:
 	Graph_Imp Threedtotwod::Projection_isometric(Graph_Imp g)
 	{
 		Graph_Imp g1;
-		vector<Triplet> vert;
+		Triplet d = {1,1,1};
+		vector<Triplet> vert = rotate_vector(g.vertices, d);
 
-		for (int i = 0; i < g.vertices.size(); ++i)
-		{	
-			mat coordinates;
-			coordinates<<g.vertices.at(i).one<<endr<<g.vertices.at(i).two<<endr<<g.vertices.at(i).three<<endr;
-			mat iso;
-			iso<<(sqrt(3)/2)<<(-(sqrt(3)/2))<<0<<endr<<(0.5)<<(0.5)<<(-1)<<endr;
-			mat final_coordinates = iso * coordinates;
-			Triplet temp = {final_coordinates(0,0),final_coordinates(1,0),0};
-			vert.push_back(temp);    
-		}
-		g1.vertices=vert;
+		// for (int i = 0; i < g.vertices.size(); ++i)
+		// {	
+		// 	mat coordinates;
+		// 	coordinates<<g.vertices.at(i).one<<endr<<g.vertices.at(i).two<<endr<<g.vertices.at(i).three<<endr;
+		// 	mat iso;
+		// 	iso<<(sqrt(3)/2)<<(-(sqrt(3)/2))<<0<<endr<<(0.5)<<(0.5)<<(-1)<<endr;
+		// 	mat final_coordinates = iso * coordinates;
+		// 	Triplet temp = {final_coordinates(0,0),final_coordinates(1,0),0};
+		// 	vert.push_back(temp);    
+		// }
+		g1.vertices = vert;
 		g1.edges=g.edges;
 		// std::vector<int> sorted;
 		// for (int i = 0; i < vert.size(); ++i)
@@ -285,10 +286,10 @@ Input File Format:
 		int countInt = 0;
 		for (int p = 0; p < face.size(); ++p)
 		{
-			double x1 = vert[face[p].src].two;
-			double y1 = vert[face[p].src].three;
-			double x2 = vert[face[p].dest].two;
-			double y2 = vert[face[p].dest].three;
+			double x1 = vert[face[p].src].three;
+			double y1 = vert[face[p].src].two;
+			double x2 = vert[face[p].dest].three;
+			double y2 = vert[face[p].dest].two;
 			if ((xp==x1 && yp==y1) || (xp==x2 && yp==y2)){
 				// cout<<"coincide "<<x1<<","<<y1<<endl;
 				return false;
@@ -309,10 +310,10 @@ Input File Format:
 		int countInt = 0;
 		for (int p = 0; p < face.size(); ++p)
 		{
-			double x1 = vert[face[p].src].three;
-			double y1 = vert[face[p].src].one;
-			double x2 = vert[face[p].dest].three;
-			double y2 = vert[face[p].dest].one;
+			double x1 = vert[face[p].src].one;
+			double y1 = vert[face[p].src].three;
+			double x2 = vert[face[p].dest].one;
+			double y2 = vert[face[p].dest].three;
 			if ((xp==x1 && yp==y1) || (xp==x2 && yp==y2)){
 				// cout<<"coincide "<<x1<<","<<y1<<endl;
 				return false;
