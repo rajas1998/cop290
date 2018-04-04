@@ -42,12 +42,18 @@ public:
 	Graph_Imp projected_isometric;
 	std::vector<std::vector<Edge>> faces;
 	std::vector<Edge> hidden_xy;
+	std::vector<Edge> hidden_yz;
+	std::vector<Edge> hidden_zx;
 	std::vector<Edge> hidden_isometric;
 	Graph_Imp toGraph(std::string f);
 	Graph_Imp Projection_isometric(Graph_Imp g);
 	bool vertOnFace(int vert, std::vector<Edge> face);
 	bool vertOutsideFace(double xp, double yp, std::vector<Edge> face, std::vector<Triplet> vert);
+	bool vertOutsideFace_yz(double xp, double yp, std::vector<Edge> face, std::vector<Triplet> vert);
+	bool vertOutsideFace_zx(double xp, double yp, std::vector<Edge> face, std::vector<Triplet> vert);
 	bool vertBehindFace(double zp, std::vector<Edge> face, std::vector<Triplet> vert);
+	bool vertBehindFace_yz(double zp, std::vector<Edge> face, std::vector<Triplet> vert);
+	bool vertBehindFace_zx(double zp, std::vector<Edge> face, std::vector<Triplet> vert);
 	bool findEdge(Edge a, std::vector<Edge> hidden);
 	Graph_Imp Projectionxy(Graph_Imp g);
 	Graph_Imp Projectionyz(Graph_Imp g);

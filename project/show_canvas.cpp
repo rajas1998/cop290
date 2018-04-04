@@ -170,9 +170,9 @@ int show_qt_projections(Threedtotwod &T, Triplet topdir)
    //    prev_y = y;
    // }
    drawGraph(G_xy_scaled, p, T.hidden_xy, true);
-   drawGraph(G_yz_scaled, p, T.hidden_xy, false);
-   drawGraph(G_zx_scaled, p, T.hidden_xy, false);
-   drawGraph(G_iso_scaled, p, T.hidden_isometric, false);
+   drawGraph(G_yz_scaled, p, T.hidden_yz, true);
+   drawGraph(G_zx_scaled, p, T.hidden_zx, true);
+   drawGraph(G_iso_scaled, p, T.hidden_isometric, true);
 
    p.setPen(QPen(Qt::black, 0.5, Qt::DotLine, Qt::RoundCap));
    for (int i = 0; i < G_xy_scaled.vertices.size(); ++i)
