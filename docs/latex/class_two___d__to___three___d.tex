@@ -1,0 +1,155 @@
+\hypertarget{class_two___d__to___three___d}{}\section{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D Class Reference}
+\label{class_two___d__to___three___d}\index{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}}
+
+
+Defines a class needed to generate the 3D object from the 3 2D projections.  
+
+
+
+
+{\ttfamily \#include $<$Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+\+D.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_two___d__to___three___d_af7791b37bdecba91105c78288a316a03}\label{class_two___d__to___three___d_af7791b37bdecba91105c78288a316a03}} 
+\mbox{\hyperlink{class_two___d__to___three___d_af7791b37bdecba91105c78288a316a03}{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}} ()
+\begin{DoxyCompactList}\small\item\em Defines a contructor for the class \mbox{\hyperlink{class_two___d__to___three___d}{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_two___d__to___three___d_a9638402aac7b52a7726de911b074ea50}{wait\+\_\+for\+\_\+key}} ()
+\begin{DoxyCompactList}\small\item\em Waits for user input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_two___d__to___three___d_ac24543905f60e508c904e0bfaf80beb3}{to\+Graph\+All\+Three}} (char $\ast$f, \mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \&x\+\_\+g, \mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \&y\+\_\+g, \mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \&z\+\_\+g)
+\begin{DoxyCompactList}\small\item\em Makes the 3 graphs which have been input by the user. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_triplet}{Triplet}} $>$ \mbox{\hyperlink{class_two___d__to___three___d_ac156d9425d380452759aa31be1d67de9}{make3\+D\+Vertices}} (\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \&x, \mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \&y, \mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \&z)
+\begin{DoxyCompactList}\small\item\em Makes 3D vertices. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{class_two___d__to___three___d_addf6a41c6a1f93e172362ef42e5a3ca3}{same\+Coordinates}} (std\+::vector$<$ \mbox{\hyperlink{struct_triplet}{Triplet}} $>$ vert, \mbox{\hyperlink{struct_triplet}{Triplet}} to\+Be\+Found)
+\begin{DoxyCompactList}\small\item\em Checks if 2 vertices have a common coordinate. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \mbox{\hyperlink{class_two___d__to___three___d_a57df84f034c7e2f0d34449a39e2aa602}{make\+Edges}} (\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \&x)
+\begin{DoxyCompactList}\small\item\em Makes the edges of the final 3D graph. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_two___d__to___three___d_a073d9f4b39d7d72614a2983d9b1ef8f5}\label{class_two___d__to___three___d_a073d9f4b39d7d72614a2983d9b1ef8f5}} 
+std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \mbox{\hyperlink{class_two___d__to___three___d_a073d9f4b39d7d72614a2983d9b1ef8f5}{intersection}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ a, std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ b, std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ c)
+\begin{DoxyCompactList}\small\item\em Takes three vectors as an input and returns their intersection/. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \mbox{\hyperlink{class_two___d__to___three___d_adfa674d5d9cbf192efda76d5b7489bf8}{makethreed}} (\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} G\+\_\+on\+\_\+xy, \mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} G\+\_\+on\+\_\+yz, \mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} G\+\_\+on\+\_\+xz)
+\begin{DoxyCompactList}\small\item\em The final 3D graph is made using this function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_two___d__to___three___d_a6e66e6c3bc964eeff83d126e10d807f1}{show\+\_\+gnu\+\_\+plot}} (\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} G3D)
+\begin{DoxyCompactList}\small\item\em Function to show the 3D graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines a class needed to generate the 3D object from the 3 2D projections. 
+
+Contains the necessary data members and functions required to generate the 3D object from the 3 2D projections 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_two___d__to___three___d_ac156d9425d380452759aa31be1d67de9}\label{class_two___d__to___three___d_ac156d9425d380452759aa31be1d67de9}} 
+\index{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}!make3\+D\+Vertices@{make3\+D\+Vertices}}
+\index{make3\+D\+Vertices@{make3\+D\+Vertices}!Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}}
+\subsubsection{\texorpdfstring{make3\+D\+Vertices()}{make3DVertices()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{struct_triplet}{Triplet}}$>$ Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+\+D\+::make3\+D\+Vertices (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \&}]{x,  }\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \&}]{y,  }\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \&}]{z }\end{DoxyParamCaption})}
+
+
+
+Makes 3D vertices. 
+
+Takes the 3 2D vertex inputs and converts them to 3D vertices 
+\begin{DoxyParams}{Parameters}
+{\em x} & The first graph \\
+\hline
+{\em y} & The second graph \\
+\hline
+{\em z} & The thord graph \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_two___d__to___three___d_a57df84f034c7e2f0d34449a39e2aa602}\label{class_two___d__to___three___d_a57df84f034c7e2f0d34449a39e2aa602}} 
+\index{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}!make\+Edges@{make\+Edges}}
+\index{make\+Edges@{make\+Edges}!Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}}
+\subsubsection{\texorpdfstring{make\+Edges()}{makeEdges()}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::pair$<$int,int$>$ $>$ Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+\+D\+::make\+Edges (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Makes the edges of the final 3D graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The graph to maje edges for \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_two___d__to___three___d_adfa674d5d9cbf192efda76d5b7489bf8}\label{class_two___d__to___three___d_adfa674d5d9cbf192efda76d5b7489bf8}} 
+\index{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}!makethreed@{makethreed}}
+\index{makethreed@{makethreed}!Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}}
+\subsubsection{\texorpdfstring{makethreed()}{makethreed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+\+D\+::makethreed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}}}]{G\+\_\+on\+\_\+xy,  }\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}}}]{G\+\_\+on\+\_\+yz,  }\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}}}]{G\+\_\+on\+\_\+xz }\end{DoxyParamCaption})}
+
+
+
+The final 3D graph is made using this function. 
+
+Takes the 3 input graphs and converts it into a single 3D graph. \mbox{\Hypertarget{class_two___d__to___three___d_addf6a41c6a1f93e172362ef42e5a3ca3}\label{class_two___d__to___three___d_addf6a41c6a1f93e172362ef42e5a3ca3}} 
+\index{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}!same\+Coordinates@{same\+Coordinates}}
+\index{same\+Coordinates@{same\+Coordinates}!Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}}
+\subsubsection{\texorpdfstring{same\+Coordinates()}{sameCoordinates()}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+\+D\+::same\+Coordinates (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_triplet}{Triplet}} $>$}]{vert,  }\item[{\mbox{\hyperlink{struct_triplet}{Triplet}}}]{to\+Be\+Found }\end{DoxyParamCaption})}
+
+
+
+Checks if 2 vertices have a common coordinate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vert} & The vector of vertices \\
+\hline
+{\em to\+Be\+Found} & The triplet to be found \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_two___d__to___three___d_a6e66e6c3bc964eeff83d126e10d807f1}\label{class_two___d__to___three___d_a6e66e6c3bc964eeff83d126e10d807f1}} 
+\index{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}!show\+\_\+gnu\+\_\+plot@{show\+\_\+gnu\+\_\+plot}}
+\index{show\+\_\+gnu\+\_\+plot@{show\+\_\+gnu\+\_\+plot}!Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}}
+\subsubsection{\texorpdfstring{show\+\_\+gnu\+\_\+plot()}{show\_gnu\_plot()}}
+{\footnotesize\ttfamily void Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+\+D\+::show\+\_\+gnu\+\_\+plot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}}}]{G3D }\end{DoxyParamCaption})}
+
+
+
+Function to show the 3D graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em G3D} & The 3d graph to be shown as a wireframe output. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_two___d__to___three___d_ac24543905f60e508c904e0bfaf80beb3}\label{class_two___d__to___three___d_ac24543905f60e508c904e0bfaf80beb3}} 
+\index{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}!to\+Graph\+All\+Three@{to\+Graph\+All\+Three}}
+\index{to\+Graph\+All\+Three@{to\+Graph\+All\+Three}!Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}}
+\subsubsection{\texorpdfstring{to\+Graph\+All\+Three()}{toGraphAllThree()}}
+{\footnotesize\ttfamily void Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+\+D\+::to\+Graph\+All\+Three (\begin{DoxyParamCaption}\item[{char $\ast$}]{f,  }\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \&}]{x\+\_\+g,  }\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \&}]{y\+\_\+g,  }\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \&}]{z\+\_\+g }\end{DoxyParamCaption})}
+
+
+
+Makes the 3 graphs which have been input by the user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Takes the file as an input \\
+\hline
+{\em x\+\_\+g} & Makes the xy graph \\
+\hline
+{\em y\+\_\+g} & Makes the yz graph \\
+\hline
+{\em z\+\_\+g} & Makes the xz graph \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_two___d__to___three___d_a9638402aac7b52a7726de911b074ea50}\label{class_two___d__to___three___d_a9638402aac7b52a7726de911b074ea50}} 
+\index{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}!wait\+\_\+for\+\_\+key@{wait\+\_\+for\+\_\+key}}
+\index{wait\+\_\+for\+\_\+key@{wait\+\_\+for\+\_\+key}!Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D@{Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+D}}
+\subsubsection{\texorpdfstring{wait\+\_\+for\+\_\+key()}{wait\_for\_key()}}
+{\footnotesize\ttfamily void Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+\+D\+::wait\+\_\+for\+\_\+key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Waits for user input. 
+
+Gtk Window tends to close on lack of user input ~\newline
+ It prevents the G\+UI window from closing and helps in waiting for the user\textquotesingle{}s response 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Two\+\_\+\+D\+\_\+to\+\_\+\+Three\+\_\+\+D.\+h\end{DoxyCompactItemize}
