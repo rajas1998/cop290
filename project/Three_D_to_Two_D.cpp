@@ -17,10 +17,6 @@ using namespace arma;
 using namespace std;
 
 
-// Triplet frontdir;
-// Triplet topdir;
-// Triplet cuttingplane;
-
  	Graph_Imp Three_D_to_Two_D::toGraph(char* f)
 	{
 		Graph A;
@@ -89,110 +85,135 @@ using namespace std;
 	Graph_Imp Three_D_to_Two_D::Projection_isometric(Graph_Imp g)
 	{
 		Graph_Imp g1;
-		vector<Triplet> vert;
+		Triplet d = {1,1,1};
+		vector<Triplet> vert = rotate_vector(g.vertices, d);
 
-		for (int i = 0; i < g.vertices.size(); ++i)
-		{	
-			mat coordinates;
-			coordinates<<g.vertices.at(i).one<<endr<<g.vertices.at(i).two<<endr<<g.vertices.at(i).three<<endr;
-			mat iso;
-			iso<<(sqrt(3)/2)<<(-(sqrt(3)/2))<<0<<endr<<(0.5)<<(0.5)<<(-1)<<endr;
-			mat final_coordinates = iso * coordinates;
-			Triplet temp = {final_coordinates(0,0),final_coordinates(1,0),0};
-			vert.push_back(temp);    
-		}
-		g1.vertices=vert;
+		// for (int i = 0; i < g.vertices.size(); ++i)
+		// {	
+		// 	mat coordinates;
+		// 	coordinates<<g.vertices.at(i).one<<endr<<g.vertices.at(i).two<<endr<<g.vertices.at(i).three<<endr;
+		// 	mat iso;
+		// 	iso<<(sqrt(3)/2)<<(-(sqrt(3)/2))<<0<<endr<<(0.5)<<(0.5)<<(-1)<<endr;
+		// 	mat final_coordinates = iso * coordinates;
+		// 	Triplet temp = {final_coordinates(0,0),final_coordinates(1,0),0};
+		// 	vert.push_back(temp);    
+		// }
+		g1.vertices = vert;
 		g1.edges=g.edges;
-		std::vector<int> sorted;
+		// std::vector<int> sorted;
+		// for (int i = 0; i < vert.size(); ++i)
+		// {
+		// 	sorted.push_back(i);
+		// }
+		// for (int i = 0; i < g.vertices.size(); ++i)
+		// {
+		// 	for (int j = 0; j < g.vertices.size()-1-i; ++j)
+		// 	{
+		// 		if (g.vertices[sorted[j]].three > g.vertices[sorted[j+1]].three)
+		// 		{
+		// 			int temp = sorted[j];
+		// 			sorted[j] = sorted[j+1];
+		// 			sorted[j+1] = temp;
+		// 		}
+		// 	}
+		// }
+		// std::vector<Edge> madeTillNow;
+		// std::vector<Edge> hiddenEdges;
+		// std::vector<bool> doneFaces;
+		// for (int i = 0; i < faces.size(); ++i)
+		// {
+		// 	doneFaces.push_back(false);
+		// }
+		// for (int i = 0; i < sorted.size(); ++i)
+		// {
+		// 	Graph::vertex_set S = g.edges.out_neighbors(sorted[i]);
+		// 	for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
+		// 	{
+		// 		for (int ptr = 0; ptr < i; ++ptr)
+		// 		{
+		// 			if (*p == sorted[ptr]){	
+		// 				Edge temp = {sorted[i],*p};
+		// 				madeTillNow.push_back(temp);
+		// 			}
+		// 		}
+		// 	}
+		// 	for (int j = 0; j < faces.size(); ++j)
+		// 	{
+		// 		if (!doneFaces[j]){
+		// 			bool completed = true;
+		// 			for (int k = 0; k < faces[j].size(); ++k)
+		// 			{
+		// 				bool foundEdge = false;
+		// 				for (int p = 0; p < madeTillNow.size(); ++p)
+		// 				{
+		// 					if ((faces[j][k].src==madeTillNow[p].src && faces[j][k].dest==madeTillNow[p].dest) || (faces[j][k].src==madeTillNow[p].dest && faces[j][k].dest==madeTillNow[p].src)){
+		// 						foundEdge = true;
+		// 						break;
+		// 					}
+		// 				}
+		// 				if (!foundEdge){
+		// 					completed = false;
+		// 					break;
+		// 				}
+		// 			}
+		// 			if (completed){
+		// 				doneFaces[j] = true;
+		// 				for (int k = 0; k < madeTillNow.size(); ++k)
+		// 				{
+		// 					if (vertOnFace(madeTillNow[k].src, faces[j]))
+		// 					{
+		// 						if (!vertOnFace(madeTillNow[k].dest, faces[j])){
+		// 							if (!vertOutsideFace(vert[madeTillNow[k].dest].one, vert[madeTillNow[k].dest].two, faces[j], vert)){
+		// 								hiddenEdges.push_back(madeTillNow[k]);
+		// 							}
+		// 						}
+		// 						else {
+		// 							if (!findEdge(madeTillNow[k], faces[j])){
+		// 								hiddenEdges.push_back(madeTillNow[k]);
+		// 							}
+
+		// 						}
+		// 					}
+		// 					else 
+		// 					{
+		// 						if (vertOnFace(madeTillNow[k].dest, faces[j])){
+		// 							if (!vertOutsideFace(vert[madeTillNow[k].src].one, vert[madeTillNow[k].src].two, faces[j], vert)){
+		// 								hiddenEdges.push_back(madeTillNow[k]);
+		// 							}
+		// 						}
+		// 						else {
+		// 							if ((!vertOutsideFace(vert[madeTillNow[k].src].one, vert[madeTillNow[k].src].two, faces[j], vert)) && (!vertOutsideFace(vert[madeTillNow[k].dest].one, vert[madeTillNow[k].dest].two, faces[j], vert))){
+		// 								hiddenEdges.push_back(madeTillNow[k]);
+		// 							}
+		// 						}
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// }
+		std::vector<int> hidden;
+		std::vector<Edge> hiddenEdges;
 		for (int i = 0; i < vert.size(); ++i)
 		{
-			sorted.push_back(i);
-		}
-		for (int i = 0; i < g.vertices.size(); ++i)
-		{
-			for (int j = 0; j < g.vertices.size()-1-i; ++j)
-			{
-				if (g.vertices[sorted[j]].three > g.vertices[sorted[j+1]].three)
-				{
-					int temp = sorted[j];
-					sorted[j] = sorted[j+1];
-					sorted[j+1] = temp;
-				}
-			}
-		}
-		std::vector<Edge> madeTillNow;
-		std::vector<Edge> hiddenEdges;
-		std::vector<bool> doneFaces;
-		for (int i = 0; i < faces.size(); ++i)
-		{
-			doneFaces.push_back(false);
-		}
-		for (int i = 0; i < sorted.size(); ++i)
-		{
-			Graph::vertex_set S = g.edges.out_neighbors(sorted[i]);
-			for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
-			{
-				for (int ptr = 0; ptr < i; ++ptr)
-				{
-					if (*p == sorted[ptr]){	
-						Edge temp = {sorted[i],*p};
-						madeTillNow.push_back(temp);
-					}
-				}
-			}
 			for (int j = 0; j < faces.size(); ++j)
 			{
-				if (!doneFaces[j]){
-					bool completed = true;
-					for (int k = 0; k < faces[j].size(); ++k)
+				if (!vertOnFace(i,faces[j])){
+					if (!vertOutsideFace(vert[i].one, vert[i].two, faces[j], vert) && vertBehindFace(g.vertices[i].three, faces[j], g.vertices))
 					{
-						bool foundEdge = false;
-						for (int p = 0; p < madeTillNow.size(); ++p)
-						{
-							if ((faces[j][k].src==madeTillNow[p].src && faces[j][k].dest==madeTillNow[p].dest) || (faces[j][k].src==madeTillNow[p].dest && faces[j][k].dest==madeTillNow[p].src)){
-								foundEdge = true;
-								break;
-							}
-						}
-						if (!foundEdge){
-							completed = false;
-							break;
-						}
-					}
-					if (completed){
-						doneFaces[j] = true;
-						for (int k = 0; k < madeTillNow.size(); ++k)
-						{
-							if (vertOnFace(madeTillNow[k].src, faces[j]))
-							{
-								if (!vertOnFace(madeTillNow[k].dest, faces[j])){
-									if (!vertOutsideFace(vert[madeTillNow[k].dest].one, vert[madeTillNow[k].dest].two, faces[j], vert)){
-										hiddenEdges.push_back(madeTillNow[k]);
-									}
-								}
-								else {
-									if (!findEdge(madeTillNow[k], faces[j])){
-										hiddenEdges.push_back(madeTillNow[k]);
-									}
-
-								}
-							}
-							else 
-							{
-								if (vertOnFace(madeTillNow[k].dest, faces[j])){
-									if (!vertOutsideFace(vert[madeTillNow[k].src].one, vert[madeTillNow[k].src].two, faces[j], vert)){
-										hiddenEdges.push_back(madeTillNow[k]);
-									}
-								}
-								else {
-									if ((!vertOutsideFace(vert[madeTillNow[k].src].one, vert[madeTillNow[k].src].two, faces[j], vert)) && (!vertOutsideFace(vert[madeTillNow[k].dest].one, vert[madeTillNow[k].dest].two, faces[j], vert))){
-										hiddenEdges.push_back(madeTillNow[k]);
-									}
-								}
-							}
-						}
+						hidden.push_back(i);
+						break;
 					}
 				}
+			}
+		}
+		for (int i = 0; i < hidden.size(); ++i)
+		{
+			Graph::vertex_set S = g.edges.out_neighbors(hidden[i]);
+			for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
+			{
+				Edge temp = {hidden[i],*p};
+				hiddenEdges.push_back(temp);
 			}
 		}
 		hidden_isometric = hiddenEdges;
@@ -225,7 +246,7 @@ using namespace std;
 				return false;
 			}
 			double x = x1 + ((yp - y1) * (x2 - x1))/(y2 - y1);
-			if (x > xp && ((yp>y1 && yp<y2) || (yp<y1 && yp>y2)) ){
+			if (x >= xp && ((yp>y1 && yp<y2) || (yp<y1 && yp>y2)) ){
 				countInt++;
 			}
 		}
@@ -235,7 +256,54 @@ using namespace std;
 		}
 		else return true;
 	}
-
+	bool Three_D_to_Two_D::vertOutsideFace_yz(double xp, double yp, std::vector<Edge> face, std::vector<Triplet> vert)
+	{
+		int countInt = 0;
+		for (int p = 0; p < face.size(); ++p)
+		{
+			double x1 = vert[face[p].src].three;
+			double y1 = vert[face[p].src].two;
+			double x2 = vert[face[p].dest].three;
+			double y2 = vert[face[p].dest].two;
+			if ((xp==x1 && yp==y1) || (xp==x2 && yp==y2)){
+				// cout<<"coincide "<<x1<<","<<y1<<endl;
+				return false;
+			}
+			double x = x1 + ((yp - y1) * (x2 - x1))/(y2 - y1);
+			if (x >= xp && ((yp>y1 && yp<y2) || (yp<y1 && yp>y2)) ){
+				countInt++;
+			}
+		}
+		// cout<<"Num of inter "<<countInt<<endl;
+		if (countInt%2 == 1){
+			return false;
+		}
+		else return true;
+	}
+	bool Three_D_to_Two_D::vertOutsideFace_zx(double xp, double yp, std::vector<Edge> face, std::vector<Triplet> vert)
+	{
+		int countInt = 0;
+		for (int p = 0; p < face.size(); ++p)
+		{
+			double x1 = vert[face[p].src].one;
+			double y1 = vert[face[p].src].three;
+			double x2 = vert[face[p].dest].one;
+			double y2 = vert[face[p].dest].three;
+			if ((xp==x1 && yp==y1) || (xp==x2 && yp==y2)){
+				// cout<<"coincide "<<x1<<","<<y1<<endl;
+				return false;
+			}
+			double x = x1 + ((yp - y1) * (x2 - x1))/(y2 - y1);
+			if (x >= xp && ((yp>y1 && yp<y2) || (yp<y1 && yp>y2)) ){
+				countInt++;
+			}
+		}
+		// cout<<"Num of inter "<<countInt<<endl;
+		if (countInt%2 == 1){
+			return false;
+		}
+		else return true;
+	}
 	bool Three_D_to_Two_D::findEdge(Edge a, std::vector<Edge> hidden)
 	{
 	   for (int i = 0; i < hidden.size(); ++i)
@@ -246,7 +314,36 @@ using namespace std;
 	   }
 	   return false;
 	}
-
+	bool Three_D_to_Two_D::vertBehindFace(double zp, std::vector<Edge> face, std::vector<Triplet> vert)
+	{
+		for (int i = 0; i < face.size(); ++i)
+		{
+			if (zp > vert[face[i].src].three || zp > vert[face[i].dest].three){
+				return false;
+			}
+		}
+		return true;
+	}
+	bool Three_D_to_Two_D::vertBehindFace_yz(double zp, std::vector<Edge> face, std::vector<Triplet> vert)
+	{
+		for (int i = 0; i < face.size(); ++i)
+		{
+			if (zp > vert[face[i].src].one || zp > vert[face[i].dest].one){
+				return false;
+			}
+		}
+		return true;
+	}
+	bool Three_D_to_Two_D::vertBehindFace_zx(double zp, std::vector<Edge> face, std::vector<Triplet> vert)
+	{
+		for (int i = 0; i < face.size(); ++i)
+		{
+			if (zp > vert[face[i].src].two || zp > vert[face[i].dest].two){
+				return false;
+			}
+		}
+		return true;
+	}
 	Graph_Imp Three_D_to_Two_D::Projectionxy(Graph_Imp g)
 	{
 		Graph_Imp g1;
@@ -259,113 +356,137 @@ using namespace std;
 		}
 		g1.vertices = vert;
 		g1.edges = g.edges;
-		std::vector<int> sorted;
-		for (int i = 0; i < vert.size(); ++i)
-		{
-			sorted.push_back(i);
-		}
-		for (int i = 0; i < g.vertices.size(); ++i)
-		{
-			for (int j = 0; j < g.vertices.size()-1-i; ++j)
-			{
-				if (g.vertices[sorted[j]].three > g.vertices[sorted[j+1]].three)
-				{
-					int temp = sorted[j];
-					sorted[j] = sorted[j+1];
-					sorted[j+1] = temp;
-				}
-			}
-		}
-		// cout<<"Sorted vexrtex set"<<endl;
+		// std::vector<int> sorted;
+		// for (int i = 0; i < vert.size(); ++i)
+		// {
+		// 	sorted.push_back(i);
+		// }
+		// for (int i = 0; i < g.vertices.size(); ++i)
+		// {
+		// 	for (int j = 0; j < g.vertices.size()-1-i; ++j)
+		// 	{
+		// 		if (g.vertices[sorted[j]].three > g.vertices[sorted[j+1]].three)
+		// 		{
+		// 			int temp = sorted[j];
+		// 			sorted[j] = sorted[j+1];
+		// 			sorted[j+1] = temp;
+		// 		}
+		// 	}
+		// }
+		// // cout<<"Sorted vexrtex set"<<endl;
+		// // for (int i = 0; i < sorted.size(); ++i)
+		// // {
+		// // 	cout<<sorted[i]<<" ";
+		// // }
+		// // cout<<endl;
+		// std::vector<Edge> madeTillNow;
+		// std::vector<Edge> hiddenEdges;
+		// std::vector<bool> doneFaces;
+		// for (int i = 0; i < faces.size(); ++i)
+		// {
+		// 	doneFaces.push_back(false);
+		// }
 		// for (int i = 0; i < sorted.size(); ++i)
 		// {
-		// 	cout<<sorted[i]<<" ";
+			// Graph::vertex_set S = g.edges.out_neighbors(sorted[i]);
+			// for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
+			// {
+			// 	for (int ptr = 0; ptr < i; ++ptr)
+			// 	{
+			// 		if (*p == sorted[ptr]){	
+			// 			Edge temp = {sorted[i],*p};
+			// 			madeTillNow.push_back(temp);
+			// 		}
+			// 	}
+			// }
+		// 	// cout<<"Round "<<i<<endl;
+		// 	// for (int rajas = 0; rajas < madeTillNow.size(); ++rajas)
+		// 	// {
+		// 	// 	cout<<madeTillNow[rajas].src<<","<<madeTillNow[rajas].dest<<" ";
+		// 	// }
+		// 	// cout<<endl;
+		// 	for (int j = 0; j < faces.size(); ++j)
+		// 	{
+		// 		if (!doneFaces[j]){
+		// 			bool completed = true;
+		// 			for (int k = 0; k < faces[j].size(); ++k)
+		// 			{
+		// 				bool foundEdge = false;
+		// 				for (int p = 0; p < madeTillNow.size(); ++p)
+		// 				{
+		// 					if ((faces[j][k].src==madeTillNow[p].src && faces[j][k].dest==madeTillNow[p].dest) || (faces[j][k].src==madeTillNow[p].dest && faces[j][k].dest==madeTillNow[p].src)){
+		// 						foundEdge = true;
+		// 						break;
+		// 					}
+		// 				}
+		// 				if (!foundEdge){
+		// 					completed = false;
+		// 					break;
+		// 				}
+		// 			}
+		// 			if (completed){
+		// 				// cout<<"Round "<<i<<" face number "<<j<<endl;
+		// 				doneFaces[j] = true;
+		// 				for (int k = 0; k < madeTillNow.size(); ++k)
+		// 				{
+		// 					if (vertOnFace(madeTillNow[k].src, faces[j]))
+		// 					{
+		// 						if (!vertOnFace(madeTillNow[k].dest, faces[j])){
+		// 							if (!vertOutsideFace(vert[madeTillNow[k].dest].one, vert[madeTillNow[k].dest].two, faces[j], vert)){
+		// 								hiddenEdges.push_back(madeTillNow[k]);
+		// 								// cout<<"h1 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
+		// 							}
+		// 						}
+		// 						else {
+		// 							if (!findEdge(madeTillNow[k], faces[j])){
+		// 								hiddenEdges.push_back(madeTillNow[k]);
+		// 								// cout<<"h2 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
+		// 							}
+
+		// 						}
+		// 					}
+		// 					else 
+		// 					{
+		// 						if (vertOnFace(madeTillNow[k].dest, faces[j])){
+		// 							if (!vertOutsideFace(vert[madeTillNow[k].src].one, vert[madeTillNow[k].src].two, faces[j], vert)){
+		// 								hiddenEdges.push_back(madeTillNow[k]);
+		// 								// cout<<"h3 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
+		// 							}
+		// 						}
+		// 						else {
+		// 							if ((!vertOutsideFace(vert[madeTillNow[k].src].one, vert[madeTillNow[k].src].two, faces[j], vert)) && (!vertOutsideFace(vert[madeTillNow[k].dest].one, vert[madeTillNow[k].dest].two, faces[j], vert))){
+		// 								hiddenEdges.push_back(madeTillNow[k]);
+		// 								// cout<<"h4 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
+		// 							}
+		// 						}
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+		// 	}
 		// }
-		// cout<<endl;
-		std::vector<Edge> madeTillNow;
+		std::vector<int> hidden;
 		std::vector<Edge> hiddenEdges;
-		std::vector<bool> doneFaces;
-		for (int i = 0; i < faces.size(); ++i)
+		for (int i = 0; i < vert.size(); ++i)
 		{
-			doneFaces.push_back(false);
-		}
-		for (int i = 0; i < sorted.size(); ++i)
-		{
-			Graph::vertex_set S = g.edges.out_neighbors(sorted[i]);
-			for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
+			for (int j = 0; j < faces.size(); ++j)
 			{
-				for (int ptr = 0; ptr < i; ++ptr)
-				{
-					if (*p == sorted[ptr]){	
-						Edge temp = {sorted[i],*p};
-						madeTillNow.push_back(temp);
+				if (!vertOnFace(i,faces[j])){
+					if (!vertOutsideFace(vert[i].one, vert[i].two, faces[j], vert) && vertBehindFace(g.vertices[i].three, faces[j], g.vertices))
+					{
+						hidden.push_back(i);
+						break;
 					}
 				}
 			}
-			// cout<<"Round "<<i<<endl;
-			// for (int rajas = 0; rajas < madeTillNow.size(); ++rajas)
-			// {
-			// 	cout<<madeTillNow[rajas].src<<","<<madeTillNow[rajas].dest<<" ";
-			// }
-			// cout<<endl;
-			for (int j = 0; j < faces.size(); ++j)
+		}
+		for (int i = 0; i < hidden.size(); ++i)
+		{
+			Graph::vertex_set S = g.edges.out_neighbors(hidden[i]);
+			for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
 			{
-				if (!doneFaces[j]){
-					bool completed = true;
-					for (int k = 0; k < faces[j].size(); ++k)
-					{
-						bool foundEdge = false;
-						for (int p = 0; p < madeTillNow.size(); ++p)
-						{
-							if ((faces[j][k].src==madeTillNow[p].src && faces[j][k].dest==madeTillNow[p].dest) || (faces[j][k].src==madeTillNow[p].dest && faces[j][k].dest==madeTillNow[p].src)){
-								foundEdge = true;
-								break;
-							}
-						}
-						if (!foundEdge){
-							completed = false;
-							break;
-						}
-					}
-					if (completed){
-						// cout<<"Round "<<i<<" face number "<<j<<endl;
-						doneFaces[j] = true;
-						for (int k = 0; k < madeTillNow.size(); ++k)
-						{
-							if (vertOnFace(madeTillNow[k].src, faces[j]))
-							{
-								if (!vertOnFace(madeTillNow[k].dest, faces[j])){
-									if (!vertOutsideFace(vert[madeTillNow[k].dest].one, vert[madeTillNow[k].dest].two, faces[j], vert)){
-										hiddenEdges.push_back(madeTillNow[k]);
-										// cout<<"h1 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
-									}
-								}
-								else {
-									if (!findEdge(madeTillNow[k], faces[j])){
-										hiddenEdges.push_back(madeTillNow[k]);
-										// cout<<"h2 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
-									}
-
-								}
-							}
-							else 
-							{
-								if (vertOnFace(madeTillNow[k].dest, faces[j])){
-									if (!vertOutsideFace(vert[madeTillNow[k].src].one, vert[madeTillNow[k].src].two, faces[j], vert)){
-										hiddenEdges.push_back(madeTillNow[k]);
-										// cout<<"h3 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
-									}
-								}
-								else {
-									if ((!vertOutsideFace(vert[madeTillNow[k].src].one, vert[madeTillNow[k].src].two, faces[j], vert)) && (!vertOutsideFace(vert[madeTillNow[k].dest].one, vert[madeTillNow[k].dest].two, faces[j], vert))){
-										hiddenEdges.push_back(madeTillNow[k]);
-										// cout<<"h4 "<<madeTillNow[k].src<<","<<madeTillNow[k].dest<<endl;
-									}
-								}
-							}
-						}
-					}
-				}
+				Edge temp = {hidden[i],*p};
+				hiddenEdges.push_back(temp);
 			}
 		}
 		// cout<<"Hidden Printing"<<endl;
@@ -394,6 +515,32 @@ using namespace std;
 		}
 		g1.vertices = vert;
 		g1.edges = g.edges;
+
+		std::vector<int> hidden;
+		std::vector<Edge> hiddenEdges;
+		for (int i = 0; i < vert.size(); ++i)
+		{
+			for (int j = 0; j < faces.size(); ++j)
+			{
+				if (!vertOnFace(i,faces[j])){
+					if (!vertOutsideFace_yz(vert[i].two, vert[i].three, faces[j], vert) && vertBehindFace_yz(g.vertices[i].one, faces[j], g.vertices))
+					{
+						hidden.push_back(i);
+						break;
+					}
+				}
+			}
+		}
+		for (int i = 0; i < hidden.size(); ++i)
+		{
+			Graph::vertex_set S = g.edges.out_neighbors(hidden[i]);
+			for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
+			{
+				Edge temp = {hidden[i],*p};
+				hiddenEdges.push_back(temp);
+			}
+		}
+		hidden_yz = hiddenEdges;
 		return g1;
 	}
 
@@ -409,6 +556,32 @@ using namespace std;
 		}
 		g1.vertices = vert;
 		g1.edges = g.edges;
+
+		std::vector<int> hidden;
+		std::vector<Edge> hiddenEdges;
+		for (int i = 0; i < vert.size(); ++i)
+		{
+			for (int j = 0; j < faces.size(); ++j)
+			{
+				if (!vertOnFace(i,faces[j])){
+					if (!vertOutsideFace_zx(vert[i].three, vert[i].one, faces[j], vert) && vertBehindFace_zx(g.vertices[i].two, faces[j], g.vertices))
+					{
+						hidden.push_back(i);
+						break;
+					}
+				}
+			}
+		}
+		for (int i = 0; i < hidden.size(); ++i)
+		{
+			Graph::vertex_set S = g.edges.out_neighbors(hidden[i]);
+			for (Graph::vertex_set::const_iterator p = S.begin(); p != S.end(); ++p)
+			{
+				Edge temp = {hidden[i],*p};
+				hiddenEdges.push_back(temp);
+			}
+		}
+		hidden_zx = hiddenEdges;
 		return g1;
 	}
 
