@@ -28,11 +28,15 @@ Input File Format:
 
 #include <vector>
 #include "Graph_Imp.h"
-
+#include "Edges.h"
+#include "Triplet.h"
+#include <fstream>
 
 class Three_D_to_Two_D
 {
+
 public:
+	
 	Three_D_to_Two_D(){}
 	Graph_Imp G;
 	Graph_Imp projected_xy;
@@ -40,10 +44,10 @@ public:
 	Graph_Imp projected_zx;
 	Graph_Imp rotatedG; 
 	Graph_Imp projected_isometric;
-	std::vector<std::vector<Edge>> faces;
+	std::vector<std::vector<Edge> > faces;
 	std::vector<Edge> hidden_xy;
 	std::vector<Edge> hidden_isometric;
-	Graph_Imp toGraph(std::string f);
+	Graph_Imp toGraph(char* f);
 	Graph_Imp Projection_isometric(Graph_Imp g);
 	bool vertOnFace(int vert, std::vector<Edge> face);
 	bool vertOutsideFace(double xp, double yp, std::vector<Edge> face, std::vector<Triplet> vert);

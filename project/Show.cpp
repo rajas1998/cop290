@@ -3,7 +3,10 @@
 #include <QtGui>
 #include <Three_D_to_Two_D.h>
 #include <string>
+#include "Show.h"
+#include "ngraph.hpp"
 
+using namespace NGraph;
 using namespace Qt;
 
 
@@ -124,9 +127,9 @@ void Show::drawGraph(Graph_Imp g, QPainter &p, std::vector<Edge> hidden, bool hi
 
 
 
-int Show::show_qt_projections(Threedtotwod &T, Triplet topdir)
+int Show::show_qt_projections(Three_D_to_Two_D &T, Triplet topdir)
 {
-   // Threedtotwod T;
+   // Three_D_to_Two_D T;
    Graph_Imp G_xy_scaled, G_yz_scaled, G_zx_scaled, G_iso_scaled;
    // T.G = T.toGraph(file);
    T.rotatedG.vertices = T.rotate_vector(T.G.vertices, topdir);

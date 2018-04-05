@@ -5,16 +5,20 @@
 #include <fstream>
 #include <stdlib.h>
 #include <armadillo>
-#include "threedtotwod.cpp"
-#include "show_canvas.cpp"
+#include "Two_D_to_Three_D.h"
+#include "Show.h"
 #include <math.h>
-#include <twodtothreed.cpp>
+#include "Edges.h"
+#include "Triplet.h"
+#include "Graph_Imp.h"
+#include "Three_D_to_Two_D.h"
 
 
 #define PI 3.14159265
 
 
 using namespace std;
+using namespace arma;
 
 
 string filename = "";
@@ -63,8 +67,10 @@ static void button_clicked(GtkWidget *widget, gpointer data){
         double zdir = atof(gtk_entry_get_text(GTK_ENTRY(entry_for_z)));
         Triplet dir = {xdir, ydir, zdir};
         if (filename.compare("")!=0){
-                Threedtotwod T;
-                T.G = T.toGraph(filename);
+                Three_D_to_Two_D T;
+                char tab2[1024];
+                strcpy(tab2, filename.c_str());
+                T.G = T.toGraph(tab2);
                 float x_angle = gtk_range_get_value(GTK_RANGE(scale_x));
                 float y_angle = gtk_range_get_value(GTK_RANGE(scale_y));
                 float z_angle = gtk_range_get_value(GTK_RANGE(scale_z));
@@ -89,7 +95,8 @@ static void button_clicked(GtkWidget *widget, gpointer data){
                         rotated_vertices.push_back(temp);
                 }
                 T.G.vertices = rotated_vertices;
-                show_qt_projections(T, dir);
+                Show S;
+                S.show_qt_projections(T, dir);
                 if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(check_box_save_2d))){
                     if (save_filename.compare("")!=0)
                     {
@@ -132,7 +139,9 @@ static void make3d_clicked(GtkWidget *widget, gpointer data){
         {
         		Two_D_to_Three_D T;
                 Graph_Imp G_on_xy,G_on_yz,G_on_xz;
-                T.toGraphAllThree(filename,G_on_xy,G_on_yz,G_on_xz);
+                char tab2[1024];
+                strcpy(tab2, filename.c_str());
+                T.toGraphAllThree(tab2,G_on_xy,G_on_yz,G_on_xz);
                 Graph_Imp G3D = T.makethreed(G_on_xy, G_on_yz, G_on_xz);
                 T.show_gnu_plot(G3D); 
                 if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(check_box_save_3d))){

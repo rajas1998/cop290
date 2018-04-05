@@ -6,6 +6,7 @@
 #include <iterator>
 #include "ngraph.hpp"
 #include "gnuplot_i.hpp"
+#include "Two_D_to_Three_D.h"
 
 using namespace NGraph;
 using namespace std;
@@ -49,7 +50,7 @@ void Two_D_to_Three_D::wait_for_key ()
 
 
 
-void Two_D_to_Three_D::toGraphAllThree(string f, Graph_Imp &x_g, Graph_Imp &y_g, Graph_Imp &z_g)
+void Two_D_to_Three_D::toGraphAllThree(char* f, Graph_Imp &x_g, Graph_Imp &y_g, Graph_Imp &z_g)
 {
 	Graph A,B,C;
 	ifstream afile;

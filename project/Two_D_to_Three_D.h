@@ -38,11 +38,12 @@ Input File Format:
 
 
 #ifndef TWO_D_TO_THREE_D_H_   // if Two_D_to_Three_D.h hasn't been included yet
-#define TWO_D_TO_THREE_D_H_   // including 
+#define TWO_D_TO_THREE_D_H_   // including
 
 #include <vector>
-#include "Graph_Imp.h"
 #include "Triplet.h"
+#include "Graph_Imp.h"
+#include "gnuplot_i.hpp"
 
 
 class Two_D_to_Three_D
@@ -53,11 +54,11 @@ public:
 	Two_D_to_Three_D(){}
 
 	void wait_for_key ();
-	void toGraphAllThree(std::string f, Graph_Imp &x_g, Graph_Imp &y_g, Graph_Imp &z_g);
+	void toGraphAllThree(char* f, Graph_Imp &x_g, Graph_Imp &y_g, Graph_Imp &z_g);
 	std::vector<Triplet> make3DVertices(Graph_Imp &x, Graph_Imp &y, Graph_Imp &z);
 	std::vector<int> sameCoordinates(std::vector<Triplet> vert, Triplet toBeFound);
-	std::vector< pair<int,int> > makeEdges(Graph_Imp &x);
-	std::vector<pair<int, int> > intersection(std::vector<pair<int, int> > a, std::vector<pair<int, int> > b, std::vector<pair<int, int> > c);
+	std::vector<std::pair<int,int> > makeEdges(Graph_Imp &x);
+	std::vector<std::pair<int, int> > intersection(std::vector<std::pair<int, int> > a, std::vector<std::pair<int, int> > b, std::vector<std::pair<int, int> > c);
 	Graph_Imp makethreed(Graph_Imp G_on_xy, Graph_Imp G_on_yz, Graph_Imp G_on_xz);
 	void show_gnu_plot(Graph_Imp G3D);
 

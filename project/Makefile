@@ -10,13 +10,15 @@ OBJECTS       = main.o
 TARGET        = draw
 
 all:  threedtotwod.cpp input.txt twodtothreed.cpp
-	$(CXX) -o threedtotwod threedtotwod.cpp $(LFLAGS) $(LIBS) -std=c++11
+	$(CXX) -o Three_D_to_Two_D Three_D_to_Two_D.cpp $(LFLAGS) $(LIBS) -std=c++11
 two:
-	$(CXX) -o twodtothreed twodtothreed.cpp $(LFLAGS) $(LIBS) -std=c++11
+	$(CXX) -o Two_D_to_Three_D Two_D_to_Three_D.cpp $(LFLAGS) $(LIBS) -std=c++11
 show:
-	$(CXX) -o show_canvas show_canvas.cpp $(INCPATH) $(LFLAGS) $(LIBS) -std=c++11 
+	$(CXX) -o Show Show.cpp $(INCPATH) $(LFLAGS) $(LIBS) -std=c++11 
 gui:
-	$(CXX) -o first first.cpp $(INCPATH) $(LFLAGS) $(LIBS) -std=c++11 -w
+	$(CXX) -o Main Main.cpp $(INCPATH) $(LFLAGS) $(LIBS) -std=c++11 -w
+animesh:
+	g++ -c Show.cpp $(INCPATH) $(LIBS)
 .PHONY: clean doxygen
 
 clean: 

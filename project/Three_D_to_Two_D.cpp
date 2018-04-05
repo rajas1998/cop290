@@ -4,8 +4,9 @@
 #include <iostream>
 #include <fstream>
 #include <map>
+#include <string>
 #include <iterator>
-#include "../include/ngraph.hpp"
+#include "ngraph.hpp"
 #include "Triplet.h"
 #include "Edges.h"
 #include "Graph_Imp.h"
@@ -20,7 +21,7 @@ using namespace std;
 // Triplet topdir;
 // Triplet cuttingplane;
 
- 	Graph_Imp Three_D_to_Two_D::toGraph(string f)
+ 	Graph_Imp Three_D_to_Two_D::toGraph(char* f)
 	{
 		Graph A;
 		vector<Triplet> vert;

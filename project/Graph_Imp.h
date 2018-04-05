@@ -7,6 +7,7 @@
 #define GRAPH_IMP_H_   // including 
 
 #include <vector>
+#include "Triplet.h"
 #include "ngraph.hpp"
 
 class Graph_Imp
