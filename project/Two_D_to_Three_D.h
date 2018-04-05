@@ -66,53 +66,49 @@ class Two_D_to_Three_D
 	*/
 	void wait_for_key ();
 
-	//! Converts to 3D wireframe
+	//! Makes the 3 graphs which have been input by the user
 	/*!
-		Takes the 3 input graphs and combines them to form 3D wireframe model
-		\param f
-		\param x_g
-		\param y_g
-		\param z_g
+		\param f Takes the file as an input
+		\param x_g Makes the xy graph
+		\param y_g Makes the yz graph
+		\param z_g Makes the xz graph
 	*/
 	void toGraphAllThree(char* f, Graph_Imp &x_g, Graph_Imp &y_g, Graph_Imp &z_g);
 
 	//! Makes 3D vertices
 	/*!
 		Takes the 3 2D vertex inputs and converts them to 3D vertices
-		\param x
-		\param y
-		\param z
+		\param x The first graph
+		\param y The second graph
+		\param z The thord graph
 	*/
 	std::vector<Triplet> make3DVertices(Graph_Imp &x, Graph_Imp &y, Graph_Imp &z);
 
 	//! Checks if 2 vertices have a common coordinate
 	/*!
-		\param vert
-		\param toBeFound 
+		\param vert The vector of vertices
+		\param toBeFound The triplet to be found
 	*/
 	std::vector<int> sameCoordinates(std::vector<Triplet> vert, Triplet toBeFound);
 
-	//! Defines a class needed to generate the 3D object from the 3 projections
+	//! Makes the edges of the final 3D graph
 	/*!
-		Takes the 3 input graphs as a string and converts it into a single 3D graph.
+		\param x The graph to maje edges for
 	*/
 	std::vector<std::pair<int,int> > makeEdges(Graph_Imp &x);
 
-	//! Defines a class needed to generate the 3D object from the 3 projections
-	/*!
-		Takes the 3 input graphs as a string and converts it into a single 3D graph.
-	*/
+	//! Takes three vectors as an input and returns their intersection/
 	std::vector<std::pair<int, int> > intersection(std::vector<std::pair<int, int> > a, std::vector<std::pair<int, int> > b, std::vector<std::pair<int, int> > c);
 	
-	//! Defines a class needed to generate the 3D object from the 3 projections
+	//! The final 3D graph is made using this function.
 	/*!
-		Takes the 3 input graphs as a string and converts it into a single 3D graph.
+		Takes the 3 input graphs and converts it into a single 3D graph.
 	*/
 	Graph_Imp makethreed(Graph_Imp G_on_xy, Graph_Imp G_on_yz, Graph_Imp G_on_xz);
 
-	//! Defines a class needed to generate the 3D object from the 3 projections
+	//! Function to show the 3D graph.
 	/*!
-		Takes the 3 input graphs as a string and converts it into a single 3D graph.
+		\param G3D The 3d graph to be shown as a wireframe output.
 	*/
 	void show_gnu_plot(Graph_Imp G3D);
 
