@@ -1,0 +1,61 @@
+\hypertarget{namespace_n_graph}{}\section{N\+Graph Namespace Reference}
+\label{namespace_n_graph}\index{N\+Graph@{N\+Graph}}
+
+
+A mathematical graph object\+: a simple, directed, connected graph, where nodes are of arbitrary type (colores, cities, names, etc.) ~\newline
+ Operations for adding and removing edges and vertices, together with functions for finding neighbors, subgraphs, and other properties are included.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespace_n_graph_a397e01b6d7caaaf603e67c1a87f11048}\label{namespace_n_graph_a397e01b6d7caaaf603e67c1a87f11048}} 
+typedef \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}}$<$ unsigned int $>$ {\bfseries Graph}
+\item 
+\mbox{\Hypertarget{namespace_n_graph_a00343a4aa68bb7a338a89a778942701f}\label{namespace_n_graph_a00343a4aa68bb7a338a89a778942701f}} 
+typedef \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}}$<$ int $>$ {\bfseries i\+Graph}
+\item 
+\mbox{\Hypertarget{namespace_n_graph_a7b2d8922d00fae3af037b172b39fd524}\label{namespace_n_graph_a7b2d8922d00fae3af037b172b39fd524}} 
+typedef \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}}$<$ std\+::string $>$ {\bfseries s\+Graph}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespace_n_graph_a619633fcec087680ab8d90510eade326}\label{namespace_n_graph_a619633fcec087680ab8d90510eade326}} 
+{\footnotesize template$<$typename T $>$ }\\std\+::istream \& {\bfseries operator$>$$>$} (std\+::istream \&s, \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}}$<$ T $>$ \&G)
+\item 
+\mbox{\Hypertarget{namespace_n_graph_a8118891761ec5e37cfd25efa666c73d8}\label{namespace_n_graph_a8118891761ec5e37cfd25efa666c73d8}} 
+{\footnotesize template$<$typename T $>$ }\\std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&s, const \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}}$<$ T $>$ \&G)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A mathematical graph object\+: a simple, directed, connected graph, where nodes are of arbitrary type (colores, cities, names, etc.) ~\newline
+ Operations for adding and removing edges and vertices, together with functions for finding neighbors, subgraphs, and other properties are included. 
+
+Example\+:
+
+
+\begin{DoxyPre}
+    enum color \{blue, green, red, yellow, pink, black\};
+    tGraph<color> A;\end{DoxyPre}
+
+
+
+\begin{DoxyPre}    A.insert\_edge(blue, red);
+    A.insert\_edge(yellow, blue);
+    A.insert\_edge(blue, black);\end{DoxyPre}
+
+
+
+\begin{DoxyPre}    tGraph<color> B(A), S=A.subgraph(blue);\end{DoxyPre}
+
+
+
+\begin{DoxyPre}\end{DoxyPre}
+ 

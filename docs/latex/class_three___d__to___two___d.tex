@@ -1,0 +1,246 @@
+\hypertarget{class_three___d__to___two___d}{}\section{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D Class Reference}
+\label{class_three___d__to___two___d}\index{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}}
+
+
+Class for doing all operations on 3D to 2D.  
+
+
+
+
+{\ttfamily \#include $<$Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+\+D.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \mbox{\hyperlink{class_three___d__to___two___d_a21796ec5910d031e28c4eb3674528050}{to\+Graph}} (char $\ast$f)
+\begin{DoxyCompactList}\small\item\em This function takes as input the filename and returns a graph described by that input file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \mbox{\hyperlink{class_three___d__to___two___d_a4380f568564cfd30a96bb85bb55a8f55}{Projection\+\_\+isometric}} (\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} g)
+\begin{DoxyCompactList}\small\item\em Function for taking the isometric projection of the graph. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_three___d__to___two___d_a0293e823fbe2396bece78195566ca4c3}{vert\+On\+Face}} (int vert, std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ face)
+\begin{DoxyCompactList}\small\item\em Function which checks if a vertice is present on a face or not. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_a34f0676b7cb1e9cacccd514ce07759cb}\label{class_three___d__to___two___d_a34f0676b7cb1e9cacccd514ce07759cb}} 
+bool \mbox{\hyperlink{class_three___d__to___two___d_a34f0676b7cb1e9cacccd514ce07759cb}{vert\+Outside\+Face}} (double xp, double yp, std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ face, std\+::vector$<$ \mbox{\hyperlink{struct_triplet}{Triplet}} $>$ vert)
+\begin{DoxyCompactList}\small\item\em Checks if a vertice is outside. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_a92c6de4cf2d59b884d8813aae1586e0a}\label{class_three___d__to___two___d_a92c6de4cf2d59b884d8813aae1586e0a}} 
+bool {\bfseries vert\+Outside\+Face\+\_\+yz} (double xp, double yp, std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ face, std\+::vector$<$ \mbox{\hyperlink{struct_triplet}{Triplet}} $>$ vert)
+\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_ac6a5e575ce173fdbebb19f3791a9413f}\label{class_three___d__to___two___d_ac6a5e575ce173fdbebb19f3791a9413f}} 
+bool {\bfseries vert\+Outside\+Face\+\_\+zx} (double xp, double yp, std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ face, std\+::vector$<$ \mbox{\hyperlink{struct_triplet}{Triplet}} $>$ vert)
+\item 
+bool \mbox{\hyperlink{class_three___d__to___two___d_aa791997d3cef025ca3859e28e7ad43b1}{vert\+Behind\+Face}} (double zp, std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ face, std\+::vector$<$ \mbox{\hyperlink{struct_triplet}{Triplet}} $>$ vert)
+\begin{DoxyCompactList}\small\item\em Checks if the vertice is behind a face. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_a10ce8d7a3a835b0188ebad2ed6555e11}\label{class_three___d__to___two___d_a10ce8d7a3a835b0188ebad2ed6555e11}} 
+bool {\bfseries vert\+Behind\+Face\+\_\+yz} (double zp, std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ face, std\+::vector$<$ \mbox{\hyperlink{struct_triplet}{Triplet}} $>$ vert)
+\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_aa69c0cb9bd4c4b6561edc261570597f0}\label{class_three___d__to___two___d_aa69c0cb9bd4c4b6561edc261570597f0}} 
+bool {\bfseries vert\+Behind\+Face\+\_\+zx} (double zp, std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ face, std\+::vector$<$ \mbox{\hyperlink{struct_triplet}{Triplet}} $>$ vert)
+\item 
+bool \mbox{\hyperlink{class_three___d__to___two___d_a925576c935cbabaafa00c1f1e30a600d}{find\+Edge}} (\mbox{\hyperlink{struct_edge}{Edge}} a, std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ hidden)
+\begin{DoxyCompactList}\small\item\em Finds an edge in a vector of edges. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \mbox{\hyperlink{class_three___d__to___two___d_a18c70e705fc6f95995c892b0f0b399dd}{Projectionxy}} (\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} g)
+\begin{DoxyCompactList}\small\item\em Function for taking the xy projection of the graph. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \mbox{\hyperlink{class_three___d__to___two___d_a88bc95eea0f7a0cb4c4a97b7aead1d6d}{Projectionyz}} (\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} g)
+\begin{DoxyCompactList}\small\item\em Function for taking the yz projection of the graph. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \mbox{\hyperlink{class_three___d__to___two___d_ac45147c0fe25318b89d14114b6956834}{Projectionzx}} (\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} g)
+\begin{DoxyCompactList}\small\item\em Function for taking the zx projection of the graph. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_triplet}{Triplet}} $>$ \mbox{\hyperlink{class_three___d__to___two___d_a59038023694a3c5e9c87a1483b712f48}{rotate\+\_\+vector}} (std\+::vector$<$ \mbox{\hyperlink{struct_triplet}{Triplet}} $>$ vertices, \mbox{\hyperlink{struct_triplet}{Triplet}} normal\+\_\+plane)
+\begin{DoxyCompactList}\small\item\em Function for rotating a vector of vertices/. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_a052601fc401081c404b4f915c0e7fd42}\label{class_three___d__to___two___d_a052601fc401081c404b4f915c0e7fd42}} 
+\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \mbox{\hyperlink{class_three___d__to___two___d_a052601fc401081c404b4f915c0e7fd42}{G}}
+\begin{DoxyCompactList}\small\item\em This is the object which has been input by the user. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_a4c2a10bbaa546ce8fb6ea1ecc2e51ea8}\label{class_three___d__to___two___d_a4c2a10bbaa546ce8fb6ea1ecc2e51ea8}} 
+\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \mbox{\hyperlink{class_three___d__to___two___d_a4c2a10bbaa546ce8fb6ea1ecc2e51ea8}{projected\+\_\+xy}}
+\begin{DoxyCompactList}\small\item\em This is the graph after projection on x-\/y plane. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_a9f4acfdc86df27c3e0772884cd71bcba}\label{class_three___d__to___two___d_a9f4acfdc86df27c3e0772884cd71bcba}} 
+\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \mbox{\hyperlink{class_three___d__to___two___d_a9f4acfdc86df27c3e0772884cd71bcba}{projected\+\_\+yz}}
+\begin{DoxyCompactList}\small\item\em This is the graph after projection on y-\/z plane. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_af1026f5bd3bf034cb40be96c6ec1889a}\label{class_three___d__to___two___d_af1026f5bd3bf034cb40be96c6ec1889a}} 
+\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \mbox{\hyperlink{class_three___d__to___two___d_af1026f5bd3bf034cb40be96c6ec1889a}{projected\+\_\+zx}}
+\begin{DoxyCompactList}\small\item\em This is the graph after projection on x-\/z plane. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_a89fe876ef08c6dc1a5afd31f64306d8b}\label{class_three___d__to___two___d_a89fe876ef08c6dc1a5afd31f64306d8b}} 
+\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \mbox{\hyperlink{class_three___d__to___two___d_a89fe876ef08c6dc1a5afd31f64306d8b}{rotatedG}}
+\begin{DoxyCompactList}\small\item\em This is the graph after rotation according to the direction ratios input by the user. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_a93664d1beddcbd0153401e363684f2ea}\label{class_three___d__to___two___d_a93664d1beddcbd0153401e363684f2ea}} 
+\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} \mbox{\hyperlink{class_three___d__to___two___d_a93664d1beddcbd0153401e363684f2ea}{projected\+\_\+isometric}}
+\begin{DoxyCompactList}\small\item\em This the graph after its isometric projection. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_a1cd5ced0bcecb01a9152a4c67ec0146a}\label{class_three___d__to___two___d_a1cd5ced0bcecb01a9152a4c67ec0146a}} 
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ $>$ \mbox{\hyperlink{class_three___d__to___two___d_a1cd5ced0bcecb01a9152a4c67ec0146a}{faces}}
+\begin{DoxyCompactList}\small\item\em A vector for storing all the faces of the 3D graph given by the user. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_a57484a2739cb7c3b1ae1cc08f6de4469}\label{class_three___d__to___two___d_a57484a2739cb7c3b1ae1cc08f6de4469}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ \mbox{\hyperlink{class_three___d__to___two___d_a57484a2739cb7c3b1ae1cc08f6de4469}{hidden\+\_\+xy}}
+\begin{DoxyCompactList}\small\item\em Vector for storing all the hidden edges in the xy plane. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_a4da1d5c5ee69d88ecdd3e77cb43ffa4e}\label{class_three___d__to___two___d_a4da1d5c5ee69d88ecdd3e77cb43ffa4e}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ \mbox{\hyperlink{class_three___d__to___two___d_a4da1d5c5ee69d88ecdd3e77cb43ffa4e}{hidden\+\_\+yz}}
+\begin{DoxyCompactList}\small\item\em Vector for storing all the hidden edges in the yz plane. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_a8b540d75837e856cdefd2158f84702ca}\label{class_three___d__to___two___d_a8b540d75837e856cdefd2158f84702ca}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ \mbox{\hyperlink{class_three___d__to___two___d_a8b540d75837e856cdefd2158f84702ca}{hidden\+\_\+zx}}
+\begin{DoxyCompactList}\small\item\em Vector for storing all the hidden edges in the xz plane. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_three___d__to___two___d_a6dc4746a67050c903632e2d044b90787}\label{class_three___d__to___two___d_a6dc4746a67050c903632e2d044b90787}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ \mbox{\hyperlink{class_three___d__to___two___d_a6dc4746a67050c903632e2d044b90787}{hidden\+\_\+isometric}}
+\begin{DoxyCompactList}\small\item\em Vector for storing the hidden edges after isometric projection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for doing all operations on 3D to 2D. 
+
+This class contains all the functions and intermediate objects needed to tranform the object. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_three___d__to___two___d_a925576c935cbabaafa00c1f1e30a600d}\label{class_three___d__to___two___d_a925576c935cbabaafa00c1f1e30a600d}} 
+\index{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}!find\+Edge@{find\+Edge}}
+\index{find\+Edge@{find\+Edge}!Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}}
+\subsubsection{\texorpdfstring{find\+Edge()}{findEdge()}}
+{\footnotesize\ttfamily bool Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+\+D\+::find\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_edge}{Edge}}}]{a,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$}]{hidden }\end{DoxyParamCaption})}
+
+
+
+Finds an edge in a vector of edges. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & The edge to be found \\
+\hline
+{\em hidden} & The vector to be checked \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_three___d__to___two___d_a4380f568564cfd30a96bb85bb55a8f55}\label{class_three___d__to___two___d_a4380f568564cfd30a96bb85bb55a8f55}} 
+\index{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}!Projection\+\_\+isometric@{Projection\+\_\+isometric}}
+\index{Projection\+\_\+isometric@{Projection\+\_\+isometric}!Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}}
+\subsubsection{\texorpdfstring{Projection\+\_\+isometric()}{Projection\_isometric()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+\+D\+::\+Projection\+\_\+isometric (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}}}]{g }\end{DoxyParamCaption})}
+
+
+
+Function for taking the isometric projection of the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & input graph which needs to be projected isometrically. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_three___d__to___two___d_a93664d1beddcbd0153401e363684f2ea}{projected\+\_\+isometric}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_three___d__to___two___d_a18c70e705fc6f95995c892b0f0b399dd}\label{class_three___d__to___two___d_a18c70e705fc6f95995c892b0f0b399dd}} 
+\index{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}!Projectionxy@{Projectionxy}}
+\index{Projectionxy@{Projectionxy}!Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}}
+\subsubsection{\texorpdfstring{Projectionxy()}{Projectionxy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+\+D\+::\+Projectionxy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}}}]{g }\end{DoxyParamCaption})}
+
+
+
+Function for taking the xy projection of the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & input graph which needs to be projected isometrically. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_three___d__to___two___d_a4c2a10bbaa546ce8fb6ea1ecc2e51ea8}{projected\+\_\+xy}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_three___d__to___two___d_a88bc95eea0f7a0cb4c4a97b7aead1d6d}\label{class_three___d__to___two___d_a88bc95eea0f7a0cb4c4a97b7aead1d6d}} 
+\index{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}!Projectionyz@{Projectionyz}}
+\index{Projectionyz@{Projectionyz}!Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}}
+\subsubsection{\texorpdfstring{Projectionyz()}{Projectionyz()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+\+D\+::\+Projectionyz (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}}}]{g }\end{DoxyParamCaption})}
+
+
+
+Function for taking the yz projection of the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & input graph which needs to be projected isometrically. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_three___d__to___two___d_a9f4acfdc86df27c3e0772884cd71bcba}{projected\+\_\+yz}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_three___d__to___two___d_ac45147c0fe25318b89d14114b6956834}\label{class_three___d__to___two___d_ac45147c0fe25318b89d14114b6956834}} 
+\index{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}!Projectionzx@{Projectionzx}}
+\index{Projectionzx@{Projectionzx}!Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}}
+\subsubsection{\texorpdfstring{Projectionzx()}{Projectionzx()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+\+D\+::\+Projectionzx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}}}]{g }\end{DoxyParamCaption})}
+
+
+
+Function for taking the zx projection of the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & input graph which needs to be projected isometrically. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_three___d__to___two___d_af1026f5bd3bf034cb40be96c6ec1889a}{projected\+\_\+zx}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_three___d__to___two___d_a59038023694a3c5e9c87a1483b712f48}\label{class_three___d__to___two___d_a59038023694a3c5e9c87a1483b712f48}} 
+\index{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}!rotate\+\_\+vector@{rotate\+\_\+vector}}
+\index{rotate\+\_\+vector@{rotate\+\_\+vector}!Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}}
+\subsubsection{\texorpdfstring{rotate\+\_\+vector()}{rotate\_vector()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{struct_triplet}{Triplet}}$>$ Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+\+D\+::rotate\+\_\+vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_triplet}{Triplet}} $>$}]{vertices,  }\item[{\mbox{\hyperlink{struct_triplet}{Triplet}}}]{normal\+\_\+plane }\end{DoxyParamCaption})}
+
+
+
+Function for rotating a vector of vertices/. 
+
+Defining the vertices. \mbox{\Hypertarget{class_three___d__to___two___d_a21796ec5910d031e28c4eb3674528050}\label{class_three___d__to___two___d_a21796ec5910d031e28c4eb3674528050}} 
+\index{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}!to\+Graph@{to\+Graph}}
+\index{to\+Graph@{to\+Graph}!Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}}
+\subsubsection{\texorpdfstring{to\+Graph()}{toGraph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_graph___imp}{Graph\+\_\+\+Imp}} Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+\+D\+::to\+Graph (\begin{DoxyParamCaption}\item[{char $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+This function takes as input the filename and returns a graph described by that input file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & This is the string filename of the file which contains the input graph specified by the user. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_three___d__to___two___d_aa791997d3cef025ca3859e28e7ad43b1}\label{class_three___d__to___two___d_aa791997d3cef025ca3859e28e7ad43b1}} 
+\index{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}!vert\+Behind\+Face@{vert\+Behind\+Face}}
+\index{vert\+Behind\+Face@{vert\+Behind\+Face}!Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}}
+\subsubsection{\texorpdfstring{vert\+Behind\+Face()}{vertBehindFace()}}
+{\footnotesize\ttfamily bool Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+\+D\+::vert\+Behind\+Face (\begin{DoxyParamCaption}\item[{double}]{zp,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$}]{face,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_triplet}{Triplet}} $>$}]{vert }\end{DoxyParamCaption})}
+
+
+
+Checks if the vertice is behind a face. 
+
+Compares the third coordinate to infer if the vertice is behind a face or not. 
+\begin{DoxyParams}{Parameters}
+{\em zp} & the thord coordinate \\
+\hline
+{\em face} & The face to be checked \\
+\hline
+{\em vert} & The orginal vertice vector to check the third coordinate. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_three___d__to___two___d_a0293e823fbe2396bece78195566ca4c3}\label{class_three___d__to___two___d_a0293e823fbe2396bece78195566ca4c3}} 
+\index{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}!vert\+On\+Face@{vert\+On\+Face}}
+\index{vert\+On\+Face@{vert\+On\+Face}!Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D@{Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+D}}
+\subsubsection{\texorpdfstring{vert\+On\+Face()}{vertOnFace()}}
+{\footnotesize\ttfamily bool Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+\+D\+::vert\+On\+Face (\begin{DoxyParamCaption}\item[{int}]{vert,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$}]{face }\end{DoxyParamCaption})}
+
+
+
+Function which checks if a vertice is present on a face or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vert} & Defines the vertice to be checked \\
+\hline
+{\em face} & Gives the face which has to be checked \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Three\+\_\+\+D\+\_\+to\+\_\+\+Two\+\_\+\+D.\+h\end{DoxyCompactItemize}

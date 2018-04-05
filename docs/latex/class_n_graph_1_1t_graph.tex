@@ -1,0 +1,463 @@
+\hypertarget{class_n_graph_1_1t_graph}{}\section{N\+Graph\+:\+:t\+Graph$<$ T $>$ Class Template Reference}
+\label{class_n_graph_1_1t_graph}\index{N\+Graph\+::t\+Graph$<$ T $>$@{N\+Graph\+::t\+Graph$<$ T $>$}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a4a14eff6bcee7d8c0528c13d5e99ad71}\label{class_n_graph_1_1t_graph_a4a14eff6bcee7d8c0528c13d5e99ad71}} 
+enum {\bfseries line\+\_\+type} \{ {\bfseries V\+E\+R\+T\+EX}, 
+{\bfseries E\+D\+GE}, 
+{\bfseries C\+O\+M\+M\+E\+NT}, 
+{\bfseries E\+M\+P\+TY}
+ \}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a63a04bf8bfc7cf968be524208f49fdee}\label{class_n_graph_1_1t_graph_a63a04bf8bfc7cf968be524208f49fdee}} 
+typedef T {\bfseries vertex}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_addb8e5aa5779f80e19e368eef9448e8c}\label{class_n_graph_1_1t_graph_addb8e5aa5779f80e19e368eef9448e8c}} 
+typedef T {\bfseries value\+\_\+type}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a6c85cd9c55a19c3c052f176fe719fdfc}\label{class_n_graph_1_1t_graph_a6c85cd9c55a19c3c052f176fe719fdfc}} 
+typedef std\+::pair$<$ vertex, vertex $>$ {\bfseries edge}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a9e0a5df1ac9a2e6df94431aeaf610b3e}\label{class_n_graph_1_1t_graph_a9e0a5df1ac9a2e6df94431aeaf610b3e}} 
+typedef std\+::set$<$ vertex $>$ {\bfseries vertex\+\_\+set}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a18a0c72c7ef57d877cab05bba5cf4d9b}\label{class_n_graph_1_1t_graph_a18a0c72c7ef57d877cab05bba5cf4d9b}} 
+typedef std\+::set$<$ edge $>$ {\bfseries edge\+\_\+set}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a9822c284aa101d90d3bd613c7e05eaa4}\label{class_n_graph_1_1t_graph_a9822c284aa101d90d3bd613c7e05eaa4}} 
+typedef std\+::pair$<$ vertex\+\_\+set, vertex\+\_\+set $>$ {\bfseries in\+\_\+out\+\_\+edge\+\_\+sets}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a0036686b7a2d33d0c2aeca3f6715495d}\label{class_n_graph_1_1t_graph_a0036686b7a2d33d0c2aeca3f6715495d}} 
+typedef std\+::map$<$ vertex, in\+\_\+out\+\_\+edge\+\_\+sets $>$ {\bfseries adj\+\_\+graph}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a1b710c759e101724f3544b374ebb0179}\label{class_n_graph_1_1t_graph_a1b710c759e101724f3544b374ebb0179}} 
+typedef edge\+\_\+set\+::iterator {\bfseries edge\+\_\+iterator}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a6e189d2dd98fbe980b830d898eea5247}\label{class_n_graph_1_1t_graph_a6e189d2dd98fbe980b830d898eea5247}} 
+typedef edge\+\_\+set\+::const\+\_\+iterator {\bfseries const\+\_\+edge\+\_\+iterator}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_ad5c343cc3c50b291b35fb48147db3250}\label{class_n_graph_1_1t_graph_ad5c343cc3c50b291b35fb48147db3250}} 
+typedef vertex\+\_\+set\+::iterator {\bfseries vertex\+\_\+iterator}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a5ed9ca8ad9676b3c7abd3880f735ce80}\label{class_n_graph_1_1t_graph_a5ed9ca8ad9676b3c7abd3880f735ce80}} 
+typedef vertex\+\_\+set\+::const\+\_\+iterator {\bfseries const\+\_\+vertex\+\_\+iterator}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_aeb3fd2cc092aa7ecb4b749ee4e78f9ab}\label{class_n_graph_1_1t_graph_aeb3fd2cc092aa7ecb4b749ee4e78f9ab}} 
+typedef vertex\+\_\+set\+::iterator {\bfseries vertex\+\_\+neighbor\+\_\+iterator}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_af8b0bc7076b28fb145b267b8faad195e}\label{class_n_graph_1_1t_graph_af8b0bc7076b28fb145b267b8faad195e}} 
+typedef vertex\+\_\+set\+::const\+\_\+iterator {\bfseries vertex\+\_\+neighbor\+\_\+const\+\_\+iterator}
+\item 
+typedef adj\+\_\+graph\+::iterator \mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a64864813622245ff9412c784232f2f99}\label{class_n_graph_1_1t_graph_a64864813622245ff9412c784232f2f99}} 
+typedef adj\+\_\+graph\+::const\+\_\+iterator {\bfseries const\+\_\+iterator}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_af9638aed082c5e33cf4064f158f66d59}\label{class_n_graph_1_1t_graph_af9638aed082c5e33cf4064f158f66d59}} 
+typedef \mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} {\bfseries node\+\_\+iterator}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a4a4c169ed8eecce822b2d18b21082ce7}\label{class_n_graph_1_1t_graph_a4a4c169ed8eecce822b2d18b21082ce7}} 
+typedef const\+\_\+iterator {\bfseries const\+\_\+node\+\_\+iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a6aff4cfa2819f372ce4c7030c9709b82}\label{class_n_graph_1_1t_graph_a6aff4cfa2819f372ce4c7030c9709b82}} 
+unsigned int {\bfseries num\+\_\+vertices} () const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a5bbc421c6e9181fbd42ca1255b6fa739}\label{class_n_graph_1_1t_graph_a5bbc421c6e9181fbd42ca1255b6fa739}} 
+unsigned int {\bfseries num\+\_\+nodes} () const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a25a5ca5600c3c4d4ae58f945981b5561}\label{class_n_graph_1_1t_graph_a25a5ca5600c3c4d4ae58f945981b5561}} 
+unsigned int {\bfseries num\+\_\+edges} () const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a1fa503849355f65f3d235b895a3f6086}\label{class_n_graph_1_1t_graph_a1fa503849355f65f3d235b895a3f6086}} 
+\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} {\bfseries begin} ()
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a957235ebde0cfda1bdfacdd0db212d73}\label{class_n_graph_1_1t_graph_a957235ebde0cfda1bdfacdd0db212d73}} 
+const\+\_\+iterator {\bfseries begin} () const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a78775c7c87001e8ceb5668cec6d40dfb}\label{class_n_graph_1_1t_graph_a78775c7c87001e8ceb5668cec6d40dfb}} 
+\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} {\bfseries end} ()
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_aca77137373df2e5313f434326ffc355a}\label{class_n_graph_1_1t_graph_aca77137373df2e5313f434326ffc355a}} 
+const\+\_\+iterator {\bfseries end} () const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_add822443b93ee9ef745ee3b8ab12065b}\label{class_n_graph_1_1t_graph_add822443b93ee9ef745ee3b8ab12065b}} 
+void {\bfseries clear} ()
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_af4aaf8e70f041bea0759caa9133f5fe6}\label{class_n_graph_1_1t_graph_af4aaf8e70f041bea0759caa9133f5fe6}} 
+vertex\+\_\+neighbor\+\_\+iterator {\bfseries out\+\_\+neighbors\+\_\+begin} (const vertex \&a)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a58a0b9135d7fdc9bd9bccb37f477ea12}\label{class_n_graph_1_1t_graph_a58a0b9135d7fdc9bd9bccb37f477ea12}} 
+vertex\+\_\+neighbor\+\_\+const\+\_\+iterator {\bfseries out\+\_\+neighbors\+\_\+begin} (const vertex \&a) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a85890eeb0085d0079824acc5a8c0240b}\label{class_n_graph_1_1t_graph_a85890eeb0085d0079824acc5a8c0240b}} 
+vertex\+\_\+neighbor\+\_\+iterator {\bfseries out\+\_\+neighbors\+\_\+end} (const vertex \&a)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a90ed49e6b1a6b555713370d8cc3a11c9}\label{class_n_graph_1_1t_graph_a90ed49e6b1a6b555713370d8cc3a11c9}} 
+vertex\+\_\+neighbor\+\_\+const\+\_\+iterator {\bfseries out\+\_\+neighbors\+\_\+end} (const vertex \&a) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a548e93259bcece749bed2d6375049be9}\label{class_n_graph_1_1t_graph_a548e93259bcece749bed2d6375049be9}} 
+{\bfseries t\+Graph} (std\+::istream \&s)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a70928f9e49923184ee26a228ebd23ff5}\label{class_n_graph_1_1t_graph_a70928f9e49923184ee26a228ebd23ff5}} 
+{\bfseries t\+Graph} (const \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} \&B)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a8267a8db43eae2dd34d1d50db57e821c}\label{class_n_graph_1_1t_graph_a8267a8db43eae2dd34d1d50db57e821c}} 
+{\bfseries t\+Graph} (const edge\+\_\+set \&E)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a512ce90c67d43855c0f6b131a90dfbce}\label{class_n_graph_1_1t_graph_a512ce90c67d43855c0f6b131a90dfbce}} 
+bool {\bfseries is\+\_\+undirected} () const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a0533e8f86aceaa221f64d835178fd966}\label{class_n_graph_1_1t_graph_a0533e8f86aceaa221f64d835178fd966}} 
+bool {\bfseries is\+\_\+directed} () const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a374bc267c08ca80f7bece5f2230848d0}\label{class_n_graph_1_1t_graph_a374bc267c08ca80f7bece5f2230848d0}} 
+void {\bfseries set\+\_\+undirected} ()
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a94305809ed5bd6531d73e74d5b63055f}\label{class_n_graph_1_1t_graph_a94305809ed5bd6531d73e74d5b63055f}} 
+\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} {\bfseries find} (const vertex \&a)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a15801328dc81c8eff05ce09dd4094b28}\label{class_n_graph_1_1t_graph_a15801328dc81c8eff05ce09dd4094b28}} 
+const\+\_\+iterator {\bfseries find} (const vertex \&a) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a58f5d07e8dfe45d237d093c5bc11ad53}\label{class_n_graph_1_1t_graph_a58f5d07e8dfe45d237d093c5bc11ad53}} 
+const vertex\+\_\+set \& {\bfseries in\+\_\+neighbors} (const vertex \&a) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a0ca32078d83236c669a6e0beb7d93759}\label{class_n_graph_1_1t_graph_a0ca32078d83236c669a6e0beb7d93759}} 
+vertex\+\_\+set \& {\bfseries in\+\_\+neighbors} (const vertex \&a)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_acffca17cd25301de3d6aa8a132c4431f}\label{class_n_graph_1_1t_graph_acffca17cd25301de3d6aa8a132c4431f}} 
+const vertex\+\_\+set \& {\bfseries out\+\_\+neighbors} (const vertex \&a) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_acb50f260b7b391b7c6a73a640bacc08d}\label{class_n_graph_1_1t_graph_acb50f260b7b391b7c6a73a640bacc08d}} 
+vertex\+\_\+set \& {\bfseries out\+\_\+neighbors} (const vertex \&a)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a1e6a83e13c11c16599567f6d50e658c2}\label{class_n_graph_1_1t_graph_a1e6a83e13c11c16599567f6d50e658c2}} 
+unsigned int {\bfseries in\+\_\+degree} (const vertex \&a) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_afa6b411ff31557d044b02f87bbe50999}\label{class_n_graph_1_1t_graph_afa6b411ff31557d044b02f87bbe50999}} 
+unsigned int {\bfseries out\+\_\+degree} (const vertex \&a) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a717a15800fec8ebefde8d2d853390a0b}\label{class_n_graph_1_1t_graph_a717a15800fec8ebefde8d2d853390a0b}} 
+unsigned int {\bfseries degree} (const vertex \&a) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a0352a3bfc0fc6d2ce59395d1f0064550}\label{class_n_graph_1_1t_graph_a0352a3bfc0fc6d2ce59395d1f0064550}} 
+bool {\bfseries isolated} (const vertex \&a) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_ae7e728e1249dc0fcb4e2ebec1e4ae6dd}\label{class_n_graph_1_1t_graph_ae7e728e1249dc0fcb4e2ebec1e4ae6dd}} 
+void {\bfseries insert\+\_\+vertex} (const vertex \&a)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a5fb33cf26902838865ac86fc51123a96}\label{class_n_graph_1_1t_graph_a5fb33cf26902838865ac86fc51123a96}} 
+void {\bfseries insert\+\_\+new\+\_\+vertex\+\_\+inout\+\_\+list} (const vertex \&a, const vertex\+\_\+set \&IN, const vertex\+\_\+set \&O\+UT)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a3227d649839908a87afbd80316cc493f}\label{class_n_graph_1_1t_graph_a3227d649839908a87afbd80316cc493f}} 
+void {\bfseries insert\+\_\+edge\+\_\+noloop} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} pa, \mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} pb)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a5ee540bb69a2bdd199b63af489439545}\label{class_n_graph_1_1t_graph_a5ee540bb69a2bdd199b63af489439545}} 
+void {\bfseries insert\+\_\+edge} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} pa, \mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} pb)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_ad8ef6d934af47685338257274e421bab}\label{class_n_graph_1_1t_graph_ad8ef6d934af47685338257274e421bab}} 
+void {\bfseries insert\+\_\+edge\+\_\+noloop} (const vertex \&a, const vertex \&b)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a7e62b364e0a03fb416facee8b51d99da}\label{class_n_graph_1_1t_graph_a7e62b364e0a03fb416facee8b51d99da}} 
+void {\bfseries insert\+\_\+edge} (const vertex \&a, const vertex \&b)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a6a0b8b06f321534275d982ae500a4df3}\label{class_n_graph_1_1t_graph_a6a0b8b06f321534275d982ae500a4df3}} 
+void {\bfseries insert\+\_\+undirected\+\_\+edge} (const vertex \&a, const vertex \&b)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a7aa85e0fe919a7c6fafac8051271421b}\label{class_n_graph_1_1t_graph_a7aa85e0fe919a7c6fafac8051271421b}} 
+void {\bfseries insert\+\_\+edge} (const edge \&E)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a90d80d85d509b09c932fde138fb0aae0}\label{class_n_graph_1_1t_graph_a90d80d85d509b09c932fde138fb0aae0}} 
+void {\bfseries insert\+\_\+undirected\+\_\+edge} (const edge \&E)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a5af6f7dbadd1f355987bca99d210ebdb}\label{class_n_graph_1_1t_graph_a5af6f7dbadd1f355987bca99d210ebdb}} 
+bool {\bfseries remove\+\_\+edge} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} pa, \mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} pb)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_ac1fff890e65f3f1654a79a8574b13378}\label{class_n_graph_1_1t_graph_ac1fff890e65f3f1654a79a8574b13378}} 
+void {\bfseries remove\+\_\+edge} (const vertex \&a, const vertex \&b)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_ac64968018b02ebd689cb9acb96409327}\label{class_n_graph_1_1t_graph_ac64968018b02ebd689cb9acb96409327}} 
+void {\bfseries remove\+\_\+edge} (const edge \&E)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_af18958f28aaa6be4aa3ba3e273e5dae3}\label{class_n_graph_1_1t_graph_af18958f28aaa6be4aa3ba3e273e5dae3}} 
+void {\bfseries remove\+\_\+undirected\+\_\+edge} (const vertex \&a, const vertex \&b)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_aa4d5dc7efdb07adb6de626f625701478}\label{class_n_graph_1_1t_graph_aa4d5dc7efdb07adb6de626f625701478}} 
+void {\bfseries remove\+\_\+undirected\+\_\+edge} (const edge \&e)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_ae3ddcc68cfd75c8a8c11a47fc1a449b9}\label{class_n_graph_1_1t_graph_ae3ddcc68cfd75c8a8c11a47fc1a449b9}} 
+void {\bfseries remove\+\_\+vertex} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} pa)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_adfdabb4a748158e58d1a19ed1ef4fdf1}\label{class_n_graph_1_1t_graph_adfdabb4a748158e58d1a19ed1ef4fdf1}} 
+void {\bfseries remove\+\_\+vertex\+\_\+set} (const vertex\+\_\+set \&V)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a33aa30bb79f01806408465f1250cac0d}\label{class_n_graph_1_1t_graph_a33aa30bb79f01806408465f1250cac0d}} 
+void {\bfseries remove\+\_\+vertex} (const vertex \&a)
+\item 
+bool \mbox{\hyperlink{class_n_graph_1_1t_graph_a260849918a2806a4a9aa1cfad0471e41}{includes\+\_\+vertex}} (const vertex \&a) const
+\item 
+bool \mbox{\hyperlink{class_n_graph_1_1t_graph_a463b923ee1e3604407837150f17f1a74}{includes\+\_\+edge}} (const vertex \&a, const vertex \&b) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a8d364cdfbd44f0804a91bdcda683b31b}\label{class_n_graph_1_1t_graph_a8d364cdfbd44f0804a91bdcda683b31b}} 
+bool {\bfseries includes\+\_\+edge} (const edge \&e) const
+\item 
+std\+::vector$<$ edge $>$ \mbox{\hyperlink{class_n_graph_1_1t_graph_a4f7e150eadbb8845e8f858255022a037}{edge\+\_\+list}} () const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_af5ad33beb237d62d6a36e1559f50bce1}\label{class_n_graph_1_1t_graph_af5ad33beb237d62d6a36e1559f50bce1}} 
+\mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} \& {\bfseries plus\+\_\+eq} (const \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} \&B)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_ac2ddbf2173c45a06dbccece30cacb98f}\label{class_n_graph_1_1t_graph_ac2ddbf2173c45a06dbccece30cacb98f}} 
+\mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} {\bfseries intersect} (const \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} \&B) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_ad899ac4d991eae39c7cd1d8a7b424ac0}\label{class_n_graph_1_1t_graph_ad899ac4d991eae39c7cd1d8a7b424ac0}} 
+\mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} {\bfseries operator$\ast$} (const \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} \&B) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a7b00a9cf016faa75da9dcc429fe503d3}\label{class_n_graph_1_1t_graph_a7b00a9cf016faa75da9dcc429fe503d3}} 
+\mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} {\bfseries minus} (const \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} \&B) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_ae09dcf65e16d50b26515716ec52fb71f}\label{class_n_graph_1_1t_graph_ae09dcf65e16d50b26515716ec52fb71f}} 
+\mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} {\bfseries operator-\/} (const \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} \&B) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_ab9d3103f422170bce7c7a2c952c56024}\label{class_n_graph_1_1t_graph_ab9d3103f422170bce7c7a2c952c56024}} 
+\mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} {\bfseries plus} (const \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} \&B) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_aceb173f4fd1cfb252a33d978c62ff49f}\label{class_n_graph_1_1t_graph_aceb173f4fd1cfb252a33d978c62ff49f}} 
+\mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} {\bfseries operator+} (const \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} \&B) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a329c3e80609a8bf3c2f6e00ab8298e3d}\label{class_n_graph_1_1t_graph_a329c3e80609a8bf3c2f6e00ab8298e3d}} 
+\mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} \& {\bfseries operator+=} (const \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} \&B)
+\item 
+\mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} \mbox{\hyperlink{class_n_graph_1_1t_graph_ab685e653704db79f06216d0d5977f153}{subgraph}} (const vertex\+\_\+set \&A) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_ae8f6d218e22f2271aab306e10c252201}\label{class_n_graph_1_1t_graph_ae8f6d218e22f2271aab306e10c252201}} 
+unsigned int {\bfseries subgraph\+\_\+size} (const vertex\+\_\+set \&A) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a99c4a072f1445173ca8f36b711f60954}\label{class_n_graph_1_1t_graph_a99c4a072f1445173ca8f36b711f60954}} 
+double {\bfseries subgraph\+\_\+sparsity} (const vertex\+\_\+set \&A) const
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_aa9a8cb7d229675823a308ab361b849e2}\label{class_n_graph_1_1t_graph_aa9a8cb7d229675823a308ab361b849e2}} 
+void {\bfseries print} () const
+\item 
+void \mbox{\hyperlink{class_n_graph_1_1t_graph_a1844ff9c48370c79147c84384f400c80}{absorb}} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} pa, \mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} pb)
+\item 
+\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} \mbox{\hyperlink{class_n_graph_1_1t_graph_aa3752935ebcd6e4688b52cd0f6d1211f}{smart\+\_\+absorb}} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} pa, \mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} pb)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a35015ce8e51b4301e69d542c21d26c46}\label{class_n_graph_1_1t_graph_a35015ce8e51b4301e69d542c21d26c46}} 
+vertex {\bfseries smart\+\_\+absorb} (vertex a, vertex b)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_ace64fe566c1df5b77770b4f3ff9ceca0}\label{class_n_graph_1_1t_graph_ace64fe566c1df5b77770b4f3ff9ceca0}} 
+void {\bfseries absorb} (vertex a, vertex b)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const vertex \& \mbox{\hyperlink{class_n_graph_1_1t_graph_a826e79cbe8d540de7f044c6ae841dd5f}{node}} (const\+\_\+iterator p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a2f6c033bad7dd6e4883de81510901aec}\label{class_n_graph_1_1t_graph_a2f6c033bad7dd6e4883de81510901aec}} 
+static const vertex \& {\bfseries node} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a4bc654a0d0ddba8df6048e4eac5a1729}\label{class_n_graph_1_1t_graph_a4bc654a0d0ddba8df6048e4eac5a1729}} 
+static const vertex \& {\bfseries node} (const\+\_\+vertex\+\_\+iterator p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a820f6a863d8d838cd4403b9156bc959a}\label{class_n_graph_1_1t_graph_a820f6a863d8d838cd4403b9156bc959a}} 
+static const vertex\+\_\+set \& {\bfseries in\+\_\+neighbors} (const\+\_\+iterator p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_aca61e35bcd5af8b66b3c87673771508d}\label{class_n_graph_1_1t_graph_aca61e35bcd5af8b66b3c87673771508d}} 
+static vertex\+\_\+set \& {\bfseries in\+\_\+neighbors} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a3152b5d0315b94d8cb1b24a70988d990}\label{class_n_graph_1_1t_graph_a3152b5d0315b94d8cb1b24a70988d990}} 
+static const\+\_\+vertex\+\_\+iterator {\bfseries in\+\_\+begin} (const\+\_\+iterator p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a89d7cf140e48b1d37b6534035872ab88}\label{class_n_graph_1_1t_graph_a89d7cf140e48b1d37b6534035872ab88}} 
+static const\+\_\+vertex\+\_\+iterator {\bfseries in\+\_\+end} (const\+\_\+iterator p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a1bd0815f5c00d624dbed8bddffab19ae}\label{class_n_graph_1_1t_graph_a1bd0815f5c00d624dbed8bddffab19ae}} 
+static const vertex\+\_\+set \& {\bfseries out\+\_\+neighbors} (const\+\_\+iterator p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a43c8b50d4a2a21c5e673510e76fa303e}\label{class_n_graph_1_1t_graph_a43c8b50d4a2a21c5e673510e76fa303e}} 
+static const\+\_\+vertex\+\_\+iterator {\bfseries out\+\_\+begin} (const\+\_\+iterator p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_af485a8c7b28e7aa81fbc7cf65316dc21}\label{class_n_graph_1_1t_graph_af485a8c7b28e7aa81fbc7cf65316dc21}} 
+static const\+\_\+vertex\+\_\+iterator {\bfseries out\+\_\+end} (const\+\_\+iterator p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_aab1fb0576d1eb5604779bf0f7ad6d60d}\label{class_n_graph_1_1t_graph_aab1fb0576d1eb5604779bf0f7ad6d60d}} 
+static vertex\+\_\+set \& {\bfseries out\+\_\+neighbors} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a8c782dadf12b75e66f8db04c60763cbe}\label{class_n_graph_1_1t_graph_a8c782dadf12b75e66f8db04c60763cbe}} 
+static vertex\+\_\+iterator {\bfseries out\+\_\+begin} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a1a850ec5708546dfca02d8a78d41a878}\label{class_n_graph_1_1t_graph_a1a850ec5708546dfca02d8a78d41a878}} 
+static unsigned int {\bfseries num\+\_\+edges} (const\+\_\+iterator p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a988ba97d4db2eaa9d9e0ef28658f0d8d}\label{class_n_graph_1_1t_graph_a988ba97d4db2eaa9d9e0ef28658f0d8d}} 
+static unsigned int {\bfseries num\+\_\+edges} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} p)
+\item 
+static unsigned int \mbox{\hyperlink{class_n_graph_1_1t_graph_acd67259b93d9ec2de6ca03bf19e027bd}{out\+\_\+degree}} (const\+\_\+iterator p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a855dcfd91171425d09a60593bd222a2b}\label{class_n_graph_1_1t_graph_a855dcfd91171425d09a60593bd222a2b}} 
+static unsigned int {\bfseries out\+\_\+degree} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} p)
+\item 
+static unsigned int \mbox{\hyperlink{class_n_graph_1_1t_graph_a5c269fb5cb63c82496bb9c59d6c289b1}{in\+\_\+degree}} (const\+\_\+iterator p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_addc7a2aa0c3aa9b2c21cf50b27ec0d63}\label{class_n_graph_1_1t_graph_addc7a2aa0c3aa9b2c21cf50b27ec0d63}} 
+static unsigned int {\bfseries in\+\_\+degree} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a22f2c477b95c7a7bbf4ad117f1905d7c}\label{class_n_graph_1_1t_graph_a22f2c477b95c7a7bbf4ad117f1905d7c}} 
+static unsigned int {\bfseries degree} (const\+\_\+iterator p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a4325f877a4ae56bdfcac3e47d21c5af4}\label{class_n_graph_1_1t_graph_a4325f877a4ae56bdfcac3e47d21c5af4}} 
+static unsigned int {\bfseries degree} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a5c55e2cba9992aa34e2d2d5d5de43059}\label{class_n_graph_1_1t_graph_a5c55e2cba9992aa34e2d2d5d5de43059}} 
+static bool {\bfseries isolated} (const\+\_\+iterator p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a2f28e0205a15e21585a4fcd4515fccff}\label{class_n_graph_1_1t_graph_a2f28e0205a15e21585a4fcd4515fccff}} 
+static bool {\bfseries isolated} (\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} p)
+\item 
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_ae5f3534e1f30716abf209cede47cff8c}\label{class_n_graph_1_1t_graph_ae5f3534e1f30716abf209cede47cff8c}} 
+static std\+::istream \& {\bfseries read\+\_\+line} (std\+::istream \&s, T \&v1, T \&v2, std\+::string \&line, line\+\_\+type \&t)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}\label{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}} 
+\index{N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}!iterator@{iterator}}
+\index{iterator@{iterator}!N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}}
+\subsubsection{\texorpdfstring{iterator}{iterator}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+typedef adj\+\_\+graph\+::iterator \mbox{\hyperlink{class_n_graph_1_1t_graph}{N\+Graph\+::t\+Graph}}$<$ T $>$\+::\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}}}
+
+\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{t\+Graph\+::iterator}} refers to pair$<$const vertex, in\+\_\+out\+\_\+edge\+\_\+sets$>$ .
+
+
+\begin{DoxyPre}
+      tGraph::const\_iterator p = G.begin();\end{DoxyPre}
+
+
+
+\begin{DoxyPre}      tGraph::vertex a = node(p);
+      tGraph::vertex\_set  \&in\_edges = in\_neighbors(p);
+      tGraph::vertex\_set  \&out\_edges = out\_neighbors(p);\end{DoxyPre}
+
+
+
+\begin{DoxyPre}\end{DoxyPre}
+ 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a1844ff9c48370c79147c84384f400c80}\label{class_n_graph_1_1t_graph_a1844ff9c48370c79147c84384f400c80}} 
+\index{N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}!absorb@{absorb}}
+\index{absorb@{absorb}!N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}}
+\subsubsection{\texorpdfstring{absorb()}{absorb()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+void \mbox{\hyperlink{class_n_graph_1_1t_graph}{N\+Graph\+::t\+Graph}}$<$ T $>$\+::absorb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}}}]{pa,  }\item[{\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}}}]{pb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+abosrb(a,b)\+: \textquotesingle{}a\textquotesingle{} absorbs \textquotesingle{}b\textquotesingle{}, b gets removed from graph \mbox{\Hypertarget{class_n_graph_1_1t_graph_a4f7e150eadbb8845e8f858255022a037}\label{class_n_graph_1_1t_graph_a4f7e150eadbb8845e8f858255022a037}} 
+\index{N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}!edge\+\_\+list@{edge\+\_\+list}}
+\index{edge\+\_\+list@{edge\+\_\+list}!N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}}
+\subsubsection{\texorpdfstring{edge\+\_\+list()}{edge\_list()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$ typename \mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}}$<$ T $>$\+::edge $>$ \mbox{\hyperlink{class_n_graph_1_1t_graph}{N\+Graph\+::t\+Graph}}$<$ T $>$\+::edge\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Create a new representation of graph as a list of vertex pairs (a,b).
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$edge$>$ a vector (list) of vertex pairs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a5c269fb5cb63c82496bb9c59d6c289b1}\label{class_n_graph_1_1t_graph_a5c269fb5cb63c82496bb9c59d6c289b1}} 
+\index{N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}!in\+\_\+degree@{in\+\_\+degree}}
+\index{in\+\_\+degree@{in\+\_\+degree}!N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}}
+\subsubsection{\texorpdfstring{in\+\_\+degree()}{in\_degree()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+static unsigned int \mbox{\hyperlink{class_n_graph_1_1t_graph}{N\+Graph\+::t\+Graph}}$<$ T $>$\+::in\+\_\+degree (\begin{DoxyParamCaption}\item[{const\+\_\+iterator}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & t\+Graph\+::const\+\_\+iterator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of edges going out (out-\/degree) at node pointed to by p. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a463b923ee1e3604407837150f17f1a74}\label{class_n_graph_1_1t_graph_a463b923ee1e3604407837150f17f1a74}} 
+\index{N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}!includes\+\_\+edge@{includes\+\_\+edge}}
+\index{includes\+\_\+edge@{includes\+\_\+edge}!N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}}
+\subsubsection{\texorpdfstring{includes\+\_\+edge()}{includes\_edge()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+bool \mbox{\hyperlink{class_n_graph_1_1t_graph}{N\+Graph\+::t\+Graph}}$<$ T $>$\+::includes\+\_\+edge (\begin{DoxyParamCaption}\item[{const vertex \&}]{a,  }\item[{const vertex \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Is edge (a,b) included in graph?
+
+\begin{DoxyReturn}{Returns}
+true, if edge is present; false, otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a260849918a2806a4a9aa1cfad0471e41}\label{class_n_graph_1_1t_graph_a260849918a2806a4a9aa1cfad0471e41}} 
+\index{N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}!includes\+\_\+vertex@{includes\+\_\+vertex}}
+\index{includes\+\_\+vertex@{includes\+\_\+vertex}!N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}}
+\subsubsection{\texorpdfstring{includes\+\_\+vertex()}{includes\_vertex()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+bool \mbox{\hyperlink{class_n_graph_1_1t_graph}{N\+Graph\+::t\+Graph}}$<$ T $>$\+::includes\+\_\+vertex (\begin{DoxyParamCaption}\item[{const vertex \&}]{a }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Is vertex \textquotesingle{}a\textquotesingle{} included in graph?
+
+\begin{DoxyReturn}{Returns}
+true, if vertex a is present; false, otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_a826e79cbe8d540de7f044c6ae841dd5f}\label{class_n_graph_1_1t_graph_a826e79cbe8d540de7f044c6ae841dd5f}} 
+\index{N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}!node@{node}}
+\index{node@{node}!N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}}
+\subsubsection{\texorpdfstring{node()}{node()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+static const vertex\& \mbox{\hyperlink{class_n_graph_1_1t_graph}{N\+Graph\+::t\+Graph}}$<$ T $>$\+::node (\begin{DoxyParamCaption}\item[{const\+\_\+iterator}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & t\+Graph\+::const\+\_\+iterator \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_acd67259b93d9ec2de6ca03bf19e027bd}\label{class_n_graph_1_1t_graph_acd67259b93d9ec2de6ca03bf19e027bd}} 
+\index{N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}!out\+\_\+degree@{out\+\_\+degree}}
+\index{out\+\_\+degree@{out\+\_\+degree}!N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}}
+\subsubsection{\texorpdfstring{out\+\_\+degree()}{out\_degree()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+static unsigned int \mbox{\hyperlink{class_n_graph_1_1t_graph}{N\+Graph\+::t\+Graph}}$<$ T $>$\+::out\+\_\+degree (\begin{DoxyParamCaption}\item[{const\+\_\+iterator}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & t\+Graph\+::const\+\_\+iterator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of edges going out (out-\/degree) at node pointed to by p. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_n_graph_1_1t_graph_aa3752935ebcd6e4688b52cd0f6d1211f}\label{class_n_graph_1_1t_graph_aa3752935ebcd6e4688b52cd0f6d1211f}} 
+\index{N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}!smart\+\_\+absorb@{smart\+\_\+absorb}}
+\index{smart\+\_\+absorb@{smart\+\_\+absorb}!N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}}
+\subsubsection{\texorpdfstring{smart\+\_\+absorb()}{smart\_absorb()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}} \mbox{\hyperlink{class_n_graph_1_1t_graph}{N\+Graph\+::t\+Graph}}$<$ T $>$\+::smart\+\_\+absorb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}}}]{pa,  }\item[{\mbox{\hyperlink{class_n_graph_1_1t_graph_a6e446a33b74e5c0c39fb6c50a4f07cec}{iterator}}}]{pb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+c smart\+\_\+abosrb(a,b)\+: \textquotesingle{}a\textquotesingle{} absorbs \textquotesingle{}b\textquotesingle{}, or b aborbs a, depending on whichever causes the least amount of graph updates \mbox{\Hypertarget{class_n_graph_1_1t_graph_ab685e653704db79f06216d0d5977f153}\label{class_n_graph_1_1t_graph_ab685e653704db79f06216d0d5977f153}} 
+\index{N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}!subgraph@{subgraph}}
+\index{subgraph@{subgraph}!N\+Graph\+::t\+Graph@{N\+Graph\+::t\+Graph}}
+\subsubsection{\texorpdfstring{subgraph()}{subgraph()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+\mbox{\hyperlink{class_n_graph_1_1t_graph}{t\+Graph}} \mbox{\hyperlink{class_n_graph_1_1t_graph}{N\+Graph\+::t\+Graph}}$<$ T $>$\+::subgraph (\begin{DoxyParamCaption}\item[{const vertex\+\_\+set \&}]{A }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & vertex set of nodes (subset of G) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a new subgraph containing all nodes of A 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ngraph.\+hpp\end{DoxyCompactItemize}
