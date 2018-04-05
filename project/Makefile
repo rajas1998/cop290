@@ -6,19 +6,12 @@ INCPATH       = -I/usr/share/qt4/mkspecs/linux-g++-64 -I. -I/usr/include/qt4/QtC
 LIBS          = -L/usr/lib/x86_64-linux-gnu/ -lm -lQtGui -larmadillo -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype
 
 DEFINES       = -DQT_NO_DEBUG -DQT_GUI_LIB
-OBJECTS       = main.o
-TARGET        = draw
-
-all:  threedtotwod.cpp input.txt twodtothreed.cpp
-	$(CXX) -o Three_D_to_Two_D Three_D_to_Two_D.cpp $(LFLAGS) $(LIBS) -std=c++11
-two:
-	$(CXX) -o Two_D_to_Three_D Two_D_to_Three_D.cpp $(LFLAGS) $(LIBS) -std=c++11
-show:
-	$(CXX) -o Show Show.cpp $(INCPATH) $(LFLAGS) $(LIBS) -std=c++11 
-gui:
-	$(CXX) -o Main Main.cpp $(INCPATH) $(LFLAGS) $(LIBS) -std=c++11 -w
-animesh:
-	g++ -c Show.cpp $(INCPATH) $(LIBS)
+OBJECTS       = Three_D_to_Two_D.o Two_D_to_Three_D.o Show.o Main.o
+TARGET        = rajas
+%.o : %.cpp
+	$(CXX) -std=c++11 -c $< $(CXXFLAGS) $(INCPATH) -w
+all:  $(OBJECTS)
+	g++ -o $(TARGET) $(OBJECTS) $(INCPATH) $(LIBS) -w -std=c++11
 .PHONY: clean doxygen
 
 clean: 

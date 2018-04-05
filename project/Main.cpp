@@ -5,13 +5,13 @@
 #include <fstream>
 #include <stdlib.h>
 #include <armadillo>
-#include "Two_D_to_Three_D.cpp"
-#include "Show.cpp"
+#include "../include/Two_D_to_Three_D.h"
+#include "../include/Show.h"
 #include <math.h>
 #include "../include/Edges.h"
 #include "../include/Triplet.h"
 #include "../include/Graph_Imp.h"
-#include "Three_D_to_Two_D.cpp"
+#include "../include/Three_D_to_Two_D.h"
 
 
 #define PI 3.14159265
