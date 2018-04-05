@@ -8,9 +8,9 @@
 #include "Two_D_to_Three_D.cpp"
 #include "Show.cpp"
 #include <math.h>
-#include "Edges.h"
-#include "Triplet.h"
-#include "Graph_Imp.h"
+#include "../include/Edges.h"
+#include "../include/Triplet.h"
+#include "../include/Graph_Imp.h"
 #include "Three_D_to_Two_D.cpp"
 
 

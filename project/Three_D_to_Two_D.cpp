@@ -6,11 +6,11 @@
 #include <map>
 #include <string>
 #include <iterator>
-#include "ngraph.hpp"
-#include "Triplet.h"
-#include "Edges.h"
-#include "Graph_Imp.h"
-#include "Three_D_to_Two_D.h"
+#include "../include/ngraph.hpp"
+#include "../include/Triplet.h"
+#include "../include/Edges.h"
+#include "../include/Graph_Imp.h"
+#include "../include/Three_D_to_Two_D.h"
 
 using namespace NGraph;
 using namespace arma;

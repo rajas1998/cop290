@@ -4,9 +4,9 @@
 #include <fstream>
 #include <map>
 #include <iterator>
-#include "ngraph.hpp"
-#include "gnuplot_i.hpp"
-#include "Two_D_to_Three_D.h"
+#include "../include/ngraph.hpp"
+#include "../include/gnuplot_i.hpp"
+#include "../include/Two_D_to_Three_D.h"
 
 using namespace NGraph;
 using namespace std;

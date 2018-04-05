@@ -1,10 +1,10 @@
 #include <math.h>
 #include <QtCore>
 #include <QtGui>
-#include <Three_D_to_Two_D.h>
+#include "../include/Three_D_to_Two_D.h"
 #include <string>
-#include "Show.h"
-#include "ngraph.hpp"
+#include "../include/Show.h"
+#include "../include/ngraph.hpp"
 
 using namespace NGraph;
 using namespace Qt;
